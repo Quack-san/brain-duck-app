@@ -1,0 +1,1 @@
+npm i webpack webpack-cli -D
