@@ -1,0 +1,14 @@
+.examsList {
+    width: 60%;
+}
+
+.testBox {
+    width: auto;
+    height: auto;
+}
+
+.testName {
+    font-size: xx-large;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bolder;
+}
