@@ -7,8 +7,12 @@
     height: auto;
 }
 
-.testName {
+.testLabel {
     font-size: xx-large;
     font-family: 'Times New Roman', Times, serif;
     font-weight: bolder;
+}
+
+.emptyHeader {
+    height: 100px;
 }
