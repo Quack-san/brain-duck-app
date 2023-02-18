@@ -7,7 +7,7 @@ const instalacoesArray = [
     {"name": "FUVEST", "year": 1992, "id": "abc"},
     {"name": "ENEM", "year": 2061, "id": "abc"},
     {"name": "FUVEST", "year": 1990, "id": "abc"},
-    {"name": "HAVARD", "year": 2000, "id": "abc"}
+    {"name": "HARVARD", "year": 2000, "id": "abc"}
 ] 
 
 var institutionsDivsAlreadyExists = []
@@ -20,19 +20,23 @@ instalacoesArray.forEach( (test) => {
         // This five first lines creates a container with the name of the institution inside.
         var newLabelContainer = document.createElement("div");
         newLabelContainer.classList.add(
-            "testBox", 
-            "bg-info", 
+            "testBox",
             "m-2", 
             "text-center",
-            "rounded"
+            "rounded",
+            "border",
+            "shadow"
             );
         setAttributes(newLabelContainer, {
-            "role": "button"
-        })
+            "role": "button",
+            "style": "background-color: #ff9900",
+            })
         console.log("after set attributes function");
 
         var newLabelTest = document.createElement("span");
-        newLabelTest.classList.add("testLabel");
+        newLabelTest.classList.add(
+            "testLabel"
+            );
 
         var labelTestText = document.createTextNode(test.name);
         newLabelTest.appendChild(labelTestText);
@@ -52,7 +56,10 @@ instalacoesArray.forEach( (test) => {
     var newTest = document.createElement("button");
     var newTestText = document.createTextNode(test.year);
     newTest.appendChild(newTestText);
-    newTest.classList.add(test.name, "test");
+    newTest.classList.add(
+        test.name,
+        "test"
+        );
     newTest.setAttribute("test", test.name);
     newTest.setAttribute("id", test.id)
     newTest.style.display = "none";
@@ -88,9 +95,9 @@ function showHideTests() {
     })
 }
 
-function setAttributes(el, attrs) {
+function setAttributes(elem, attrs) {
     for(var index in attrs) {
-      el.setAttribute(index, attrs[index]);
+      elem.setAttribute(index, attrs[index]);
     }
 }
 
