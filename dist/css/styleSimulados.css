@@ -1,13 +1,17 @@
 .examsList {
     width: 60%;
     margin-left: 5px;
-    display: grid;  
-    row-gap: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .testBox {
     width: 100%;
-    height: auto;
+    height: fit-content;
+}
+
+.testListDiv {
+    height: fit-content;
 }
 
 .testLabel {
