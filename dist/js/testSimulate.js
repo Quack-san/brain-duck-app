@@ -1,2 +1,2 @@
 const urlParams = new URLSearchParams(window.location.search);
-const idtest = urlParams.get('idtest');
+const testId = urlParams.get('testId');
