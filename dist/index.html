@@ -10,6 +10,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="./css/styleMain.css">
 	<link rel="stylesheet" href="./css/styleHeaderFooter.css">
+	<link rel="stylesheet" href="./css/styleSideMenu.css">
 	
 	<!-- JavaScript Bundle with Popper -->
 	<script src="./bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
@@ -19,52 +20,71 @@
 </head>
 
 <body>
-	<header class="shadow row" style="background-color: #c9c9c9	;">
+	<header class="mainHeader shadow" style="background-color: #c9c9c9	;">
 		<!-- Imagem logo no canto do site que abrirá o menu de links -->
-		<div class="col-auto text-center border-left border-dark">
-				<img class="img-logo" src="./img/pato-escritorio.jpg" alt="logo">
+		<div class="text-center">
+				<img class="img-logo" src="./img/optionIcon.png" alt="tools">
 		</div>
 		<!-- Titulo do projeto com link para retornar à página principal -->
-		<h1 class="col-auto mainTitle">
+		<h1 class="mainTitle">
 			<a href="index.html">
 			<img class="img-title" src="./img/brainduck-title.png" alt="tileText">
 			</a>
 		</h1>
-		<!-- Elemento offset na direita -->
-		<div class="col-auto">
-			<span class="headerOffset"></span>
-		</div>
 	</header>
 
-	<div class="container-fluid row mt-5">
+	<div class="teste">
+		<ul>
+			<li>Simulados</li>
+			<li>Questões</li>
+			<li>Estatisticas</li>
+		</ul>
+	</div>
 
-		<div class="col-4 text-center">
-			<a href="simulados.html"><img src="./img/pato-escritorio.jpg" alt="pato" class="img-card"></a>
+	<!-- Caixa de conteúdo contendo os links de referência para os outros seviços -->
+	<div class="indexContent">
 
-			<div class="card mx-auto mt-5" style="width: 18rem;">
+		<!-- Card com o link para SIMULADOS -->
+		<div class="linkCard">
+			<img src="./img/examIcon.png" alt="https://freeicons.io/profile/75801" class="imgCard">
+
+			<div class="card mt-3" style="width: 18rem; background-color: #c9c9c9;">
 				<div class="card-body">
-					<h5 class="card-title">Simulados</h5>
+					<a href="./simulados.html">
+						<h5 class="card-title text-center">Simulados</h5>
+					</a>
 					<p class="card-text">Escolha uma prova para realizar um simulado de uma prova real com o tempo
-						padrão e ao final receber um feedback com seus resultados e as áreas que necessitam de uma
-						forçinha extra.</p>
+						padrão e ao final receber um feedback com seus resultados e as áreas que 
+						necessitam de uma forçinha extra.</p>
 				</div>
 			</div>
 		</div>
-		<div class="col-4 text-center">
-			<a href=""><img src="./img/pato-escritorio.jpg" alt="pato" class="img-card"></a>
-			<div class="card mx-auto mt-5" style="width: 18rem;">
+
+		<!-- Card com o link para QUESTOES -->
+		<div class="linkCard">
+			<img src="./img/pencilIcon.png" alt="https://freeicons.io/profile/5790" class="imgCard">
+
+			<div class="card mt-3" style="width: 18rem; background-color: #c9c9c9;">
 				<div class="card-body">
-					<h5 class="card-title">Questões</h5>
-					<p class="card-text">Realize um teste base de seus conhecimentos podendo filtrar por determinada
-						área de estudo. Com questões de diversos temas, contando com um grande banco de dados.</p>
+					<a href="./questoes.html">
+						<h5 class="card-title text-center">Questões</h5>
+					</a>
+					<p class="card-text">Realize um teste base de seus conhecimentos podendo filtrar por 
+						determinada área de estudo. Com questões de diversos temas, contando 
+						com um grande banco de dados.</p>
 				</div>
 			</div>
 		</div>
-		<div class="col-4 text-center">
-			<a href=""><img src="./img/pato-escritorio.jpg" alt="pato" class="img-card"></a>
-			<div class="card mx-auto mt-5" style="width: 18rem;">
+
+		<!-- Card com o link para ESTATISTICAS -->
+		<div class="linkCard">
+			<img src="./img/userIcon.png" alt="https://freeicons.io/profile/714" class="imgCard">
+
+			<div class="card mt-3" style="width: 18rem; background-color: #c9c9c9;">
 				<div class="card-body">
-					<h5 class="card-title">Sobre</h5>
+					<a href="">
+						<h5 class="card-title text-center">Estatisticas</h5>
+					</a>
 					<p class="card-text">Nos conheça mais de perto e o que nos motivou a realizar este prejeto.</p>
 				</div>
 			</div>
