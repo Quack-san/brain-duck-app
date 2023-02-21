@@ -3,6 +3,7 @@
     margin-left: 5px;
     display: flex;
     flex-direction: column;
+    row-gap: 10px;
 }
 
 .testBox {

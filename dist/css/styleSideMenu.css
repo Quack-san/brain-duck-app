@@ -1,4 +1,10 @@
-.teste {
-    position: absolute;
-    top: 0;
+.sideMenu {
+    width: 200px;
+    height: 100%;
+    background-color: #c9c9c9;
+    display: none;
+    position: fixed;
+    top: auto;
+    left: 0;
+    z-index: 1;
 }

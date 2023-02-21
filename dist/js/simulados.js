@@ -86,7 +86,7 @@ function setInstitutions(institutions) {
         );
         setAttributes(btnInstitutionContainer, {
             "style": "background-color: #ff9900",
-            "institutionId": institution.id
+            "institutionId": institution.id 
         })
 
         var institutionLabel = document.createElement("span");
