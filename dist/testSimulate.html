@@ -12,22 +12,44 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
 	<link rel="stylesheet" href="./css/styleMain.css">
 	<link rel="stylesheet" href="./css/styleHeaderFooter.css">
+	<link rel="stylesheet" href="./css/styleTestSimulate.css">
 	<title>Projeto TCC</title>
 </head>
 
 <body>
-	<header class="mainHeader shadow" style="background-color: #c9c9c9	;">
+	<header class="shadow row" style="background-color: #c9c9c9	;">
 		<!-- Imagem logo no canto do site que abrirá o menu de links -->
-		<div class="text-center">
-				<img class="img-logo" src="./img/optionIcon.png" alt="logo">
+		<div class="col-auto text-center border-left border-dark">
+				<img class="img-logo" src="./img/pato-escritorio.jpg" alt="logo">
 		</div>
 		<!-- Titulo do projeto com link para retornar à página principal -->
-		<h1 class="mainTitle">
-			<a href="index.html">
+		<h1 class="col-auto mainTitle">
+			<a href="index.html" id="linkHome">
 			<img class="img-title" src="./img/brainduck-title.png" alt="tileText">
 			</a>
 		</h1>
+		<!-- Elemento offset na direita -->
+		<div class="col-auto">
+			<span class="headerOffset"></span>
+		</div>
 	</header>
 
-    <script src="./js/testSimulate.js"></script>
+
+	<!-- test -->
+	<p><span id="questionNumber"></span>) <span id="questionContent"></span></p>
+	<p>A) <span class="alternative" alternative="a"></span></p>
+	<p>B) <span class="alternative" alternative="b"></span></p>
+	<p>C) <span class="alternative" alternative="c"></span></p>
+	<p>D) <span class="alternative" alternative="d"></span></p>
+	<p>E) <span class="alternative" alternative="e"></span></p>
+
+	<button id="previousQuestion">Anterior</button>
+	<button id="nextQuestion">Próxima</button>
+	<button id="endTest">Encerrar prova</button>
+
+	<div id="divTestStatus">
+		
+	</div>
+
+    <script src="./js/testSimulateBundle.js"></script>
 </body>
