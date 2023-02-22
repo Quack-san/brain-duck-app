@@ -33,6 +33,7 @@ var correctAlternative;
 document.querySelectorAll(".btnAlternative").forEach((btn) => {
 	addEventListener('click', (event) => {
 		correctAlternative = event.target.getAttribute("alternative");
+		programStatus("Correct alternative setted. " + correctAlternative);
 	})
 })
 
@@ -51,6 +52,7 @@ function registerQuestion() {
 		testId: testId.value,
 		text: questionText.value,
 		number: questionNumber.value,
+		correctAlternative: correctAlternative,
 		lastAdded: true
 	})
 	.then(() => {
@@ -129,14 +131,6 @@ function getAlternatives() {
 	}
 	alternativesArray.push(
 		{"content": alternatives.slice(index,alternatives.length), "alternative": "E"});
-
-	alternativesArray.forEach((alternative) => {
-		if (alternative.alternative == correctAlternative) {
-			alternative.isCorrect = true;
-		} else {
-			alternative.isCorrect = false;
-		}
-	})
 	programStatus("Alternatives got.")
 	return alternativesArray;
 }
@@ -147,8 +141,7 @@ function registerAlternatives(alternatives, questionId) {
 		addDoc(alternativeCollectionReference, {
 			questionId: questionId,
 			content: alternativeObj.content,
-			alternative: alternativeObj.alternative,
-			isCorrect: alternativeObj.isCorrect
+			alternative: alternativeObj.alternative
 		})
 		programStatus("Alternative added.");
 	})

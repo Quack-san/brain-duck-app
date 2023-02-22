@@ -22,8 +22,8 @@
 <body>
 	<header class="mainHeader shadow" style="background-color: #c9c9c9	;">
 		<!-- Imagem logo no canto do site que abrirá o menu de links -->
-		<div class="text-center" id="fuckboy" role="button">
-				<img class="img-logo" src="./img/optionIcon.png" alt="tools">
+		<div class="text-center" id="sideMenuBtn" role="button">
+			<img class="img-logo" src="./img/optionIcon.png" alt="tools">
 		</div>
 		<!-- Titulo do projeto com link para retornar à página principal -->
 		<h1 class="mainTitle">
@@ -35,9 +35,9 @@
 
 	<div id="lista" class="sideMenu">
 		<ul>
-			<li>Simulados</li>
-			<li>Questões</li>
-			<li>Estatisticas</li>
+			<li><a href="./simulates.html">Simulados</a></li>
+			<li><a href="./questions.html">Questões</a></li>
+			<li><a href="#">Estatisticas</a></li>
 		</ul>
 	</div>
 
@@ -50,7 +50,7 @@
 
 			<div class="card mt-3" style="width: 18rem; background-color: #c9c9c9;">
 				<div class="card-body">
-					<a href="./simulados.html">
+					<a href="./simulates.html">
 						<h5 class="card-title text-center">Simulados</h5>
 					</a>
 					<p class="card-text">Escolha uma prova para realizar um simulado de uma prova real com o tempo
@@ -66,7 +66,7 @@
 
 			<div class="card mt-3" style="width: 18rem; background-color: #c9c9c9;">
 				<div class="card-body">
-					<a href="./questoes.html">
+					<a href="./questions.html">
 						<h5 class="card-title text-center">Questões</h5>
 					</a>
 					<p class="card-text">Realize um teste base de seus conhecimentos podendo filtrar por 
@@ -107,8 +107,7 @@
 	</div>
 
 
-	<script src="./js/index.js"></script>
-	<script src="./js/bundle.js"></script>
+	<script src="./js/showAndHideMenu.js"></script>
 </body>
 
 </html>

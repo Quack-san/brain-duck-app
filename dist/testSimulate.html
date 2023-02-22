@@ -13,35 +13,40 @@
 	<link rel="stylesheet" href="./css/styleMain.css">
 	<link rel="stylesheet" href="./css/styleHeaderFooter.css">
 	<link rel="stylesheet" href="./css/styleTestSimulate.css">
+	<link rel="stylesheet" href="./css/styleSideMenu.css">
 	<title>Projeto TCC</title>
 </head>
 
 <body>
-	<header class="shadow row" style="background-color: #c9c9c9	;">
+	<header class="mainHeader shadow" style="background-color: #c9c9c9	;">
 		<!-- Imagem logo no canto do site que abrirá o menu de links -->
-		<div class="col-auto text-center border-left border-dark">
-				<img class="img-logo" src="./img/pato-escritorio.jpg" alt="logo">
+		<div class="text-center" id="sideMenuBtn" role="button">
+			<img class="img-logo" src="./img/optionIcon.png" alt="tools">
 		</div>
 		<!-- Titulo do projeto com link para retornar à página principal -->
-		<h1 class="col-auto mainTitle">
-			<a href="index.html" id="linkHome">
+		<h1 class="mainTitle">
+			<a href="index.html">
 			<img class="img-title" src="./img/brainduck-title.png" alt="tileText">
 			</a>
 		</h1>
-		<!-- Elemento offset na direita -->
-		<div class="col-auto">
-			<span class="headerOffset"></span>
-		</div>
 	</header>
+
+	<div id="lista" class="sideMenu">
+		<ul>
+			<li><a href="./simulates.html">Simulados</a></li>
+			<li><a href="./questions.html">Questões</a></li>
+			<li><a href="#">Estatisticas</a></li>
+		</ul>
+	</div>
 
 
 	<!-- test -->
 	<p><span id="questionNumber"></span>) <span id="questionContent"></span></p>
-	<p>A) <span class="alternative" alternative="a"></span></p>
-	<p>B) <span class="alternative" alternative="b"></span></p>
-	<p>C) <span class="alternative" alternative="c"></span></p>
-	<p>D) <span class="alternative" alternative="d"></span></p>
-	<p>E) <span class="alternative" alternative="e"></span></p>
+	<p>A) <span class="alternative" alternative="A"></span></p>
+	<p>B) <span class="alternative" alternative="B"></span></p>
+	<p>C) <span class="alternative" alternative="C"></span></p>
+	<p>D) <span class="alternative" alternative="D"></span></p>
+	<p>E) <span class="alternative" alternative="E"></span></p>
 
 	<button id="previousQuestion">Anterior</button>
 	<button id="nextQuestion">Próxima</button>
@@ -51,5 +56,17 @@
 		
 	</div>
 
+	<!-- rename this -->
+	<div id="divColorsSubtitle">
+		<p>Durante Prova</p>
+		<p><span class="divCircle notSelected"></span>Alternativa não selecionada</p>
+		<p><span class="divCircle selected"></span>Alternativa selecionada</p>
+		<p>Após correção</p>
+		<p><span class="divCircle correct"></span>Respondido corretamente</p>
+		<p><span class="divCircle rightAnswer"></span>Alternativa correta</p>
+		<p><span class="divCircle wrong"></span>Resposta incorreta</p>
+	</div>
+
+	<script src="./js/showAndHideMenu.js"></script>
     <script src="./js/testSimulateBundle.js"></script>
 </body>

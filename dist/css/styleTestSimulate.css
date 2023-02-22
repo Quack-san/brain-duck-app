@@ -1,10 +1,3 @@
-.notAnswered {
-	border-color: gray;
-}
-.answered {
-	border-color: skyblue;
-}
-
 .divCircle {
 	width: 1px;
 	height: 1px;
@@ -16,4 +9,28 @@
 }
 .selected {
 	background-color: skyblue;
+	border-color: skyblue;
+}
+.notSelected {
+	border-color: gray;
+}
+.correct {
+	background-color: green;
+	border-color: green;
+}
+.wrong {
+	background-color: orangered;
+	border-color: orangered;
+}
+.rightAnswer {
+	background-color: yellowgreen;
+	border-color: yellowgreen;
+}
+
+#divColorsSubtitle {
+	width: auto;
+	height: auto;
+	position: absolute;
+	right: 0;
+	bottom: 0;
 }
