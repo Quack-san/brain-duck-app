@@ -28,6 +28,14 @@ const questionNumber = document.getElementById("questionNumber");
 const alternativeText = document.getElementById("alternativeText");
 const registerBtn = document.getElementById("registerBtn");
 
+// set correct alternative
+var correctAlternative;
+document.querySelectorAll(".btnAlternative").forEach((btn) => {
+	addEventListener('click', (event) => {
+		correctAlternative = event.target.getAttribute("alternative");
+	})
+})
+
 var docSnapshot = ""; 
 
 // event Listener to register the question
@@ -57,6 +65,7 @@ function registerQuestion() {
 
 			var alternatives = getAlternatives();
 			registerAlternatives(alternatives, questionId);
+			resetInputs();
 			programStatus("finished");
 			programStatus("--------------------------------")
 		})
@@ -100,35 +109,57 @@ function getAlternatives() {
 		var thirdChar = alternatives.charAt(i+2);
 		if (thisChar == '(' && thirdChar == ')') {
 			if (nextChar == 'B') {
-				alternativesArray.push(alternatives.slice(index,i));
+				alternativesArray.push(
+					{"content": alternatives.slice(index,i), "alternative": "A"});
 			}
 			if (nextChar == 'C') {
-				alternativesArray.push(alternatives.slice(index,i));
+				alternativesArray.push(
+					{"content": alternatives.slice(index,i), "alternative": "B"});
 			} 
 			if (nextChar == 'D') {
-				alternativesArray.push(alternatives.slice(index,i));
+				alternativesArray.push(
+					{"content": alternatives.slice(index,i), "alternative": "C"});
 			} 
 			if (nextChar == 'E') {
-				alternativesArray.push(alternatives.slice(index,i));
+				alternativesArray.push(
+					{"content": alternatives.slice(index,i), "alternative": "D"});
 			}
 			index = i+4;  
 		}
 	}
-	alternativesArray.push(alternatives.slice(index,alternatives.length));
+	alternativesArray.push(
+		{"content": alternatives.slice(index,alternatives.length), "alternative": "E"});
 
+	alternativesArray.forEach((alternative) => {
+		if (alternative.alternative == correctAlternative) {
+			alternative.isCorrect = true;
+		} else {
+			alternative.isCorrect = false;
+		}
+	})
 	programStatus("Alternatives got.")
 	return alternativesArray;
 }
 
 function registerAlternatives(alternatives, questionId) {
 	const alternativeCollectionReference = collection(db, 'alternatives');
-	alternatives.forEach((alternative) => {
+	alternatives.forEach((alternativeObj) => {
 		addDoc(alternativeCollectionReference, {
 			questionId: questionId,
-			text: alternative,
+			content: alternativeObj.content,
+			alternative: alternativeObj.alternative,
+			isCorrect: alternativeObj.isCorrect
 		})
 		programStatus("Alternative added.");
 	})
+}
+
+function resetInputs() {
+	questionText.value = "";
+	alternativeText.value = "";
+	questionNumber.value = parseInt(questionNumber.value)+1;
+
+	programStatus("Inputs resetted.")
 }
 
 function programStatus(text) {
