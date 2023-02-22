@@ -39,32 +39,47 @@
 		</ul>
 	</div>
 
+	<link rel="stylesheet" href="css/styleTestSimulate.css">
+	<div class="background">
+		<!-- Navegador das questões -->
+		<div class="testNav">
+			<div id="divTestStatus"></div>
+		</div>
+		<!-- Bloco onde o enunciado e alternativas ficam -->
+		<div class="testBody">
+			<!-- Enunciado da pergunta -->
+			<div class="statement">
+				<p><span id="questionNumber"></span>) <span id="questionContent"></span></p>
+			</div>
+			<!-- Caixa com as alternativas da pergunta -->
+			<div class="questions">
+				<p>A) <span class="alternative" alternative="A"></span></p>
+				<p>B) <span class="alternative" alternative="B"></span></p>
+				<p>C) <span class="alternative" alternative="C"></span></p>
+				<p>D) <span class="alternative" alternative="D"></span></p>
+				<p>E) <span class="alternative" alternative="E"></span></p>
+			</div>
+		</div>
+		<!-- Botões de navegação da prova -->
+		<div class="testNav">
+			<div class="testButtons">
+				<button id="previousQuestion">Anterior</button>
+				<button id="nextQuestion">Próxima</button>
+				<button id="endTest">Encerrar prova</button>
+			</div>
 
-	<!-- test -->
-	<p><span id="questionNumber"></span>) <span id="questionContent"></span></p>
-	<p>A) <span class="alternative" alternative="A"></span></p>
-	<p>B) <span class="alternative" alternative="B"></span></p>
-	<p>C) <span class="alternative" alternative="C"></span></p>
-	<p>D) <span class="alternative" alternative="D"></span></p>
-	<p>E) <span class="alternative" alternative="E"></span></p>
-
-	<button id="previousQuestion">Anterior</button>
-	<button id="nextQuestion">Próxima</button>
-	<button id="endTest">Encerrar prova</button>
-
-	<div id="divTestStatus">
-		
-	</div>
-
-	<!-- rename this -->
-	<div id="divColorsSubtitle">
-		<p>Durante Prova</p>
-		<p><span class="divCircle notSelected"></span>Alternativa não selecionada</p>
-		<p><span class="divCircle selected"></span>Alternativa selecionada</p>
-		<p>Após correção</p>
-		<p><span class="divCircle correct"></span>Respondido corretamente</p>
-		<p><span class="divCircle rightAnswer"></span>Alternativa correta</p>
-		<p><span class="divCircle wrong"></span>Resposta incorreta</p>
+			<div class="testIndicators">
+				<div id="divColorsSubtitle">
+					<p>Durante Prova</p>
+					<p><span class="divCircle notSelected"></span>Alternativa não selecionada</p>
+					<p><span class="divCircle selected"></span>Alternativa selecionada</p>
+					<p>Após correção</p>
+					<p><span class="divCircle correct"></span>Respondido corretamente</p>
+					<p><span class="divCircle rightAnswer"></span>Alternativa correta</p>
+					<p><span class="divCircle wrong"></span>Resposta incorreta</p>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<script src="./js/showAndHideMenu.js"></script>
