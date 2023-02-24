@@ -32,6 +32,7 @@
 	border-color: skyblue;
 }
 .notSelected {
+	background-color: white;
 	border-color: white;
 }
 .correct {
