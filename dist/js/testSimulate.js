@@ -24,7 +24,7 @@ const db = getFirestore();
 //global variables
 const testId = getTestId();
 var questionNumber = 1;
-var numberOfQuestions = 2;
+var numberOfQuestions = 4;
 var isFinished = false;
 var questionAnswers = [];
 var correctionStatus = [];
@@ -186,8 +186,8 @@ function setDivTestStatus (numberOfQuestions) {
 	const divTestStatus = document.getElementById("divTestStatus");
 
 	for (var i = 0; i < numberOfQuestions; i++) {
-		var divQuestionStatus = document.createElement("div");
-		divQuestionStatus.classList.add("notSelected", "divCircle", "divQuestionStatus");
+		var divQuestionStatus = document.createElement("button");
+		divQuestionStatus.classList.add("notSelected", "statusStyle", "divQuestionStatus");
 		var divTextContent = document.createTextNode(i+1);
 		divQuestionStatus.appendChild(divTextContent);
 		divQuestionStatus.addEventListener('click', (event) => {
@@ -214,12 +214,7 @@ document.getElementById("previousQuestion").addEventListener('click', (event) =>
 	programStatus("Changing to the previous question.");
 	getQuestion(questionNumber.toString());
 })
-// listener to the home link to check if user wants to end the test
-// document.getElementById("linkHome").addEventListener('click', (event) => {
-// 	if (!confirm("Essa ação terminará com a execução do simulado!")) {
-// 		event.preventDefault();
-// 	}
-// });
+
 document.querySelectorAll("a").forEach((link) => {
 	link.addEventListener('click', (event) => {
 		if (!confirm("Essa ação terminará com a execução do simulado!")) {

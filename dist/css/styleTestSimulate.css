@@ -1,12 +1,32 @@
-.divCircle {
-	width: 1px;
-	height: 1px;
-	border-width: 10px;
-	border-style: solid;
+.statusStyle {
+	width: 30px;
+	height: 30px;
 	border-radius: 50%;
-	margin: 3px;
-	cursor: pointer;
+	margin: 0;
 }
+
+.status {
+	display: flex;
+	padding: 2px;
+	justify-content: flex-start;
+	width: 250px;
+}
+
+.status .statusStyle {
+	margin-right: 10px;
+}
+
+#divTestStatus {
+	display: flex;
+	flex-direction: column;
+	row-gap: 5px;
+	padding: 5px;
+}
+
+#divTestStatus button {
+	border-radius: 50%;
+}
+
 .selected {
 	background-color: skyblue;
 	border-color: skyblue;
@@ -28,8 +48,16 @@
 }
 
 #divColorsSubtitle {
-	width: auto;
-	height: auto;
+	border-top-style: solid;
+	border-width: 1px;
+	border-color: #ff9900;
+	margin-top: 10px;
+	padding-top: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	row-gap: 10px;
+	height: fit-content;
 }
 
 .background {
@@ -42,7 +70,7 @@
 }
 
 .testBody {
-	width: 600px;
+	width: 60%;
 	height: fit-content;
 	padding: 10px;
 	background-color: #c9c9c9;
@@ -76,6 +104,15 @@
 	flex-direction: column;
 	padding: 5px;
 	gap: 5px;
+}
+
+.selector {
+	display: flex;
+	justify-content: space-between;
+}
+
+.selector button {
+	width: 49%;
 }
 
 button {

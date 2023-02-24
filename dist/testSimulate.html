@@ -63,20 +63,52 @@
 		<!-- Botões de navegação da prova -->
 		<div class="testNav">
 			<div class="testButtons">
-				<button id="previousQuestion">Anterior</button>
-				<button id="nextQuestion">Próxima</button>
+				<div class="selector">
+					<button id="previousQuestion"><--Anterior</button>
+					<button id="nextQuestion">Próxima--></button>
+				</div>
 				<button id="endTest">Encerrar prova</button>
 			</div>
 
 			<div class="testIndicators">
 				<div id="divColorsSubtitle">
-					<p>Durante Prova</p>
-					<p><span class="divCircle notSelected"></span>Alternativa não selecionada</p>
-					<p><span class="divCircle selected"></span>Alternativa selecionada</p>
-					<p>Após correção</p>
-					<p><span class="divCircle correct"></span>Respondido corretamente</p>
-					<p><span class="divCircle rightAnswer"></span>Alternativa correta</p>
-					<p><span class="divCircle wrong"></span>Resposta incorreta</p>
+					<span>DURANTE A PROVA</span>
+						<div class="box">
+							<div class="status">
+								<p class="statusStyle notSelected"></p>
+								<span>
+									Alternativa não selecionada
+								</span>
+							</div>
+
+							<div class="status">
+								<p class="statusStyle selected"></p>
+								<span>
+									Alternativa selecionada
+								</span>
+							</div>
+						</div>
+					<span>CORREÇÃO</span>
+					<div class="box">
+						<div class="status">
+							<p class="statusStyle correct"></p>
+							<span>
+								Respondido corretamente
+							</span>
+						</div>
+						<div class="status">
+							<p class="statusStyle rightAnswer"></p>
+							<span>
+								Alternativa correta
+							</span>
+						</div>
+						<div class="status">
+							<p class="statusStyle wrong"></p>
+							<span>
+								Resposta incorreta
+							</span>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
