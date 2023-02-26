@@ -2,24 +2,21 @@
     display: grid;
     grid-auto-flow: column;
     justify-content: start;
+    align-items: center;
     column-gap: 20px;
+    height: 50px;
 }
 
 .img-logo {
-    width: 64px;
-    height: 48px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     margin: 5px;
 }
 
 .img-title {
     width: 250px;
-    height: inherit;
-    margin: 5px;
-}
-
-.mainTitle {
-    margin: 0;
+    height: 32px;
 }
 
 .logo-link {
