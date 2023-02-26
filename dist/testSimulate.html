@@ -24,9 +24,11 @@
 			<img class="img-logo" src="./img/optionIcon.png" alt="tools">
 		</div>
 		<!-- Titulo do projeto com link para retornar à página principal -->
-		<a href="index.html">
-			<img class="img-title" src="./img/brainduck-title.png" alt="tileText">
-		</a>
+		<h1 class="mainTitle">
+			<a href="index.html">
+				<img class="img-title" src="./img/brainduck-title.png" alt="tileText">
+			</a>
+		</h1>
 	</header>
 
 	<div id="lista" class="sideMenu">
@@ -62,8 +64,10 @@
 		<div class="testNav">
 			<div class="testButtons">
 				<div class="selector">
-					<button id="previousQuestion"><--Anterior</button>
-					<button id="nextQuestion">Próxima--></button>
+					<button id="previousQuestion">
+						<--Anterior
+						</button>
+						<button id="nextQuestion">Próxima--></button>
 				</div>
 				<button id="endTest">Encerrar prova</button>
 			</div>
@@ -71,21 +75,21 @@
 			<div class="testIndicators">
 				<div id="divColorsSubtitle">
 					<span>DURANTE A PROVA</span>
-						<div class="box">
-							<div class="status">
-								<p class="statusStyle notSelected"></p>
-								<span>
-									Alternativa não selecionada
-								</span>
-							</div>
-
-							<div class="status">
-								<p class="statusStyle selected"></p>
-								<span>
-									Alternativa selecionada
-								</span>
-							</div>
+					<div class="box">
+						<div class="status">
+							<p class="statusStyle notSelected"></p>
+							<span>
+								Alternativa não selecionada
+							</span>
 						</div>
+
+						<div class="status">
+							<p class="statusStyle selected"></p>
+							<span>
+								Alternativa selecionada
+							</span>
+						</div>
+					</div>
 					<span>CORREÇÃO</span>
 					<div class="box">
 						<div class="status">
@@ -110,8 +114,17 @@
 				</div>
 			</div>
 		</div>
+		<!-- escolha tempo de prova -->
+		<div id="setTestTime">
+			<p>Realizar o simulado em</p>
+			<p>tempo real: <span id="testTime"></span></p>
+			<button id="showCustomTestTime">personalizado</button>
+			<input id="customTestTimeHour" class="customTestTime" type="number" step="1" min="0" max="10" style="display: none;">h
+			<input id="customTestTimeMinute" class="customTestTime" type="number" step="10" min="0" max="60" style="display: none;">m
+			<button id="btnStartTest">Iniciar</button>
+		</div>
 	</div>
 
 	<script src="./js/showAndHideMenu.js"></script>
-    <script src="./js/testSimulateBundle.js"></script>
+	<script src="./js/testSimulateBundle.js"></script>
 </body>

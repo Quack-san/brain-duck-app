@@ -1,7 +1,7 @@
 // firebase configs / imports
 import { initializeApp } from 'firebase/app'
 import {
-    getFirestore, collection, getDocs, doc, onSnapshot, query, where
+    getFirestore, collection, getDocs, doc, onSnapshot, query, where, getDoc
 } from 'firebase/firestore'
 
 const firebaseConfig = {
@@ -24,23 +24,87 @@ const db = getFirestore();
 //global variables
 const testId = getTestId();
 var questionNumber = 1;
-var numberOfQuestions = 4;
+var numberOfQuestions = 2;
 var isFinished = false;
 var questionAnswers = [];
 var correctionStatus = [];
+var testTime;
+var pointerTime;
+var customTimerSetted = false;
 for (var i = 0; i < numberOfQuestions; i++) {
 	questionAnswers[i] = undefined;
 	correctionStatus[i] = undefined;
 }
 
+document.querySelector("#showCustomTestTime").addEventListener('click', () => {
+	customTimerSetted = true;
+	var timeFormate = testTime;
+	var hour = document.querySelector("#customTestTimeHour");
+	hour.style.display = "block";
+	var hours = Math.floor(timeFormate/(60*60));
+	hour.value = hours;
+	timeFormate -= hours*(60*60);
+
+	var minute = document.querySelector("#customTestTimeMinute");
+	minute.style.display = "block";
+	minute.value = Math.floor(timeFormate/60);
+})
+
+document.querySelectorAll(".customTestTime").forEach((input) => {
+	input.addEventListener('click', setCustomTime);
+});
+function setCustomTime(event) {
+	// hours formating
+	var input = event.target;
+
+	if (input.getAttribute("id") == "customTestTimeHour" && input.value <= 0 ) {
+		var minutes = document.querySelector("#customTestTimeMinute");
+		if (minutes.value <= 0) {
+			minutes.value = 50;
+			input.value = 0;
+			return;
+		}
+		
+	}
+
+	// minutes formating
+	var hours = document.querySelector("#customTestTimeHour");
+	var minutes = parseInt(event.target.value);
+
+	if (minutes <= 0) {
+		if (hours.value > 0) {
+			event.target.value = 50;
+			hours.value --;
+		} else {
+			event.target.value = 10;
+		}
+	}
+	if (minutes >= 60) {
+		event.target.value = 0;
+		hours.value ++;
+	}
+	if (minutes == 0 && hours == 0) {
+		event.target.value = 10;
+	}
+
+}
 function getTestId() {
 	const urlParams = new URLSearchParams(window.location.search);
 	return urlParams.get('testId');
 }
+getInstitutionId();
 
-// call the function
-getQuestion(questionNumber.toString());
-setDivTestStatus(numberOfQuestions);
+document.querySelector("#btnStartTest").addEventListener('click', () => {
+	programStatus("Starting test.")
+	getQuestion(questionNumber.toString());
+	setDivTestStatus(numberOfQuestions);
+	pointerTime = new Date().getSeconds();
+	var setIntervalId = setInterval(setTestTime, 1000);
+	if (customTimerSetted) { 
+		testTime = document.querySelector("#customTestTimeHour").value*60*60 + document.querySelector("#customTestTimeMinute")*60;
+	}
+});
+
 
 // get question from db
 function getQuestion(number) {
@@ -214,7 +278,7 @@ document.getElementById("previousQuestion").addEventListener('click', (event) =>
 	programStatus("Changing to the previous question.");
 	getQuestion(questionNumber.toString());
 })
-
+// listener to links to check if user wants to end the test
 document.querySelectorAll("a").forEach((link) => {
 	link.addEventListener('click', (event) => {
 		if (!confirm("Essa ação terminará com a execução do simulado!")) {
@@ -247,6 +311,7 @@ function correctTest() {
 		setAlternativesClasses();
 		printCorrection();
 		setDivStatusCorrection();
+		clearInterval(setIntervalId);
 	})
 	.catch((err) => {
 		programStatus("Error in correctTest: " + err);
@@ -272,6 +337,55 @@ function setDivStatusCorrection() {
 		}
 	}
 }
+
+// test timer
+function getInstitutionId() {
+	var testReference = doc(db, 'tests', testId);
+	getDoc(testReference)
+		.then((doc) => {
+			getTestTime(doc.data().institutionId);
+		});
+}
+function getTestTime(institutionId) {
+	var institutionReference = doc(db, 'institutions', institutionId);
+	getDoc(institutionReference)
+		.then((doc) => {
+			testTime = 60*doc.data().time;
+			document.querySelector("#testTime").innerText = formateTime(testTime)
+		});
+}
+
+function setTestTime() {
+	if (isFinished) {return}
+	var nowTime = new Date().getSeconds();
+	var diferenceInTime;
+	if (nowTime > pointerTime) { diferenceInTime = nowTime - pointerTime }
+	else { 
+		diferenceInTime = (60 - pointerTime) + nowTime;
+	}
+	pointerTime = nowTime;
+	testTime -= diferenceInTime;
+
+	if (testTime <= 0) {
+		programStatus("Time's Up!");
+		testTime = 0;
+		alert("Time's Up!");
+		correctTest();
+	}
+	document.querySelector("#testTime").innerText = formateTime(testTime);
+}
+
+function formateTime(testTime) {
+	var timeFormate = testTime;
+	var hours = Math.floor(timeFormate/(60*60));
+	timeFormate -= hours*(60*60);
+	var minutes = Math.floor(timeFormate/60);
+	timeFormate -= minutes*60;
+	var seconds = timeFormate;
+	
+	return hours+"h "+minutes+"m "+seconds+"s";
+}
+
 
 // general function. print program status
 function programStatus(message) {
