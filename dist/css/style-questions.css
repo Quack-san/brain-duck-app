@@ -1,0 +1,18 @@
+.introcution-text {
+    display: block;
+}
+
+.fs-box {
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 3fr;
+}
+
+.search-grid {
+    grid-template-columns: repeat(3, 1fr);
+    height: fit-content;
+}
+
+.filter-menu {
+    height: 400px;
+    flex-direction: column;
+}

@@ -1,0 +1,56 @@
+
+.grid-container {
+    display: grid;
+}
+
+.grid-row {
+    grid-template-rows: auto;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.centralize {
+    justify-content: center;
+    align-items: center;
+}
+
+.fit-w {
+    width: fit-content;
+}
+.fit-h {
+    height: fit-content;
+}
+.fit-wh {
+    width: fit-content;
+    height: fit-content;
+}
+
+.padding {
+    padding: 15px;
+}
+
+.margin {
+    margin: 15px;
+}
+
+.b-round {
+    border-radius: 15px;
+}
+
+.no-border {
+    border: none;
+}
+
+/* 
+    COLORS
+*/
+
+.quack {
+    background-color: #c9c9c9;
+}
+
+.duck {
+    background-color: #ff9900;
+}
