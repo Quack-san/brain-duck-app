@@ -1,0 +1,170 @@
+.test-cover {
+    margin: 20px;
+    padding: 20px;
+    width: 55%;
+}
+
+.test-ground {
+    margin: 20px;
+    grid-template-columns: 1fr 3fr 1fr;
+    gap: 20px;
+}
+
+.left-nav {
+    justify-content: end;
+}
+
+.right-nav {
+    justify-content: start;
+}
+
+.test-nav {
+    padding: 5px;
+}
+
+.test-body {
+    padding: 20px;
+}
+
+.test-buttons {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    flex-direction: column;
+    row-gap: 8px;
+}
+
+.question-list {
+    width: 50px;
+}
+
+.statement {
+	background-color: white;
+	border-radius: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.questions {
+	margin-top: 50px;
+	display: flex;
+	flex-direction: column;
+	row-gap: 20px;
+}
+
+.selector {
+	display: flex;
+	justify-content: space-between;
+}
+
+.selector button {
+	width: 49%;
+}
+
+button {
+	background-color: white;
+	border: none;
+	border-radius: 15px;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+button:hover {
+	background-color: #ff9900;
+}
+
+#endTest:hover {
+	background-color: green !important;
+	color: white;
+}
+
+/* 
+    CSS TEMPLATE CLASSES
+*/
+
+.grid-container {
+    display: grid;
+}
+
+.grid-row {
+    grid-template-rows: auto;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.centralize {
+    justify-content: center;
+    align-items: center;
+}
+
+.fit-w {
+    width: fit-content;
+}
+.fit-h {
+    height: fit-content;
+}
+.fit-wh {
+    width: fit-content;
+    height: fit-content;
+}
+
+.b-round {
+    border-radius: 15px;
+}
+
+.no-border {
+    border: none;
+}
+
+/* 
+    COLORS
+*/
+
+.quack {
+    background-color: #c9c9c9;
+}
+
+.duck {
+    background-color: #ff9900;
+}
+
+/* 
+
+    JAVASCRIPT CLASSES
+
+*/
+
+.selected {
+	background-color: skyblue;
+	border-color: skyblue;
+}
+.notSelected {
+	background-color: white;
+	border-color: white;
+}
+.correct {
+	background-color: green;
+	border-color: green;
+}
+.wrong {
+	background-color: orangered;
+	border-color: orangered;
+}
+.rightAnswer {
+	background-color: yellowgreen;
+	border-color: yellowgreen;
+}
+
+#divColorsSubtitle {
+	border-top-style: solid;
+	border-width: 1px;
+	border-color: #ff9900;
+	margin-top: 10px;
+	padding-top: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	row-gap: 10px;
+	height: fit-content;
+}

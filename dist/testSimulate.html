@@ -24,13 +24,11 @@
 			<img class="img-logo" src="./img/optionIcon.png" alt="tools">
 		</div>
 		<!-- Titulo do projeto com link para retornar à página principal -->
-		<h1 class="mainTitle">
-			<a href="index.html">
-				<img class="img-title" src="./img/brainduck-title.png" alt="tileText">
-			</a>
-		</h1>
+		<a href="index.html">
+			<img class="img-title" src="./img/brainduck-title.png" alt="tileText">
+		</a>
 	</header>
-
+	
 	<div id="lista" class="sideMenu">
 		<ul>
 			<li><a href="./simulates.html">Simulados</a></li>
@@ -38,93 +36,180 @@
 			<li><a href="#">Estatisticas</a></li>
 		</ul>
 	</div>
+	
+	<link rel="stylesheet" href="css/style-testSimulate.css">
+	<div class="grid-container grid-row">
 
-	<link rel="stylesheet" href="css/styleTestSimulate.css">
-	<div class="background">
-		<!-- Navegador das questões -->
-		<div class="testNav">
-			<div id="divTestStatus"></div>
-		</div>
-		<!-- Bloco onde o enunciado e alternativas ficam -->
-		<div class="testBody">
-			<!-- Enunciado da pergunta -->
-			<div class="statement">
-				<p><span id="questionNumber"></span>) <span id="questionContent"></span></p>
-			</div>
-			<!-- Caixa com as alternativas da pergunta -->
-			<div class="questions">
-				<p>A) <span class="alternative" alternative="A"></span></p>
-				<p>B) <span class="alternative" alternative="B"></span></p>
-				<p>C) <span class="alternative" alternative="C"></span></p>
-				<p>D) <span class="alternative" alternative="D"></span></p>
-				<p>E) <span class="alternative" alternative="E"></span></p>
-			</div>
-		</div>
-		<!-- Botões de navegação da prova -->
-		<div class="testNav">
-			<div class="testButtons">
-				<div class="selector">
-					<button id="previousQuestion">
-						<--Anterior
-						</button>
-						<button id="nextQuestion">Próxima--></button>
+		<!-- 
+
+			Cover of the test, with his name, year and time to complete
+
+		-->
+		
+		<div class="flex-container centralize">
+
+			<div class="test-cover quack b-round fit-h">
+
+				<div class="test-informations flex-container duck">
+
+					<div>
+						<h2 class="test-name fit-w">ETEC</h2>
+						<h4 class="test-year fit-w">2022</h4>
+					</div>
+
+					<img id="instituition-logo" src="" alt="exam logo">
+
 				</div>
-				<button id="endTest">Encerrar prova</button>
+
+				<div class="test-time-handler">
+
+					<div>
+						<span>TEMPO PARA REALIZAR O TESTE</span>
+						<span id="testTime"></span>
+					</div>
+
+					<button id="showCustomTestTime">ESCOLHER TEMPO</button>
+
+					<span id="customTestTimeHour" style="display: none;">
+						<input id="customTestTimeHour" class="customTestTime no-border quack" type="number" step="1" min="0" max="10">
+						horas
+					</span>
+					<span id="customTestTimeMinute" style="display: none;">
+						<input id="customTestTimeMinute" class="customTestTime no-border quack" type="number" step="10" min="0" max="60">
+						minutos
+					</span>
+
+				</div>
+				
+				<div class="flex-container centralize">
+					<button id="btnStartTest">Iniciar</button>
+					<button id="btnStart">Começar</button>
+				</div>
+
 			</div>
 
-			<div class="testIndicators">
-				<div id="divColorsSubtitle">
+		</div>
+
+		<!-- 
+
+			Actual test
+
+		-->
+		<div class="test-ground grid-container grid-col-test">
+		
+			<div class="flex-container left-nav">
+				
+				<div class="test-nav fit-wh quack b-round">
+					<div id="divTestStatus" class="question-list centralize"></div>
+				</div>
+
+			</div>
+
+			<div class="test-body fit-h quack b-round">
+
+				<div class="statement">
+					<p>
+						<span id="questionNumber">)</span>
+						<span id="questionContent"></span>
+					</p>
+				</div>
+
+				<div class="questions">
+					<p>A) <span class="alternative" alternative="A"></span></p>
+					<p>B) <span class="alternative" alternative="B"></span></p>
+					<p>C) <span class="alternative" alternative="C"></span></p>
+					<p>D) <span class="alternative" alternative="D"></span></p>
+					<p>E) <span class="alternative" alternative="E"></span></p>
+				</div>
+
+			</div>
+
+			<div class="test-nav fit-wh quack b-round">
+
+				<div class="test-buttons flex-container">
+
+					<div class="selector">
+						<button id="previousQuestion"><--Anterior</button>
+						<button id="nextQuestion">Próxima--></button>
+					</div>
+					
+					<button id="endTest">Encerrar prova</button>
+
+				</div>
+
+				<div class="test-guide" id="testDivSubtitle">
+
 					<span>DURANTE A PROVA</span>
 					<div class="box">
+
 						<div class="status">
 							<p class="statusStyle notSelected"></p>
 							<span>
 								Alternativa não selecionada
 							</span>
 						</div>
-
+						
 						<div class="status">
 							<p class="statusStyle selected"></p>
 							<span>
 								Alternativa selecionada
 							</span>
 						</div>
+
 					</div>
+
 					<span>CORREÇÃO</span>
 					<div class="box">
+
 						<div class="status">
 							<p class="statusStyle correct"></p>
 							<span>
 								Respondido corretamente
 							</span>
 						</div>
+
 						<div class="status">
 							<p class="statusStyle rightAnswer"></p>
 							<span>
 								Alternativa correta
 							</span>
 						</div>
+
 						<div class="status">
 							<p class="statusStyle wrong"></p>
 							<span>
 								Resposta incorreta
 							</span>
 						</div>
+
 					</div>
+
 				</div>
+
 			</div>
+
 		</div>
-		<!-- escolha tempo de prova -->
-		<div id="setTestTime">
-			<p>Realizar o simulado em</p>
-			<p>tempo real: <span id="testTime"></span></p>
-			<button id="showCustomTestTime">personalizado</button>
-			<input id="customTestTimeHour" class="customTestTime" type="number" step="1" min="0" max="10" style="display: none;">h
-			<input id="customTestTimeMinute" class="customTestTime" type="number" step="10" min="0" max="60" style="display: none;">m
-			<button id="btnStartTest">Iniciar</button>
-		</div>
+
 	</div>
 
+	<div class="container mt-auto footer navbar-fixed-bottom">
+		<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+		  <div class="col-md-4 d-flex align-items-center">
+			<a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+			  <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+			</a>
+			<span class="text-muted">© 2023 Quack, Inc</span>
+		  </div>
+	  
+		  <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+			<li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#"></use></svg></a></li>
+		  </ul>
+		</footer>
+	</div>
+
+	<link rel="stylesheet" href="css/styleTestSimulate.css">
+	
+	<script src="js/testConfigurations.js"></script>
 	<script src="./js/showAndHideMenu.js"></script>
 	<script src="./js/testSimulateBundle.js"></script>
 </body>
