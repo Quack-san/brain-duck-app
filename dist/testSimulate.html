@@ -54,8 +54,8 @@
 				<div class="test-informations flex-container duck">
 
 					<div>
-						<h2 class="test-name fit-w">ETEC</h2>
-						<h4 class="test-year fit-w">2022</h4>
+						<h2 class="test-name fit-w" id="test-name"></h2>
+						<h4 class="test-year fit-w" id="test-year"></h4>
 					</div>
 
 					<img id="instituition-logo" src="" alt="exam logo">
@@ -65,17 +65,17 @@
 				<div class="test-time-handler">
 
 					<div>
-						<span>TEMPO PARA REALIZAR O TESTE</span>
+						<span>TEMPO PADRÃO</span>
 						<span id="testTime"></span>
 					</div>
 
-					<button id="showCustomTestTime">ESCOLHER TEMPO</button>
+					<button id="showCustomTestTime">PERSONALIZAR</button>
 
-					<span id="customTestTimeHour" style="display: none;">
+					<span id="spanTimeHour" style="display: none;">
 						<input id="customTestTimeHour" class="customTestTime no-border quack" type="number" step="1" min="0" max="10">
 						horas
 					</span>
-					<span id="customTestTimeMinute" style="display: none;">
+					<span id="spanTimeMinute" style="display: none;">
 						<input id="customTestTimeMinute" class="customTestTime no-border quack" type="number" step="10" min="0" max="60">
 						minutos
 					</span>
@@ -84,7 +84,6 @@
 				
 				<div class="flex-container centralize">
 					<button id="btnStartTest">Iniciar</button>
-					<button id="btnStart">Começar</button>
 				</div>
 
 			</div>
@@ -96,7 +95,7 @@
 			Actual test
 
 		-->
-		<div class="test-ground grid-container grid-col-test">
+		<div class="test-ground grid-container grid-col-test" style="display: none;">
 		
 			<div class="flex-container left-nav">
 				

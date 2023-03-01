@@ -40,13 +40,12 @@ document.querySelector("#showCustomTestTime").addEventListener('click', () => {
 	customTimerSetted = true;
 	var timeFormate = testTime;
 	var hour = document.querySelector("#customTestTimeHour");
-	hour.style.display = "block";
 	var hours = Math.floor(timeFormate/(60*60));
 	hour.value = hours;
 	timeFormate -= hours*(60*60);
 
 	var minute = document.querySelector("#customTestTimeMinute");
-	minute.style.display = "block";
+	document.querySelector("#spanTimeMinute").style.display = "block";
 	minute.value = Math.floor(timeFormate/60);
 })
 
@@ -58,30 +57,30 @@ function setCustomTime(event) {
 	var input = event.target;
 
 	if (input.getAttribute("id") == "customTestTimeHour" && input.value <= 0 ) {
-		var minutes = document.querySelector("#customTestTimeMinute");
-		if (minutes.value <= 0) {
-			minutes.value = 50;
-			input.value = 0;
-			return;
+		var minutes = parseInt(document.querySelector("#customTestTimeMinute").value);
+		if (minutes <= 0) {
+			document.querySelector("#customTestTimeMinute").value = 50;
+			input = 0;
 		}
-		
+		return;
 	}
 
 	// minutes formating
-	var hours = document.querySelector("#customTestTimeHour");
+	var hoursEl = document.querySelector("#customTestTimeHour");
+	var hours = parseInt(hoursEl.value);
 	var minutes = parseInt(event.target.value);
 
 	if (minutes <= 0) {
-		if (hours.value > 0) {
+		if (hours > 0) {
 			event.target.value = 50;
-			hours.value --;
+			hoursEl.value = hours-1;
 		} else {
 			event.target.value = 10;
 		}
 	}
 	if (minutes >= 60) {
 		event.target.value = 0;
-		hours.value ++;
+		hoursEl.value ++;
 	}
 	if (minutes == 0 && hours == 0) {
 		event.target.value = 10;
@@ -92,7 +91,8 @@ function getTestId() {
 	const urlParams = new URLSearchParams(window.location.search);
 	return urlParams.get('testId');
 }
-getInstitutionId();
+getTest();
+
 
 document.querySelector("#btnStartTest").addEventListener('click', () => {
 	programStatus("Starting test.")
@@ -101,7 +101,10 @@ document.querySelector("#btnStartTest").addEventListener('click', () => {
 	pointerTime = new Date().getSeconds();
 	var setIntervalId = setInterval(setTestTime, 1000);
 	if (customTimerSetted) { 
-		testTime = document.querySelector("#customTestTimeHour").value*60*60 + document.querySelector("#customTestTimeMinute")*60;
+		console.log()
+		testTime = parseInt(document.querySelector("#customTestTimeHour").value)*60*60 + 
+			parseInt(document.querySelector("#customTestTimeMinute").value)*60;
+		console.log(testTime);
 	}
 });
 
@@ -338,20 +341,22 @@ function setDivStatusCorrection() {
 	}
 }
 
-// test timer
-function getInstitutionId() {
+// institution and test infos and time
+function getTest() {
 	var testReference = doc(db, 'tests', testId);
 	getDoc(testReference)
 		.then((doc) => {
-			getTestTime(doc.data().institutionId);
+			document.querySelector("#test-year").innerText = doc.data().year;
+			getInstitution(doc.data().institutionId);
 		});
 }
-function getTestTime(institutionId) {
+function getInstitution(institutionId) {
 	var institutionReference = doc(db, 'institutions', institutionId);
 	getDoc(institutionReference)
-		.then((doc) => {
+		.then((doc) => { 
 			testTime = 60*doc.data().time;
-			document.querySelector("#testTime").innerText = formateTime(testTime)
+			document.querySelector("#testTime").innerText = formateTime(testTime);
+			document.querySelector("#test-name").innerText = doc.data().name;
 		});
 }
 
