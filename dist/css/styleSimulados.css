@@ -24,3 +24,7 @@
 .emptyHeader {
     height: 100px;
 }
+
+.test.btn {
+    width: fit-conten;
+}

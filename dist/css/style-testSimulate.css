@@ -77,6 +77,12 @@ button:hover {
 	color: white;
 }
 
+input {
+	width: 100px;
+	border: none;
+	border-radius: 80px;
+}
+
 /* 
 
     JAVASCRIPT CLASSES

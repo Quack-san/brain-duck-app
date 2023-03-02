@@ -38,4 +38,6 @@ a:hover {
 .card-text {
     text-align: justify;
     text-indent: 1.7em;
+    font-size: medium;
+    font-weight: normal;
 }

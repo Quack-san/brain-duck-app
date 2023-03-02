@@ -1,0 +1,32 @@
+body {
+    font-family: Arial, Helvetica, sans-serif, Times, serif;
+    font-weight: bold;
+    font-size: large;
+}
+
+.content {
+    max-width: 1600px;
+    margin: auto;
+}
+
+.side-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    width: fit-content;
+    height: 100%;
+}
+
+ul {
+    padding-left: 0;
+}
+
+ul li {
+    list-style-type: none;
+    padding-top: 4px;
+}
+
+ul ul li {
+    padding: 10px;
+    padding-top: 20px;
+}

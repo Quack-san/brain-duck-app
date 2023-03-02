@@ -11,10 +11,12 @@
 	<link rel="stylesheet" href="./css/styleMain.css">
 	<link rel="stylesheet" href="./css/styleHeaderFooter.css">
 	<link rel="stylesheet" href="./css/styleSideMenu.css">
-	
 	<!-- JavaScript Bundle with Popper -->
 	<script src="./bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+
+	<link rel="stylesheet" href="css/style-main.css">
+	<link rel="stylesheet" href="css/style-patterns.css">
 
 	<title>Projeto TCC</title>
 </head>
@@ -31,79 +33,83 @@
 		</a>
 	</header>
 
-	<div id="lista" class="sideMenu">
+	<div id="lista" class="side-menu quack">
 		<ul>
-			<li><a href="./simulates.html">Simulados</a></li>
-			<li><a href="./questions.html">Questões</a></li>
-			<li><a href="#">Estatisticas</a></li>
+			<li><img src="img/optionIcon.png" class="img-logo"></li>
+			<ul>
+				<li><a href="./simulates.html">Simulados</a></li>
+				<li><a href="./questions.html">Questões</a></li>
+				<li><a href="#">Estatisticas</a></li>
+			</ul>
 		</ul>
 	</div>
+	
+	<div class="content">
+		<!-- Caixa de conteúdo contendo os links de referência para os outros seviços -->
+		<div class="indexContent">
 
-	<!-- Caixa de conteúdo contendo os links de referência para os outros seviços -->
-	<div class="indexContent">
+			<!-- Card com o link para SIMULADOS -->
+			<div class="linkCard">
+				<img src="./img/examIcon.png" alt="https://freeicons.io/profile/75801" class="imgCard">
 
-		<!-- Card com o link para SIMULADOS -->
-		<div class="linkCard">
-			<img src="./img/examIcon.png" alt="https://freeicons.io/profile/75801" class="imgCard">
+				<div class="card mt-3" style="width: 18rem; background-color: #c9c9c9;">
+					<div class="card-body">
+						<a href="./simulates.html">
+							<h5 class="card-title text-center">Simulados</h5>
+						</a>
+						<p class="card-text">Escolha uma prova para realizar um simulado de uma prova real com o tempo
+							padrão e ao final receber um feedback com seus resultados e as áreas que 
+							necessitam de uma forçinha extra.</p>
+					</div>
+				</div>
+			</div>
 
-			<div class="card mt-3" style="width: 18rem; background-color: #c9c9c9;">
-				<div class="card-body">
-					<a href="./simulates.html">
-						<h5 class="card-title text-center">Simulados</h5>
-					</a>
-					<p class="card-text">Escolha uma prova para realizar um simulado de uma prova real com o tempo
-						padrão e ao final receber um feedback com seus resultados e as áreas que 
-						necessitam de uma forçinha extra.</p>
+			<!-- Card com o link para QUESTOES -->
+			<div class="linkCard">
+				<img src="./img/pencilIcon.png" alt="https://freeicons.io/profile/5790" class="imgCard">
+
+				<div class="card mt-3" style="width: 18rem; background-color: #c9c9c9;">
+					<div class="card-body">
+						<a href="./questions.html">
+							<h5 class="card-title text-center">Questões</h5>
+						</a>
+						<p class="card-text">Realize um teste base de seus conhecimentos podendo filtrar por 
+							determinada área de estudo. Com questões de diversos temas, contando 
+							com um grande banco de dados.</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Card com o link para ESTATISTICAS -->
+			<div class="linkCard">
+				<img src="./img/userIcon.png" alt="https://freeicons.io/profile/714" class="imgCard">
+
+				<div class="card mt-3" style="width: 18rem; background-color: #c9c9c9;">
+					<div class="card-body">
+						<a href="">
+							<h5 class="card-title text-center">Estatisticas</h5>
+						</a>
+						<p class="card-text">Nos conheça mais de perto e o que nos motivou a realizar este prejeto.</p>
+					</div>
 				</div>
 			</div>
 		</div>
 
-		<!-- Card com o link para QUESTOES -->
-		<div class="linkCard">
-			<img src="./img/pencilIcon.png" alt="https://freeicons.io/profile/5790" class="imgCard">
-
-			<div class="card mt-3" style="width: 18rem; background-color: #c9c9c9;">
-				<div class="card-body">
-					<a href="./questions.html">
-						<h5 class="card-title text-center">Questões</h5>
-					</a>
-					<p class="card-text">Realize um teste base de seus conhecimentos podendo filtrar por 
-						determinada área de estudo. Com questões de diversos temas, contando 
-						com um grande banco de dados.</p>
-				</div>
+		<div class="container mt-auto footer navbar-fixed-bottom">
+			<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+			<div class="col-md-4 d-flex align-items-center">
+				<a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+				<svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+				</a>
+				<span class="text-muted">© 2023 Quack, Inc</span>
 			</div>
-		</div>
-
-		<!-- Card com o link para ESTATISTICAS -->
-		<div class="linkCard">
-			<img src="./img/userIcon.png" alt="https://freeicons.io/profile/714" class="imgCard">
-
-			<div class="card mt-3" style="width: 18rem; background-color: #c9c9c9;">
-				<div class="card-body">
-					<a href="">
-						<h5 class="card-title text-center">Estatisticas</h5>
-					</a>
-					<p class="card-text">Nos conheça mais de perto e o que nos motivou a realizar este prejeto.</p>
-				</div>
-			</div>
+		
+			<ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+				<li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#"></use></svg></a></li>
+			</ul>
+			</footer>
 		</div>
 	</div>
-
-	<div class="container mt-auto footer navbar-fixed-bottom">
-		<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-		  <div class="col-md-4 d-flex align-items-center">
-			<a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
-			  <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
-			</a>
-			<span class="text-muted">© 2023 Quack, Inc</span>
-		  </div>
-	  
-		  <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-			<li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#"></use></svg></a></li>
-		  </ul>
-		</footer>
-	</div>
-
 
 	<script src="./js/showAndHideMenu.js"></script>
 </body>
