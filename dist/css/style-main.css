@@ -15,6 +15,9 @@ body {
     top: 0;
     width: fit-content;
     height: 100%;
+    z-index: 1;
+    border-style: solid;
+    border-color: aqua;
 }
 
 ul {
