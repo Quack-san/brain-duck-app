@@ -23,6 +23,7 @@
     min-height: 200px;
     border-radius: 15px;
     background-color: orange;
+    display: flex;
 }
 
 div.filter-menu button {

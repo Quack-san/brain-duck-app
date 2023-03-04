@@ -16,8 +16,6 @@ body {
     width: fit-content;
     height: 100%;
     z-index: 1;
-    border-style: solid;
-    border-color: aqua;
 }
 
 ul {
@@ -30,6 +28,11 @@ ul li {
 }
 
 ul ul li {
-    padding: 10px;
-    padding-top: 20px;
+    padding: 50px;
+    padding-top: 60px;
 }
+
+/* 
+    ANIMATIONS
+*/
+

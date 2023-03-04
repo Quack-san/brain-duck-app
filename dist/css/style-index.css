@@ -1,0 +1,26 @@
+.main-board {
+    margin: 0;
+}
+
+.welcome-title {
+    margin: 10px;
+    height: fit-content;
+}
+
+.explanation {
+    margin-top: 40px;
+    padding: 80px;
+    height: fit-content;
+    gap: 100px;
+}
+
+.ex {
+    width: 40%;
+}
+
+.link {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

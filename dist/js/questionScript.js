@@ -18,8 +18,12 @@ function requestItems (itemsArray) {
         document.querySelector('.search-grid').appendChild(
             Object.assign(
                 document.createElement('div'),
-                { className : "subject-item" },
+                { className : "subject-item flex-container centralize " },
                 { role : "button" },
+            )
+        ).append(
+            Object.assign(
+                document.createElement('span'),
                 { innerHTML : item }
             )
         )

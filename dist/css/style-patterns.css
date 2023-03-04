@@ -1,4 +1,8 @@
 
+.none {
+    display: none;
+}
+
 .grid-container {
     display: grid;
 }
@@ -35,12 +39,24 @@
     margin: 15px;
 }
 
+.margin-t {
+    margin-top: 20px;
+}
+
 .b-round {
     border-radius: 15px;
 }
 
 .no-border {
     border: none;
+}
+
+.fs-large {
+    font-size: 30px;
+}
+
+.fs-middle {
+    font-size: 2px;
 }
 
 /* 
