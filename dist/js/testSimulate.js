@@ -1,18 +1,18 @@
 // firebase configs / imports
 import { initializeApp } from 'firebase/app'
 import {
-    getFirestore, collection, getDocs, doc, onSnapshot, query, where, getDoc
+	getFirestore, collection, getDocs, doc, onSnapshot, query, where, getDoc
 } from 'firebase/firestore'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAc9-XbuWPI7dayYtDE0OlVXuDbDChZqjE",
-  authDomain: "testefirebase-45098.firebaseapp.com",
-  databaseURL: "https://testefirebase-45098-default-rtdb.firebaseio.com",
-  projectId: "testefirebase-45098",
-  storageBucket: "testefirebase-45098.appspot.com",
-  messagingSenderId: "583024602798",
-  appId: "1:583024602798:web:64a2571fb450852e2d873f",
-  measurementId: "G-5CSTKPFGR6"
+	apiKey: "AIzaSyAc9-XbuWPI7dayYtDE0OlVXuDbDChZqjE",
+	authDomain: "testefirebase-45098.firebaseapp.com",
+	databaseURL: "https://testefirebase-45098-default-rtdb.firebaseio.com",
+	projectId: "testefirebase-45098",
+	storageBucket: "testefirebase-45098.appspot.com",
+	messagingSenderId: "583024602798",
+	appId: "1:583024602798:web:64a2571fb450852e2d873f",
+	measurementId: "G-5CSTKPFGR6"
 };
 
 initializeApp(firebaseConfig);
@@ -26,6 +26,8 @@ const testId = getTestId();
 var questionNumber = 1;
 var numberOfQuestions = 2;
 var isFinished = false;
+var questionsObj = [];
+var alternativesObj = [];
 var questionAnswers = [];
 var correctionStatus = [];
 var testTime;
@@ -40,13 +42,13 @@ document.querySelector("#showCustomTestTime").addEventListener('click', () => {
 	customTimerSetted = true;
 	var timeFormate = testTime;
 	var hour = document.querySelector("#customTestTimeHour");
-	var hours = Math.floor(timeFormate/(60*60));
+	var hours = Math.floor(timeFormate / (60 * 60));
 	hour.value = hours;
-	timeFormate -= hours*(60*60);
+	timeFormate -= hours * (60 * 60);
 
 	var minute = document.querySelector("#customTestTimeMinute");
 	document.querySelector("#spanTimeMinute").style.display = "block";
-	minute.value = Math.floor(timeFormate/60);
+	minute.value = Math.floor(timeFormate / 60);
 })
 
 document.querySelectorAll(".customTestTime").forEach((input) => {
@@ -56,7 +58,7 @@ function setCustomTime(event) {
 	// hours formating
 	var input = event.target;
 
-	if (input.getAttribute("id") == "customTestTimeHour" && input.value <= 0 ) {
+	if (input.getAttribute("id") == "customTestTimeHour" && input.value <= 0) {
 		var minutes = parseInt(document.querySelector("#customTestTimeMinute").value);
 		if (minutes <= 0) {
 			document.querySelector("#customTestTimeMinute").value = 50;
@@ -73,14 +75,14 @@ function setCustomTime(event) {
 	if (minutes <= 0) {
 		if (hours > 0) {
 			event.target.value = 50;
-			hoursEl.value = hours-1;
+			hoursEl.value = hours - 1;
 		} else {
 			event.target.value = 10;
 		}
 	}
 	if (minutes >= 60) {
 		event.target.value = 0;
-		hoursEl.value ++;
+		hoursEl.value++;
 	}
 	if (minutes == 0 && hours == 0) {
 		event.target.value = 10;
@@ -96,66 +98,75 @@ getTest();
 
 document.querySelector("#btnStartTest").addEventListener('click', () => {
 	programStatus("Starting test.")
-	getQuestion(questionNumber.toString());
+	getQuestions();
 	setDivTestStatus(numberOfQuestions);
 	pointerTime = new Date().getSeconds();
 	var setIntervalId = setInterval(setTestTime, 1000);
-	if (customTimerSetted) { 
+	if (customTimerSetted) {
 		console.log()
-		testTime = parseInt(document.querySelector("#customTestTimeHour").value)*60*60 + 
-			parseInt(document.querySelector("#customTestTimeMinute").value)*60;
+		testTime = parseInt(document.querySelector("#customTestTimeHour").value) * 60 * 60 +
+			parseInt(document.querySelector("#customTestTimeMinute").value) * 60;
 		console.log(testTime);
 	}
+	document.querySelector("#customTimeDiv").style.display = "none";
+	document.querySelector("#startDiv").style.display = "none";
 });
 
 
-// get question from db
-function getQuestion(number) {
+// get questions from db
+function getQuestions() {
 	var questionsCollectionReference = collection(db, 'questions');
-	var q = query(questionsCollectionReference, where("testId", "==", testId), 
-		where("number", "==", number));
+	var q = query(questionsCollectionReference, where("testId", "==", testId));
+	var index = 1;
 
 	getDocs(q)
-	.then((snapshot) => {
-		snapshot.docs.forEach((question) => {
-			programStatus("Question got.")
-			setQuestion(question);
-			getAlternatives(question.id);
+		.then((snapshot) => {
+			snapshot.docs.forEach((question) => {
+				questionsObj.push({
+					id: question.id,
+					number: question.data().number,
+					content: question.data().text,
+					correctAlternative: question.data().correctAlternative
+				}
+				);
+				getAlternative(question.id, index);
+				index++;
+			})
+			setQuestion();
+			programStatus("Questions got.")
 		})
-	})
-	.catch((err) => {
-		programStatus("Error in getQuestion: " + err);
-	})
+		.catch((err) => {
+			programStatus("Error in getQuestion: " + err);
+		})
 }
 
 // set question in HTML
-function setQuestion(question) {
-	document.getElementById("questionNumber").innerText = question.data().number;
-	document.getElementById("questionContent").innerText = question.data().text;
+function setQuestion() {
+	document.getElementById("questionNumber").innerText = questionsObj[questionNumber - 1].number + ")";
+	document.getElementById("questionContent").innerText = questionsObj[questionNumber - 1].content;
 	programStatus("Question setted.");
 }
 
 // get alternatives from db
-function getAlternatives(questionId) {
+function getAlternative(questionId, index) {
 	var alternativesCollectionReference = collection(db, 'alternatives');
 	var q = query(alternativesCollectionReference, where("questionId", "==", questionId));
 
-	var alternatives = [];
 	getDocs(q)
-	.then((snapshot) => {
-		snapshot.docs.forEach((alternative) => {
-			alternatives.push({
-				"id": alternative.id, 
-				"content": alternative.data().content
+		.then((snapshot) => {
+			alternativesObj.push([]);
+			snapshot.docs.forEach((alternative) => {
+				alternativesObj[index - 1].push({
+					"id": alternative.id,
+					"content": alternative.data().content
+				})
 			});
+			if (index == 1) { setAlternativesContent() };
+			programStatus("Alternatives got.")
+		})
+		.catch((err) => {
+			programStatus("Error in getAlternatives: " + err);
 		});
-		setAlternativesContent(alternatives);
-		setAlternativesClasses();
-		programStatus("Alternatives got.")
-	})
-	.catch((err) => {
-		programStatus("Error in getAlternatives: " + err);
-	});
 }
 
 // add eventListener to alternatives in HTML
@@ -164,10 +175,10 @@ document.querySelectorAll(".alternative").forEach((alternative) => {
 });
 
 // set alternative innerText in html
-function setAlternativesContent(alternatives) {
+function setAlternativesContent() {
 	const alternativesDOM = document.querySelectorAll(".alternative");
 	for (var i = 0; i < alternativesDOM.length; i++) {
-		alternativesDOM[i].innerText = alternatives[i].content;
+		alternativesDOM[i].innerText = alternativesObj[questionNumber - 1][i].content;
 	}
 	programStatus("Alternatives content setted.");
 }
@@ -193,15 +204,15 @@ function setAlternativesClasses() {
 		}
 
 		// add classes
-		if (questionAnswers[questionNumber-1] == alternative.getAttribute("alternative")) {
+		if (questionAnswers[questionNumber - 1] == alternative.getAttribute("alternative")) {
 			if (!isFinished) {
 				alternative.classList.add("selected");
-			} else if (correctionStatus[questionNumber-1].isCorrect) {
+			} else if (correctionStatus[questionNumber - 1].isCorrect) {
 				alternative.classList.add("correct");
 			} else {
 				alternative.classList.add("wrong");
 			}
-		} else if (isFinished && correctionStatus[questionNumber-1].correctAnswer == 
+		} else if (isFinished && correctionStatus[questionNumber - 1].correctAnswer ==
 			alternative.getAttribute("alternative")) {
 			alternative.classList.add("rightAnswer");
 		}
@@ -219,7 +230,7 @@ function selectAlternative(event) {
 		selected.classList.remove("selected");
 		divStatus.classList.remove("selected");
 		divStatus.classList.add("notSelected");
-		questionAnswers[questionNumber-1] = undefined;
+		questionAnswers[questionNumber - 1] = undefined;
 		programStatus("Alternative unselected");
 		return;
 	}
@@ -232,13 +243,13 @@ function selectAlternative(event) {
 	selected.classList.add("selected");
 	divStatus.classList.add("selected");
 	divStatus.classList.remove("notSelected");
-	questionAnswers[questionNumber-1] = selected.getAttribute("alternative");
+	questionAnswers[questionNumber - 1] = selected.getAttribute("alternative");
 
 	programStatus("Alternative selected");
 }
 
 // get div status according to the current question number
-function getDivStatus () {
+function getDivStatus() {
 	var divQuestionStatus;
 	document.querySelectorAll(".divQuestionStatus").forEach((div) => {
 		if (div.innerText == questionNumber) {
@@ -249,13 +260,13 @@ function getDivStatus () {
 }
 
 // set all the div status
-function setDivTestStatus (numberOfQuestions) {
+function setDivTestStatus(numberOfQuestions) {
 	const divTestStatus = document.getElementById("divTestStatus");
 
 	for (var i = 0; i < numberOfQuestions; i++) {
 		var divQuestionStatus = document.createElement("button");
 		divQuestionStatus.classList.add("notSelected", "statusStyle", "divQuestionStatus");
-		var divTextContent = document.createTextNode(i+1);
+		var divTextContent = document.createTextNode(i + 1);
 		divQuestionStatus.appendChild(divTextContent);
 		divQuestionStatus.addEventListener('click', (event) => {
 			questionNumber = parseInt(event.target.innerText);
@@ -272,19 +283,23 @@ document.getElementById("nextQuestion").addEventListener('click', (event) => {
 	if (questionNumber >= numberOfQuestions) { return; }
 	questionNumber++;
 	programStatus("Changing to the next question.");
-	getQuestion(questionNumber.toString());
+	setQuestion();
+	setAlternativesClasses();
+	setAlternativesContent();
 })
 // listener to the button to go to previous question
 document.getElementById("previousQuestion").addEventListener('click', (event) => {
 	if (questionNumber <= 0) { return; }
 	questionNumber--;
 	programStatus("Changing to the previous question.");
-	getQuestion(questionNumber.toString());
+	setQuestion();
+	setAlternativesClasses();
+	setAlternativesContent();
 })
 // listener to links to check if user wants to end the test
 document.querySelectorAll("a").forEach((link) => {
 	link.addEventListener('click', (event) => {
-		if (!confirm("Essa ação terminará com a execução do simulado!")) {
+		if (!confirm("Essa ação terminará com a execução do simulado!") && !isFinished) {
 			event.preventDefault();
 		}
 	});
@@ -294,38 +309,26 @@ document.querySelectorAll("a").forEach((link) => {
 document.getElementById("endTest").addEventListener('click', correctTest);
 function correctTest() {
 	isFinished = true;
-	var questionsCollectionReference = collection(db, 'questions');
-	var q = query(questionsCollectionReference, where("testId", "==", testId));
-
-	getDocs(q)
-	.then((snapshot) => {
-		var correctionQuestionNumber;
-		snapshot.docs.forEach((question) => {
-			correctionQuestionNumber = parseInt(question.data().number);
-			if (question.data().correctAlternative == 
-				questionAnswers[correctionQuestionNumber-1]) {
-				correctionStatus[correctionQuestionNumber-1] = 
-			{"isCorrect": true, "correctAnswer": question.data().correctAlternative};
-			} else {
-				correctionStatus[correctionQuestionNumber-1] = 
-				{"isCorrect": false, "correctAnswer": question.data().correctAlternative};
-			}
-		})
-		setAlternativesClasses();
-		printCorrection();
-		setDivStatusCorrection();
-		clearInterval(setIntervalId);
-	})
-	.catch((err) => {
-		programStatus("Error in correctTest: " + err);
-	})
+	var index = 0;
+	questionsObj.forEach((question => {
+		if (question.correctAlternative == questionAnswers[index]) {
+			correctionStatus[index] = { "isCorrect": true, "correctAnswer": question.correctAlternative };
+		} else {
+			correctionStatus[index] =  { "isCorrect": false, "correctAnswer": question.correctAlternative };
+		}
+		index++;
+	}))
+	setAlternativesClasses();
+	printCorrection();
+	setDivStatusCorrection();
+	clearInterval(setIntervalId);
 }
 
 // print the correction on log
 function printCorrection() {
 	programStatus("Correction")
 	for (var i = 0; i < numberOfQuestions; i++) {
-		programStatus("question " + (i+1) + ": " + correctionStatus[i].isCorrect);
+		programStatus("question " + (i + 1) + ": " + correctionStatus[i].isCorrect);
 	}
 }
 
@@ -353,19 +356,19 @@ function getTest() {
 function getInstitution(institutionId) {
 	var institutionReference = doc(db, 'institutions', institutionId);
 	getDoc(institutionReference)
-		.then((doc) => { 
-			testTime = 60*doc.data().time;
+		.then((doc) => {
+			testTime = 60 * doc.data().time;
 			document.querySelector("#testTime").innerText = formateTime(testTime);
 			document.querySelector("#test-name").innerText = doc.data().name;
 		});
 }
 
 function setTestTime() {
-	if (isFinished) {return}
+	if (isFinished) { return }
 	var nowTime = new Date().getSeconds();
 	var diferenceInTime;
 	if (nowTime > pointerTime) { diferenceInTime = nowTime - pointerTime }
-	else { 
+	else {
 		diferenceInTime = (60 - pointerTime) + nowTime;
 	}
 	pointerTime = nowTime;
@@ -382,13 +385,13 @@ function setTestTime() {
 
 function formateTime(testTime) {
 	var timeFormate = testTime;
-	var hours = Math.floor(timeFormate/(60*60));
-	timeFormate -= hours*(60*60);
-	var minutes = Math.floor(timeFormate/60);
-	timeFormate -= minutes*60;
+	var hours = Math.floor(timeFormate / (60 * 60));
+	timeFormate -= hours * (60 * 60);
+	var minutes = Math.floor(timeFormate / 60);
+	timeFormate -= minutes * 60;
 	var seconds = timeFormate;
-	
-	return hours+"h "+minutes+"m "+seconds+"s";
+
+	return hours + "h " + minutes + "m " + seconds + "s";
 }
 
 

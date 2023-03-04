@@ -30,7 +30,7 @@
 			<img class="img-title" src="./img/brainduck-title.png" alt="tileText">
 		</a>
 	</header>
-	
+
 	<div id="lista" class="sideMenu">
 		<ul>
 			<li><a href="./simulates.html">Simulados</a></li>
@@ -38,7 +38,7 @@
 			<li><a href="#">Estatisticas</a></li>
 		</ul>
 	</div>
-	
+
 	<link rel="stylesheet" href="css/style-testSimulate.css">
 	<div class="content">
 		<div class="grid-container grid-row">
@@ -48,7 +48,7 @@
 				Cover of the test, with his name, year and time to complete
 
 			-->
-			
+
 			<div class="flex-container centralize">
 
 				<div class="test-cover quack b-round fit-h">
@@ -70,20 +70,25 @@
 							<span id="testTime"></span>
 						</div>
 
-						<button id="showCustomTestTime">PERSONALIZAR</button>
+						<div id="customTimeDiv">
+							<button id="showCustomTestTime">PERSONALIZAR</button>
 
-						<span id="spanTimeHour" style="display: none;">
-							<input id="customTestTimeHour" class="customTestTime padding" type="number" step="1" min="0" max="10">
-							horas
-						</span>
-						<span id="spanTimeMinute" style="display: none;">
-							<input id="customTestTimeMinute" class="customTestTime padding" type="number" step="10" min="0" max="60">
-							minutos
-						</span>
+							<span id="spanTimeHour" style="display: none;">
+								<input id="customTestTimeHour" class="customTestTime padding" type="number" step="1"
+									min="0" max="10">
+								horas
+							</span>
+							<span id="spanTimeMinute" style="display: none;">
+								<input id="customTestTimeMinute" class="customTestTime padding" type="number" step="10"
+									min="0" max="60">
+								minutos
+							</span>
+						</div>
+
 
 					</div>
-					
-					<div class="flex-container centralize">
+
+					<div class="flex-container centralize" id="startDiv">
 						<button id="btnStartTest">Iniciar</button>
 					</div>
 
@@ -97,9 +102,9 @@
 
 			-->
 			<div class="test-ground grid-container grid-col-test" style="display: none;">
-			
+
 				<div class="flex-container left-nav">
-					
+
 					<div class="test-nav fit-wh quack b-round">
 						<div id="divTestStatus" class="question-list centralize"></div>
 					</div>
@@ -133,7 +138,7 @@
 							<button id="previousQuestion"><--Anterior</button>
 							<button id="nextQuestion">Próxima--></button>
 						</div>
-						
+
 						<button id="endTest">Encerrar prova</button>
 
 					</div>
@@ -149,7 +154,6 @@
 									Alternativa não selecionada
 								</span>
 							</div>
-							
 							<div class="status">
 								<p class="statusStyle selected"></p>
 								<span>
@@ -195,22 +199,26 @@
 
 		<div class="container mt-auto footer navbar-fixed-bottom">
 			<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-			<div class="col-md-4 d-flex align-items-center">
-				<a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
-				<svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
-				</a>
-				<span class="text-muted">© 2023 Quack, Inc</span>
-			</div>
-		
-			<ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-				<li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#"></use></svg></a></li>
-			</ul>
+				<div class="col-md-4 d-flex align-items-center">
+					<a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+						<svg class="bi" width="30" height="24">
+							<use xlink:href="#bootstrap"></use>
+						</svg>
+					</a>
+					<span class="text-muted">© 2023 Quack, Inc</span>
+				</div>
+
+				<ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+					<li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
+								<use xlink:href="#"></use>
+							</svg></a></li>
+				</ul>
 			</footer>
 		</div>
 	</div>
 
 	<link rel="stylesheet" href="css/styleTestSimulate.css">
-	
+
 	<script src="js/testConfigurations.js"></script>
 	<script src="./js/showAndHideMenu.js"></script>
 	<script src="./js/testSimulateBundle.js"></script>
