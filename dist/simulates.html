@@ -16,6 +16,9 @@
 	<script src="./bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     
+	<link rel="stylesheet" href="css/style-main.css">
+	<link rel="stylesheet" href="css/style-patterns.css">
+
 	<title>Projeto BrainDUCK - TCC</title>
 </head>
 <body>
@@ -37,45 +40,46 @@
 			<li><a href="#">Estatisticas</a></li>
 		</ul>
 	</div>
+	<div class="content">
+		<!-- Quadro atualmente vazio que receberá informações guias da página "simulados" -->
+		<div class="emptyHeader rounded margin padding" style="background-color: #c9c9c9;">
+			<span>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+			Voluptas et vitae quidem illo explicabo, iusto rem eveniet doloremque natus! Deserunt autem 
+			animi aperiam illo provident exercitationem reprehenderit suscipit. Praesentium, hic?</span>
+		</div>
 
-	<!-- Quadro atualmente vazio que receberá informações guias da página "simulados" -->
-	<div class="emptyHeader rounded m-4 p-3" style="background-color: #c9c9c9;">
-		<span>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-		Voluptas et vitae quidem illo explicabo, iusto rem eveniet doloremque natus! Deserunt autem 
-		animi aperiam illo provident exercitationem reprehenderit suscipit. Praesentium, hic?</span>
-	</div>
+		<!-- Bloco de conteúdo da página -->
+		<div class="row padding">
+			<!-- Div que recebe as provas do banco de dados e a exibe em uma lista-->
+			<div class="examsList col-auto" id="examContainer"></div>
+			<!-- Quadro de informações da instituição selecionadada -->
+			<div class="col p-1 rounded"><span>ipsum dolor, 
+				sit amet consectetur adipisicing elit. Enim odit nihil officia, veritatis vel 
+				perspiciatis quisquam temporibus. Culpa rem aspernatur optio doloremque possimus 
+				laudantium dolor? Minima nobis adipisci hic quia! Lorem ipsum dolor sit amet consectetur 
+				adipisicing elit. Aperiam porro labore repellat perspiciatis tempora, dolorem sint quasi 
+				numquam culpa, deserunt, necessitatibus sed voluptate consequatur rerum vero voluptas 
+				reprehenderit magnam reiciendis.</span>
+			</div>
+		</div>
 
-	<!-- Bloco de conteúdo da página -->
-	<div class="row">
-		<!-- Div que recebe as provas do banco de dados e a exibe em uma lista-->
-		<div class="examsList col-auto" id="examContainer"></div>
-		<!-- Quadro de informações da instituição selecionadada -->
-		<div class="col p-1 rounded"><span>ipsum dolor, 
-			sit amet consectetur adipisicing elit. Enim odit nihil officia, veritatis vel 
-			perspiciatis quisquam temporibus. Culpa rem aspernatur optio doloremque possimus 
-			laudantium dolor? Minima nobis adipisci hic quia! Lorem ipsum dolor sit amet consectetur 
-			adipisicing elit. Aperiam porro labore repellat perspiciatis tempora, dolorem sint quasi 
-			numquam culpa, deserunt, necessitatibus sed voluptate consequatur rerum vero voluptas 
-			reprehenderit magnam reiciendis.</span>
+
+		<div class="container mt-auto footer navbar-fixed-bottom">
+			<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+			<div class="col-md-4 d-flex align-items-center">
+				<a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+				<svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+				</a>
+				<span class="text-muted">© 2023 Quack, Inc</span>
+			</div>
+		
+			<ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+				<li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#"></use></svg></a></li>
+			</ul>
+			</footer>
 		</div>
 	</div>
 
-
-    <div class="container mt-auto footer navbar-fixed-bottom">
-		<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-		  <div class="col-md-4 d-flex align-items-center">
-			<a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
-			  <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
-			</a>
-			<span class="text-muted">© 2023 Quack, Inc</span>
-		  </div>
-	  
-		  <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-			<li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#"></use></svg></a></li>
-		  </ul>
-		</footer>
-	</div>
-    
     <script src="./js/showAndHideMenu.js"></script>
 	<script src="./js/simulatesBundle.js"></script>
 </body>

@@ -8,11 +8,23 @@
 }
 
 .search-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     height: fit-content;
 }
 
 .filter-menu {
-    height: 400px;
+    height: fit-content;
     flex-direction: column;
+}
+
+.subject-item {
+    margin: 10px;
+    padding: 10px;
+    min-height: 200px;
+    border-radius: 15px;
+    background-color: orange;
+}
+
+div.filter-menu button {
+    margin: 10px;
 }
