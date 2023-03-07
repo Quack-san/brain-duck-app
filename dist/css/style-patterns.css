@@ -51,6 +51,11 @@
     border: none;
 }
 
+
+/* 
+    FONT/TEXT styles
+*/
+
 .fs-large {
     font-size: 30px;
 }
@@ -59,10 +64,22 @@
     font-size: 20px;
 }
 
+.fs-small {
+    font-size: 10px;
+}
+
 /* 
     COLORS
 */
 
+
+.duckwood {
+    background-color: #ebd4cb;
+}
+
+.quackburnt {
+    background-color: #ba5624;
+}
 .quack {
     background-color: #c9c9c9;
 }

@@ -23,27 +23,18 @@
 </head>
 
 <body>
-	<header class="mainHeader shadow" style="background-color: #c9c9c9	;">
-		<!-- Imagem logo no canto do site que abrirá o menu de links -->
-		<div class="text-center" id="sideMenuBtn" role="button">
-			<img class="img-logo" src="./img/optionIcon.png" alt="tools">
-		</div>
-		<!-- Titulo do projeto com link para retornar à página principal -->
-		<a href="index.html">
-			<img class="img-title" src="./img/brainduck-title.png" alt="tileText">
-		</a>
-	</header>
+	<header class="main-header flex-container">
+		<div class="header-content grid-container">
+			<div class="title">
+				<a href="index.html"><img src="img/brainduck-title.png" class="img-title"></a>
+			</div>
 
-	<div id="lista" class="side-menu quack">
-		<ul>
-			<li><img src="img/optionIcon.png" class="img-logo"></li>
-			<ul>
-				<li><a href="./simulates.html">Simulados</a></li>
-				<li><a href="./questions.html">Questões</a></li>
-				<li><a href="#">Estatisticas</a></li>
-			</ul>
-		</ul>
-	</div>
+			<a href="simulates.html" class="header-item">INSTITUIÇÕES</a>
+			<a href="questions.html" class="header-item">QUESTÕES</a>
+			<a href="#" class="header-item">PERFIL</a>
+			<a href="#" class="header-item">SOBRE NÓS</a>
+		</div>
+	</header>
 	
 	<div class="content">
 
@@ -59,23 +50,23 @@
 
 			<div class="explanation grid-container fs-middle">
 				<div class="inst-ex flex-container">
-					<p id="inst" class="ex">
+					<p id="inst" class="ex duckwood">
 						Para encontrar um teste para realizar, clique no link ao lado para
-						ser redirecionado à página de instituições.
+						ser redirecionado à página contendo a lista de instituições.
 					</p>
-					<div class="link margin"><a href="">instituições</a></div>
+					<div class="link margin"><a href="simulates.html">instituições</a></div>
 				</div>
 
 				<div class="quest-ex flex-container">
-					<div class="link margin"><a href="">questões</a></div>
-					<p id="quest" class="ex">
+					<div class="link margin"><a href="questions.html">questões</a></div>
+					<p id="quest" class="ex duckwood">
 						Se quiser realizar um processo mais rápido, você pode realizar apenas
 						as perguntas que oferecemos no próxima página. 
 					</p>
 				</div>
 				
 				<div class="stat-ex flex-container">
-					<p id="stat" class="ex">
+					<p id="stat" class="ex duckwood">
 						É possivel acompanhar o seu desempenho na sua página de usuário, onde é
 						mantido todas as suas estatisticas.
 					</p>
