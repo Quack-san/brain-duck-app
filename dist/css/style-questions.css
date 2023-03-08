@@ -1,5 +1,13 @@
-.introcution-text {
-    display: block;
+
+button {
+    border: none;
+    background-color: #ebe0cb;
+}
+
+.introduction-text {
+    max-width: 900px;
+    margin: auto;
+    margin-top: 20px;
 }
 
 .fs-box {
@@ -23,9 +31,30 @@
     min-height: 200px;
     border-radius: 15px;
     background-color: orange;
-    display: flex;
 }
 
 div.filter-menu button {
     margin: 10px;
+}
+
+.search-div, .tag {
+    display: flex;
+    flex-wrap: wrap;
+}
+.search-item {
+    width: 95%;
+}
+
+.search-icon {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 0;
+}
+
+#searchQuestions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
