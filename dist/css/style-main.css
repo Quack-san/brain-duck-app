@@ -17,10 +17,9 @@ a:hover {
 .main-header {
     align-items: center;
     background-color: #2c0703;
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
+    border-bottom: 5px solid black;
+    border-bottom-left-radius: 80px;
+    border-bottom-right-radius: 80px;
 }
 
 .header-content {
@@ -49,6 +48,7 @@ a:hover {
 }
 
 .content {
+    width: 80%;
     max-width: 1600px;
     margin: auto;
 }

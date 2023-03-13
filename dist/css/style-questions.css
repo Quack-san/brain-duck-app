@@ -1,13 +1,68 @@
 
 button {
     border: none;
-    background-color: #ebe0cb;
+    background-color: white;
+    border-bottom: 1px solid;
+    border-radius: 15px;
+    border-bottom-right-radius: 0;
+    padding: 5px;
 }
 
-.introduction-text {
-    max-width: 900px;
-    margin: auto;
-    margin-top: 20px;
+.config-item {
+    width: 92%;
+    margin: 10px;
+    background-color: orange;
+    border-bottom: 1px solid;
+    border-radius: 15px;
+    border-top-left-radius: 0;
+    padding: 5px;
+    text-align: center;
+}
+
+.switch {
+    margin: 10px;
+    position: relative;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.mode-slider {
+    position: absolute;
+    cursor: pointer;
+    width: inherit;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ba5624;
+    transition: .4s;
+}
+
+.mode-slider:before {
+    position: absolute;
+    content: "livre";
+    height: fit-content;
+    width: fit-content;
+    padding-left: 8px;
+    padding-right: 8px;
+    left: 4px;
+    right: auto;
+    bottom: 4px;
+    background-color: #ebe0cb;
+    border-radius: 12px;
+}
+
+input:checked + .mode-slider {
+    background-color: #2c0703;
+}
+
+input:checked + .mode-slider:before {
+    content: "desafio";
 }
 
 .fs-box {
@@ -27,8 +82,7 @@ button {
 
 .subject-item {
     margin: 10px;
-    padding: 10px;
-    min-height: 200px;
+    min-height: 50px;
     border-radius: 15px;
     background-color: orange;
 }
@@ -49,7 +103,7 @@ div.filter-menu button {
     width: 20px;
     height: 20px;
     position: absolute;
-    left: 0;
+    left: 5px;
 }
 
 #searchQuestions {

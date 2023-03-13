@@ -110,3 +110,7 @@ function setAttributes(elem, attrs) {
         elem.setAttribute(index, attrs[index]);
     }
 }
+
+document.querySelector("#one").addEventListener('change', (event) => {
+    console.log("hello")
+})
