@@ -2,6 +2,12 @@
     margin: 20px;
     padding: 20px;
     width: 55%;
+	min-width: 500px;
+	min-height: 500px;
+}
+
+.test-informations {
+	justify-content: space-between;
 }
 
 .test-ground {
@@ -77,10 +83,81 @@ button:hover {
 	color: white;
 }
 
+#btnStartTest {
+	background-color: darkgreen;
+	color: white;
+	width: 180px;
+	height: 60px;
+	border-bottom-right-radius: 2px;
+	font-size: x-large;
+	font-weight: 900;
+}
+
+#btnStartTest:hover {
+	background-color: limegreen;
+	color: black;
+}
+
+#testTime {
+	min-width: 100px;
+	min-height: 100px;
+}
+
+.test-timer {
+	flex-direction: column;
+	align-items: center;
+	justify-content: end;
+}
+
+.test-time-handler {
+	display: none;
+	position: fixed;
+	width: 30%;
+	height: 50%;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	border-radius: 10px;
+}
+
+.test-time-handler span {
+	margin: auto;
+	height: 20px;
+}
+
+.arrow {
+	width: 50%;
+	text-align: center;
+}
+
+.cima {
+	rotate: -90deg;
+}
+
+.baixo {
+	rotate: 90deg;
+}
+
+#cancelTime:hover {
+	background-color: red;
+	color: white;
+}
+
+#saveTime:hover {
+	background-color: green;
+	color: white;
+}
+
+#testTime {
+	font-size: 60px;
+}
+
 input {
-	width: 100px;
-	border: none;
-	border-radius: 80px;
+	width: fit-content;
 }
 
 /* 

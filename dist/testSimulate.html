@@ -45,7 +45,7 @@
 
 			<div class="flex-container centralize">
 
-				<div class="test-cover quackburnt b-round fit-h">
+				<div class="test-cover duckwood b-round grid-container">
 
 					<div class="test-informations flex-container duckwood">
 
@@ -57,14 +57,46 @@
 
 					</div>
 
-					<div class="test-time-handler">
+					<div class="test-timer flex-container">
+						<span>TEMPO</span>
+						<label id="testTime" role="button"></label>
+					</div>
+
+					<div class="dark-veil"></div>
+					
+					<div class="test-time-handler flex-container">
+						<label>Selecione seu tempo</label>
 
 						<div>
-							<span>TEMPO PADRÃO</span>
+							<div class="flex-container">
+								<div class="arrow" role="button"><span class="cima">a</span></div>
+								<div class="arrow" role="button"><span class="cima">a</span></div>
+							</div>
+							<div>
+								<label>00</label>
+									<span>:</span>
+								<label>00</label>
+							</div>
+							<div class="flex-container">
+								<div class="arrow" role="button"><span class="baixo">a</span></div>
+								<div class="arrow" role="button"><span class="baixo">a</span></div>
+							</div>						
+						</div>
+
+						<div>
+							<button id="cancelTime">cancelar</button>
+							<button id="saveTime">salvar</button>
+						</div>
+					</div>
+
+					<div class="test-time-handler grid-container" style="display: none;">
+
+						<div>
+							<span>TEMPO</span>
 							<span id="testTime"></span>
 						</div>
 
-						<div id="customTimeDiv">
+						<div id="customTimeDiv" class="flex-container">
 							<button id="showCustomTestTime">PERSONALIZAR</button>
 
 							<span id="spanTimeHour" style="display: none;">
@@ -95,7 +127,7 @@
 				Actual test
 
 			-->
-			<div class="test-ground grid-container grid-col-test" style="display: none;">
+			<div class="test-ground grid-container grid-col-test duckwood" style="display: none;">
 
 				<div class="flex-container left-nav">
 
@@ -115,11 +147,11 @@
 					</div>
 
 					<div class="questions">
-						<p>A) <span class="alternative" alternative="A"></span></p>
-						<p>B) <span class="alternative" alternative="B"></span></p>
-						<p>C) <span class="alternative" alternative="C"></span></p>
-						<p>D) <span class="alternative" alternative="D"></span></p>
-						<p>E) <span class="alternative" alternative="E"></span></p>
+						<p>A) <span class="alternative" indexAlternative="1"></span></p>
+						<p>B) <span class="alternative" indexAlternative="2"></span></p>
+						<p>C) <span class="alternative" indexAlternative="3"></span></p>
+						<p>D) <span class="alternative" indexAlternative="4"></span></p>
+						<p>E) <span class="alternative" indexAlternative="5"></span></p>
 					</div>
 
 				</div>
