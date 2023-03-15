@@ -33,15 +33,29 @@ function timeDisplayHandler(display) {
     }
 }
 
-// document.getElementById("showCustomTestTime").addEventListener('click', () => {
-//     var spanHour = document.querySelector("#spanTimeHour");
-//     var spanMinute = document.querySelector("#spanTimeMinute");
+// Code to manually select the timer
 
-//     if (spanHour.style.display == "block") {
-//         spanHour.style.display = "none";
-//         spanMinute.style.display = "none";
-//         return;
-//     }
-//     spanHour.style.display = "block";
-//     spanMinute.style.display = "block";
-// });
+document.querySelectorAll(".handler").forEach( (button) => {
+    button.addEventListener('click', (evt) => { timerChanger(evt.target) })
+})
+
+function timerChanger(btn) {
+    var inputHour = document.getElementById('hour');
+    var inputMinute = document.getElementById('minute');
+
+    var timerNow = parseInt(inputHour.value) * 60;
+    timerNow += parseInt(inputMinute.value);
+
+    var modifier;
+    if (btn.classList.contains('hour')) { modifier = 60 } else { modifier = 10 }
+    if (btn.classList.contains('increase')) { timerNow += modifier } else { timerNow -= modifier}
+
+    if (timerNow > 720) { timerNow = 720 } else if ( timerNow < 0) { timerNow = 0 }
+
+    var hour = Math.floor(timerNow / 60);
+    timerNow = timerNow % 60;
+    var minute = timerNow;
+
+    inputHour.value = hour < 10 ? "0"+hour : hour;
+    inputMinute.value = minute <= 0 ? "00" : minute;
+}

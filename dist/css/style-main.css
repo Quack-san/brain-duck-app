@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif, Times, serif;
     font-weight: bold;
@@ -14,12 +19,21 @@ a:hover {
     text-decoration: none;
 }
 
+/* 
+    header CSS styles
+*/
+
 .main-header {
     align-items: center;
     background-color: #2c0703;
     border-bottom: 5px solid black;
     border-bottom-left-radius: 80px;
     border-bottom-right-radius: 80px;
+}
+
+.img-title {
+    width: 250px;
+    height: 32px;
 }
 
 .header-content {
@@ -46,6 +60,10 @@ a:hover {
     color: #ba5624;
     background-color: white;
 }
+
+/* 
+    body CSS styles
+*/
 
 .content {
     width: 80%;
@@ -86,8 +104,3 @@ ul ul li {
 	background-color: black;
 	opacity: 80%;
 }
-
-/* 
-    ANIMATIONS
-*/
-

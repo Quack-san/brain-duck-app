@@ -8,6 +8,12 @@
 
 .test-informations {
 	justify-content: space-between;
+	padding: 20px;
+}
+
+.institution-name {
+	flex-direction: column;
+	gap: 15px;
 }
 
 .test-ground {
@@ -98,22 +104,30 @@ button:hover {
 	color: black;
 }
 
-#testTime {
-	min-width: 100px;
-	min-height: 100px;
-}
-
 .test-timer {
 	flex-direction: column;
 	align-items: center;
 	justify-content: end;
 }
 
+.test-timer span {
+	font-size: 30px;
+	margin-bottom: 10px;
+}
+
+#testTime {
+	font-size: 60px;
+	padding: 10px;
+	border-bottom-right-radius: 0;	
+	cursor: pointer;
+}
+
 .test-time-handler {
 	display: none;
 	position: fixed;
-	width: 30%;
-	height: 50%;
+	width: fit-content;
+	height: fit-content;
+	padding: 40px;
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
@@ -129,17 +143,31 @@ button:hover {
 	height: 20px;
 }
 
-.arrow {
-	width: 50%;
+.timer {
+	margin: 10px;
+	grid-auto-flow: column;
+	gap: 1px;
+	font-size: 30px;
+}
+
+.time-changer {
+	align-items: center;
+	flex-direction: column;
+}
+
+.handler {
+	width: 50px;
+	height: 20px;
+	background-color: black;
+	border-radius: 0;
+}
+
+.time-changer input {
+	margin: 2px;
+	width: 50px;
 	text-align: center;
-}
-
-.cima {
-	rotate: -90deg;
-}
-
-.baixo {
-	rotate: 90deg;
+	border: none;
+	font-size: 30px;
 }
 
 #cancelTime:hover {
@@ -150,10 +178,6 @@ button:hover {
 #saveTime:hover {
 	background-color: green;
 	color: white;
-}
-
-#testTime {
-	font-size: 60px;
 }
 
 input {
