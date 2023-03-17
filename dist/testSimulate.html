@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="css/style-main.css">
 	<link rel="stylesheet" href="css/style-patterns.css">
 	<link rel="stylesheet" href="css/style-testSimulate.css">
-
+	
 	<title>Projeto TCC</title>
 </head>
 
@@ -18,115 +18,110 @@
 			<div class="title">
 				<a href="index.html"><img src="img/brainduck-title.png" class="img-title"></a>
 			</div>
-
+			
 			<a href="simulates.html" class="header-item">INSTITUIÇÕES</a>
 			<a href="questions.html" class="header-item">QUESTÕES</a>
 			<a href="#" class="header-item">PERFIL</a>
 			<a href="#" class="header-item">SOBRE NÓS</a>
 		</div>
 	</header>
-
+	
+	<div class="dark-veil"></div>
+	
 	<div class="content">
+
+		<!-- Alert for error -->
+
+		<div class="error-alert fear-the-duck b-round">
+			<span>Você cometeu um grave erro</span>
+			<button class="alert-ok duckwood">OK</button>
+		</div>
+
 		<div class="grid-container grid-row">
-
-		<!-- Cover of the test, with his name, year and time to complete -->
+			
+			<!-- Cover of the test, with his name, year and time to complete -->
 			<div class="flex-container centralize">
-
-				<div class="test-cover quackburnt b-round grid-container">
-
+				
+				<div class="test-cover b-round grid-container">
+					
 					<div class="test-informations flex-container duckwood b-round">
-
+						
 						<div class="institution-name flex-container">
 							<h2 class="fit-wh" id="test-name">...</h2>
 							<h4 class="fit-wh" id="test-year">...</h4>
 						</div>
 						<img id="institution-logo" src="" alt="place logo">
-
+						
 					</div>
-
+					
 					<div class="test-timer flex-container">
 						<span>TEMPO</span>
 						<label id="testTime" class="duckwood b-round" role="button">...</label>
 					</div>
-
-					<div class="dark-veil"></div>
 					
+					<!-- Alert to manually adjust the timer -->
+
 					<div class="test-time-handler flex-container">
 						<label>Selecione seu tempo</label>
-
+						
 						<div class="timer grid-container">
 							<div class="time-changer flex-container">
 								<button class="increase handler hour" id="increaseHour"></button>
 								<input type="text" id="hour" value="00" readonly>
 								<button class="decrease handler hour" id="decreaseHour"></button>
 							</div>
-
+							
 							<p style="height: fit-content; margin: auto;">:</p>
-
+							
 							<div class="time-changer flex-container">
 								<button class="increase handler minute"></button>
 								<input type="text" id="minute" value="00" readonly>
 								<button class="decrease handler minute"></button>
 							</div>
 						</div>
-
+						
 						<div>
 							<button id="cancelTime">cancelar</button>
 							<button id="saveTime">salvar</button>
 						</div>
 					</div>
-
-					<div class="test-time-handler grid-container" style="display: none;">
-
-						<div>
-							<span>TEMPO</span>
-							<span id="testTime"></span>
-						</div>
-
-						<div id="customTimeDiv" class="flex-container">
-							<button id="showCustomTestTime">PERSONALIZAR</button>
-
-							<span id="spanTimeHour" style="display: none;">
-								<input id="customTestTimeHour" class="customTestTime padding" type="number" step="1"
-									min="0" max="10">
-								horas
-							</span>
-							<span id="spanTimeMinute" style="display: none;">
-								<input id="customTestTimeMinute" class="customTestTime padding" type="number" step="10"
-									min="0" max="60">
-								minutos
-							</span>
-						</div>
-
-
-					</div>
-
+					
+					<!-- Begin test -->
+					
 					<div class="flex-container centralize" id="startDiv">
 						<button id="btnStartTest">Iniciar</button>
 					</div>
-
+					
 				</div>
-
+				
 			</div>
-
+			
 			<!-- Actual test receiver -->
-			<div class="test-ground grid-container grid-col-test quackburnt" style="display: none;">
+			<div class="test-ground grid-container grid-col-test">
 
+				<div class="count-down duckwood">
+					<label >00:00:00</label>
+				</div>
+				
 				<div class="flex-container left-nav">
-
-					<div class="test-nav fit-wh b-round">
+					
+					<div class="test-nav fit-w b-top-round">
 						<div id="divTestStatus" class="question-list centralize"></div>
 					</div>
-
+					
 				</div>
+				
+				<div class="test-body">
 
-				<div class="test-body fit-h b-round">
+					<div class="test-header grid-container">
+						<button class="supplementary" id="supplementaryTextButton">|||</button>
 
-					<div class="statement">
-						<p>
-							<span id="questionNumber">)</span>
-							<span id="questionContent"></span>
-						</p>
+						<div class="statement">
+							<p class="duckwood padding b-round">
+								<span id="questionNumber">)</span>
+								<span id="questionContent">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non tenetur optio quibusdam fugit at accusantium. Libero, sint repellat provident ipsam aut, magni nisi hic suscipit reprehenderit ducimus eveniet, tempora animi!</span>
+							</p>
+						</div>
 					</div>
 
 					<div class="questions">
@@ -136,27 +131,27 @@
 						<p>D) <span class="alternative" indexAlternative="4"></span></p>
 						<p>E) <span class="alternative" indexAlternative="5"></span></p>
 					</div>
-
+					
 				</div>
-
-				<div class="test-nav fit-wh b-round">
-
+				
+				<div class="test-nav fit-w b-top-round">
+					
 					<div class="test-buttons flex-container">
-
+						
 						<div class="selector">
 							<button id="previousQuestion"><--Anterior</button>
 							<button id="nextQuestion">Próxima--></button>
 						</div>
-
+						
 						<button id="endTest">Encerrar prova</button>
-
+						
 					</div>
-
+					
 					<div class="test-guide" id="testDivSubtitle">
-
+						
 						<span>DURANTE A PROVA</span>
 						<div class="box">
-
+							
 							<div class="status">
 								<p class="statusStyle notSelected"></p>
 								<span>
@@ -169,43 +164,43 @@
 									Alternativa selecionada
 								</span>
 							</div>
-
+							
 						</div>
-
+						
 						<span>CORREÇÃO</span>
 						<div class="box">
-
+							
 							<div class="status">
 								<p class="statusStyle correct"></p>
 								<span>
 									Respondido corretamente
 								</span>
 							</div>
-
+							
 							<div class="status">
 								<p class="statusStyle rightAnswer"></p>
 								<span>
 									Alternativa correta
 								</span>
 							</div>
-
+							
 							<div class="status">
 								<p class="statusStyle wrong"></p>
 								<span>
 									Resposta incorreta
 								</span>
 							</div>
-
+							
 						</div>
-
+						
 					</div>
-
+					
 				</div>
-
+				
 			</div>
-
+			
 		</div>
-
+		
 		<div class="container mt-auto footer navbar-fixed-bottom">
 			<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
 				<div class="col-md-4 d-flex align-items-center">
@@ -216,18 +211,18 @@
 					</a>
 					<span class="text-muted">© 2023 Quack, Inc</span>
 				</div>
-
+				
 				<ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
 					<li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
-								<use xlink:href="#"></use>
-							</svg></a></li>
+						<use xlink:href="#"></use>
+					</svg></a></li>
 				</ul>
 			</footer>
 		</div>
 	</div>
-
+	
 	<link rel="stylesheet" href="css/styleTestSimulate.css">
-
+	
 	<script src="js/testConfigurations.js"></script>
 	<script src="./js/showAndHideMenu.js"></script>
 	<script src="./js/testSimulateBundle.js"></script>

@@ -1,9 +1,17 @@
+/* 
+	Test cover styles
+*/
+
 .test-cover {
     margin: 20px;
     padding: 20px;
     width: 55%;
 	min-width: 500px;
-	min-height: 500px;
+	min-height: 450px;
+	border: 2px solid #ba5624;
+	border-radius: 30px;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
 }
 
 .test-informations {
@@ -16,7 +24,36 @@
 	gap: 15px;
 }
 
+#btnStartTest {
+	background-color: darkgreen;
+	color: white;
+	width: 180px;
+	height: 60px;
+	border-bottom-right-radius: 2px;
+	font-size: x-large;
+	font-weight: 900;
+}
+
+#btnStartTest:hover {
+	background-color: limegreen;
+	color: black;
+}
+
+/* 
+	Test page with the questions
+*/
+
+.count-down {
+	position: fixed;
+	left: 0;
+	top: 20%;
+	padding: 10px;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+
 .test-ground {
+	display: none;
     margin: 20px;
     grid-template-columns: 1fr 3fr 1fr;
     gap: 20px;
@@ -35,7 +72,31 @@
 }
 
 .test-body {
-    padding: 20px;
+	border: 2px solid #ba5624;
+	border-radius: 30px;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+.test-header {
+	grid-auto-flow: column;
+	justify-content: space-between;
+}
+
+.supplementary {
+	grid-column-start: 2;
+	border: 2px solid #ba5624;
+	border-top-width: 0;
+	border-right-width: 0;
+	border-radius: 0;
+	border-top-right-radius: 29px;
+	border-bottom-left-radius: 15px;
+	height: 60px;
+	width: 80px;	
+}
+
+.supplementary:hover {
+	background-color: #ebe0cb;
 }
 
 .test-buttons {
@@ -54,9 +115,11 @@
 	border-radius: 10px;
 	padding-left: 10px;
 	padding-right: 10px;
+	margin: 20px;
 }
 
 .questions {
+	margin: 20px;
 	margin-top: 50px;
 	display: flex;
 	flex-direction: column;
@@ -89,20 +152,9 @@ button:hover {
 	color: white;
 }
 
-#btnStartTest {
-	background-color: darkgreen;
-	color: white;
-	width: 180px;
-	height: 60px;
-	border-bottom-right-radius: 2px;
-	font-size: x-large;
-	font-weight: 900;
-}
-
-#btnStartTest:hover {
-	background-color: limegreen;
-	color: black;
-}
+/* 
+	Timer changer popup
+*/
 
 .test-timer {
 	flex-direction: column;
@@ -185,9 +237,7 @@ input {
 }
 
 /* 
-
-    JAVASCRIPT CLASSES
-
+    JAVASCRIPT classes
 */
 
 .selected {
