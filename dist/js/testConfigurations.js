@@ -63,7 +63,14 @@ function timerChanger(btn) {
 
 // Sanitaze user selected timer
 
-function saveTime(timer) { timer <= 0 ? errorMenssage('O TEMPO SELECIONADO É INVÁLIDO') : timeDisplayHandler("none"); console.log(timer); }
+function saveTime(timer) { 
+    if (timer <= 0) {
+        errorMenssage('O TEMPO SELECIONADO É INVÁLIDO');
+        return;
+    }
+    timeDisplayHandler("none");
+    document.querySelector("#timerDiv").setAttribute("setted", "true");
+}
 
 function veilReveal(visibility) { document.querySelector(".dark-veil").style.display = visibility }
 

@@ -64,11 +64,11 @@
 					<div class="test-time-handler flex-container">
 						<label>Selecione seu tempo</label>
 						
-						<div class="timer grid-container">
+						<div class="timer grid-container" id="timerDiv" setted="false">
 							<div class="time-changer flex-container">
-								<button class="increase handler hour" id="increaseHour"></button>
+								<button class="increase handler hour"></button>
 								<input type="text" id="hour" value="00" readonly>
-								<button class="decrease handler hour" id="decreaseHour"></button>
+								<button class="decrease handler hour"></button>
 							</div>
 							
 							<p style="height: fit-content; margin: auto;">:</p>
@@ -100,7 +100,7 @@
 			<div class="test-ground grid-container grid-col-test">
 
 				<div class="count-down duckwood">
-					<label >00:00:00</label>
+					<label id="countDown">...</label>
 				</div>
 				
 				<div class="flex-container left-nav">
@@ -199,6 +199,9 @@
 				
 			</div>
 			
+		</div>
+		<!-- ------------------------------------------------------ -->
+		<div id="supplementaryText" style="display: none; position: absolute; top: 50%; left: 50%; background-color: brown;">
 		</div>
 		
 		<div class="container mt-auto footer navbar-fixed-bottom">
