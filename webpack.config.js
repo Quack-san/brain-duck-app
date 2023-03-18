@@ -2,10 +2,10 @@ const path = require('path')
 
 module.exports = {
 	mode: 'development',
-	entry: '/dist/js/filteredQuestions.js',
+	entry: '/dist/js/testSimulate.js',
 	output: {
 		path: path.resolve(__dirname, 'dist/js'),
-		filename: 'filteredQuestionsBundle.js'
+		filename: 'testSimulateBundle.js'
 	},
 	watch: true
 }

@@ -20,153 +20,93 @@ initializeApp(firebaseConfig);
 // data base
 const db = getFirestore();
 
-
 //global variables
-const testId = getTestId();
+const testId = new URLSearchParams(window.location.search).get('testId');
 var questionNumber = 1;
-var numberOfQuestions = 2;
+var numberOfQuestions;
 var isFinished = false;
-var questionsObj = [];
-var alternativesObj = [];
-var questionAnswers = [];
-var correctionStatus = [];
+var questionsObjArray = [];
+var alternativesObjArray = [];
+var questionAnswers;
+var correctionStatus;
+var supplementaryTextArray = [];
 var testTime;
 var pointerTime;
-var customTimerSetted = false;
-for (var i = 0; i < numberOfQuestions; i++) {
-	questionAnswers[i] = undefined;
-	correctionStatus[i] = undefined;
+
+function setUndefinedArray(elementsNumber) {
+	var undefinedArray = [];
+	for (var i = 0; i < elementsNumber; i++) { undefinedArray[i] = undefined; }
+	return undefinedArray;
 }
 
-document.querySelector("#showCustomTestTime").addEventListener('click', () => {
-	customTimerSetted = true;
-	var timeFormate = testTime;
-	var hour = document.querySelector("#customTestTimeHour");
-	var hours = Math.floor(timeFormate / (60 * 60));
-	hour.value = hours;
-	timeFormate -= hours * (60 * 60);
-
-	var minute = document.querySelector("#customTestTimeMinute");
-	document.querySelector("#spanTimeMinute").style.display = "block";
-	minute.value = Math.floor(timeFormate / 60);
-})
-
-document.querySelectorAll(".customTestTime").forEach((input) => {
-	input.addEventListener('click', setCustomTime);
-});
-function setCustomTime(event) {
-	// hours formating
-	var input = event.target;
-
-	if (input.getAttribute("id") == "customTestTimeHour" && input.value <= 0) {
-		var minutes = parseInt(document.querySelector("#customTestTimeMinute").value);
-		if (minutes <= 0) {
-			document.querySelector("#customTestTimeMinute").value = 50;
-			input = 0;
-		}
-		return;
-	}
-
-	// minutes formating
-	var hoursEl = document.querySelector("#customTestTimeHour");
-	var hours = parseInt(hoursEl.value);
-	var minutes = parseInt(event.target.value);
-
-	if (minutes <= 0) {
-		if (hours > 0) {
-			event.target.value = 50;
-			hoursEl.value = hours - 1;
-		} else {
-			event.target.value = 10;
-		}
-	}
-	if (minutes >= 60) {
-		event.target.value = 0;
-		hoursEl.value++;
-	}
-	if (minutes == 0 && hours == 0) {
-		event.target.value = 10;
-	}
-
-}
-function getTestId() {
-	const urlParams = new URLSearchParams(window.location.search);
-	return urlParams.get('testId');
-}
 getTest();
 
-
-document.querySelector("#btnStartTest").addEventListener('click', () => {
+document.querySelector("#btnStartTest").addEventListener('click', async () => {
 	programStatus("Starting test.")
-	getQuestions();
-	setDivTestStatus(numberOfQuestions);
-	pointerTime = new Date().getSeconds();
-	var setIntervalId = setInterval(setTestTime, 1000);
-	if (customTimerSetted) {
-		console.log()
-		testTime = parseInt(document.querySelector("#customTestTimeHour").value) * 60 * 60 +
-			parseInt(document.querySelector("#customTestTimeMinute").value) * 60;
-		console.log(testTime);
+	questionsObjArray = sortQuestions(await getFilteredDocsArray("testId", testId, collection(db, 'questions')));
+	numberOfQuestions = questionsObjArray.length;
+	questionAnswers = setUndefinedArray(numberOfQuestions);
+	correctionStatus = setUndefinedArray(numberOfQuestions);
+	for (var i = 0; i < numberOfQuestions; i++) {
+		alternativesObjArray[i] = await getFilteredDocsArray("questionId", questionsObjArray[i].id, collection(db, 'alternatives'));
 	}
-	document.querySelector("#customTimeDiv").style.display = "none";
-	document.querySelector("#startDiv").style.display = "none";
+	for (var i = 0; i < questionsObjArray.length; i++) {
+		if (supplementaryTextArray.includes(questionsObjArray[i].data.supplementaryTextId)) { continue; }
+		if (questionsObjArray[i].data.supplementaryTextId == "none") { continue; }
+		supplementaryTextArray.push(await getSingleDocumentById("supplementaryTexts", questionsObjArray[i].data.supplementaryTextId));
+	}
+	setQuestion();
+	setsupplementaryText();
+	setAlternativesContent();
+	setDivTestStatus(numberOfQuestions);
+	getDivStatus().classList.add("activeQuestion");
+
+	pointerTime = new Date().getSeconds();
+	var testTimeInterval = setInterval(setTestTime, 1000);
+	if (document.querySelector("#timerDiv").getAttribute("setted") == "true") {
+		testTime = parseInt(document.querySelector("#hour").value) * 60 * 60 +
+			parseInt(document.querySelector("#minute").value) * 60;
+	}
 });
 
+async function getFilteredDocsArray(attribute, value, collection) {
+    var q = query(collection, where(attribute, "==", value));
+    var docsArray = await getDocs(q)
+        .then((snapshot) => {
+            var returnDocsArray = [];
+            snapshot.docs.forEach((doc) => { returnDocsArray.push({"data": doc.data(), "id": doc.id}); });
+            return returnDocsArray;
+        }).catch((err) => {
+            console.log("Error in getDocs: " + err);
+        })
+    return docsArray;
+}
 
-// get questions from db
-function getQuestions() {
-	var questionsCollectionReference = collection(db, 'questions');
-	var q = query(questionsCollectionReference, where("testId", "==", testId));
-	var index = 1;
+async function getSingleDocumentById(collectionName, docId) {
+	const returnDoc = await getDoc(doc(db, collectionName, docId));
+	if (returnDoc.exists()) { return {"data": returnDoc.data(), "id": returnDoc.id}; }
+}
 
-	getDocs(q)
-		.then((snapshot) => {
-			snapshot.docs.forEach((question) => {
-				questionsObj.push({
-					id: question.id,
-					number: question.data().number,
-					content: question.data().text,
-					correctAlternative: question.data().correctAlternative
-				}
-				);
-				getAlternative(question.id, index);
-				index++;
-			})
-			setQuestion();
-			programStatus("Questions got.")
-		})
-		.catch((err) => {
-			programStatus("Error in getQuestion: " + err);
-		})
+function sortQuestions(questions) {
+	 var arrayCopy = [];
+	 for (var i = 0; i < questions.length; i++) { arrayCopy[i] = questions[i] }
+
+	 for (var i = 0; i < questions.length; i++) {
+		for (var j = i; j < questions.length; j++) {
+			if (questions[j].data.number < questions[i].data.number) {
+				 arrayCopy[j] = questions[i]; 
+				 arrayCopy[i] = questions[j];
+			}
+		}
+		return arrayCopy;
+	 }
 }
 
 // set question in HTML
 function setQuestion() {
-	document.getElementById("questionNumber").innerText = questionsObj[questionNumber - 1].number + ")";
-	document.getElementById("questionContent").innerText = questionsObj[questionNumber - 1].content;
+	document.getElementById("questionNumber").innerText = questionsObjArray[questionNumber - 1].data.number + ")";
+	document.getElementById("questionContent").innerText = questionsObjArray[questionNumber - 1].data.content;
 	programStatus("Question setted.");
-}
-
-// get alternatives from db
-function getAlternative(questionId, index) {
-	var alternativesCollectionReference = collection(db, 'alternatives');
-	var q = query(alternativesCollectionReference, where("questionId", "==", questionId));
-
-	getDocs(q)
-		.then((snapshot) => {
-			alternativesObj.push([]);
-			snapshot.docs.forEach((alternative) => {
-				alternativesObj[index - 1].push({
-					"id": alternative.id,
-					"content": alternative.data().content
-				})
-			});
-			if (index == 1) { setAlternativesContent() };
-			programStatus("Alternatives got.")
-		})
-		.catch((err) => {
-			programStatus("Error in getAlternatives: " + err);
-		});
 }
 
 // add eventListener to alternatives in HTML
@@ -178,7 +118,7 @@ document.querySelectorAll(".alternative").forEach((alternative) => {
 function setAlternativesContent() {
 	const alternativesDOM = document.querySelectorAll(".alternative");
 	for (var i = 0; i < alternativesDOM.length; i++) {
-		alternativesDOM[i].innerText = alternativesObj[questionNumber - 1][i].content;
+		alternativesDOM[i].innerText = alternativesObjArray[questionNumber - 1][i].data.content;
 	}
 	programStatus("Alternatives content setted.");
 }
@@ -188,36 +128,33 @@ function setAlternativesClasses() {
 	const alternativesDOM = document.querySelectorAll(".alternative");
 	alternativesDOM.forEach((alternative) => {
 		// remove classes
-		if (alternative.classList.contains("selected")) {
-			alternative.classList.remove("selected");
-		}
+		changeClasses(alternative, "remove", "selected");
 		if (isFinished) {
-			if (alternative.classList.contains("correct")) {
-				alternative.classList.remove("correct");
-			}
-			if (isFinished && alternative.classList.contains("wrong")) {
-				alternative.classList.remove("wrong");
-			}
-			if (isFinished && alternative.classList.contains("rightAnswer")) {
-				alternative.classList.remove("rightAnswer");
-			}
+			changeClasses(alternative, "remove", "correct");
+			changeClasses(alternative, "remove", "wrong");
+			changeClasses(alternative, "remove", "rightAnswer");
 		}
-
 		// add classes
-		if (questionAnswers[questionNumber - 1] == alternative.getAttribute("alternative")) {
+		if (questionAnswers[questionNumber - 1] == alternative.getAttribute("indexAlternative")) {
 			if (!isFinished) {
-				alternative.classList.add("selected");
+				changeClasses(alternative, "add", "selected");
 			} else if (correctionStatus[questionNumber - 1].isCorrect) {
-				alternative.classList.add("correct");
+				changeClasses(alternative, "add", "correct");
 			} else {
-				alternative.classList.add("wrong");
+				changeClasses(alternative, "add", "wrong");
 			}
 		} else if (isFinished && correctionStatus[questionNumber - 1].correctAnswer ==
-			alternative.getAttribute("alternative")) {
-			alternative.classList.add("rightAnswer");
+			parseInt(alternative.getAttribute("indexAlternative"))) {
+			changeClasses(alternative, "add", "rightAnswer");
 		}
 	});
 	programStatus("Alternatives classes setted.");
+}
+function changeClasses(element, operation, classValue) {
+	if (operation == "add") { element.classList.add(classValue); }
+	if (operation == "remove" && element.classList.contains(classValue)) {
+		element.classList.remove(classValue)
+	}
 }
 
 // event when user click on an alternative
@@ -234,7 +171,7 @@ function selectAlternative(event) {
 		programStatus("Alternative unselected");
 		return;
 	}
-	const alternativesDOM = document.querySelectorAll(".alternative");
+	var alternativesDOM = document.querySelectorAll(".alternative");
 	alternativesDOM.forEach((alternative) => {
 		if (alternative.classList.contains("selected")) {
 			alternative.classList.remove("selected");
@@ -243,20 +180,18 @@ function selectAlternative(event) {
 	selected.classList.add("selected");
 	divStatus.classList.add("selected");
 	divStatus.classList.remove("notSelected");
-	questionAnswers[questionNumber - 1] = selected.getAttribute("alternative");
+	questionAnswers[questionNumber - 1] = parseInt(selected.getAttribute("indexAlternative"));
 
 	programStatus("Alternative selected");
 }
 
-// get div status according to the current question number
+// get div status according to the current question number;
 function getDivStatus() {
-	var divQuestionStatus;
+	var divReturn;
 	document.querySelectorAll(".divQuestionStatus").forEach((div) => {
-		if (div.innerText == questionNumber) {
-			divQuestionStatus = div;
-		}
+		if (div.innerText == questionNumber) { divReturn = div; }
 	});
-	return divQuestionStatus;
+	return divReturn
 }
 
 // set all the div status
@@ -265,12 +200,14 @@ function setDivTestStatus(numberOfQuestions) {
 
 	for (var i = 0; i < numberOfQuestions; i++) {
 		var divQuestionStatus = document.createElement("button");
-		divQuestionStatus.classList.add("notSelected", "statusStyle", "divQuestionStatus");
+		divQuestionStatus.classList.add("notSelected", "divQuestionStatus");
 		var divTextContent = document.createTextNode(i + 1);
 		divQuestionStatus.appendChild(divTextContent);
+
 		divQuestionStatus.addEventListener('click', (event) => {
 			questionNumber = parseInt(event.target.innerText);
-			getQuestion(questionNumber.toString());
+			setQuestion();
+			setsupplementaryText();
 			programStatus("Changing question.")
 		});
 		divTestStatus.appendChild(divQuestionStatus);
@@ -281,18 +218,24 @@ function setDivTestStatus(numberOfQuestions) {
 // listener to the button to go to next question
 document.getElementById("nextQuestion").addEventListener('click', (event) => {
 	if (questionNumber >= numberOfQuestions) { return; }
-	questionNumber++;
 	programStatus("Changing to the next question.");
+	getDivStatus().classList.remove("activeQuestion");
+	questionNumber++;
+	getDivStatus().classList.add("activeQuestion");
 	setQuestion();
+	setsupplementaryText();
 	setAlternativesClasses();
 	setAlternativesContent();
 })
 // listener to the button to go to previous question
 document.getElementById("previousQuestion").addEventListener('click', (event) => {
 	if (questionNumber <= 0) { return; }
-	questionNumber--;
 	programStatus("Changing to the previous question.");
+	getDivStatus().classList.remove("activeQuestion");
+	questionNumber--;
+	getDivStatus().classList.add("activeQuestion");
 	setQuestion();
+	setsupplementaryText();
 	setAlternativesClasses();
 	setAlternativesContent();
 })
@@ -307,21 +250,36 @@ document.querySelectorAll("a").forEach((link) => {
 
 // listener to endTest button. Make the test correction
 document.getElementById("endTest").addEventListener('click', correctTest);
+
 function correctTest() {
 	isFinished = true;
 	var index = 0;
-	questionsObj.forEach((question => {
-		if (question.correctAlternative == questionAnswers[index]) {
-			correctionStatus[index] = { "isCorrect": true, "correctAnswer": question.correctAlternative };
-		} else {
-			correctionStatus[index] =  { "isCorrect": false, "correctAnswer": question.correctAlternative };
+	alternativesObjArray.forEach((alternativeArray) => {
+		if (questionAnswers[index] != undefined) {
+			if (alternativeArray[questionAnswers[index]].data.isCorrect) {
+				correctionStatus[index] = { "isCorrect": true, "correctAnswer": getCorrectAlternative(index) };
+			}
+			else {
+				correctionStatus[index] = { "isCorrect": false, "correctAnswer": getCorrectAlternative(index) };
+			}
+		}
+		else {
+			correctionStatus[index] = { "isCorrect": false, "correctAnswer": getCorrectAlternative(index) };
 		}
 		index++;
-	}))
+	})
 	setAlternativesClasses();
 	printCorrection();
 	setDivStatusCorrection();
-	clearInterval(setIntervalId);
+	clearInterval(testTimeInterval);
+}
+
+function getCorrectAlternative(questionNumber) {
+	for (var i = 0; i < alternativesObjArray[questionNumber].length; i++) {
+		if (alternativesObjArray[questionNumber][i].data.isCorrect) {
+			return i;
+		}
+	}
 }
 
 // print the correction on log
@@ -334,7 +292,7 @@ function printCorrection() {
 
 // set the classes in the divs status
 function setDivStatusCorrection() {
-	var divs = document.querySelectorAll(".divCircle");
+	var divs = document.querySelectorAll(".divQuestionStatus");
 	for (var i = 0; i < divs.length; i++) {
 		if (correctionStatus[i].isCorrect) {
 			divs[i].classList.add("correct");
@@ -380,7 +338,7 @@ function setTestTime() {
 		alert("Time's Up!");
 		correctTest();
 	}
-	document.querySelector("#testTime").innerText = formateTime(testTime);
+	document.querySelector("#countDown").innerText = formateTime(testTime);
 }
 
 function formateTime(testTime) {
@@ -393,9 +351,27 @@ function formateTime(testTime) {
 
 	return hours + "h " + minutes + "m " + seconds + "s";
 }
+//////////////// supplementaryText
+document.querySelector("#supplementaryTextButton").addEventListener("click", (event) => {
+	var supplementaryTextDiv = document.querySelector("#supplementaryText");
+	if (supplementaryTextDiv.style.display == "block") { supplementaryTextDiv.style.display = "none"; }
+	else { supplementaryTextDiv.style.display = "block"; }
+})
+
+function setsupplementaryText() {
+	var supplementaryTextDiv = document.querySelector("#supplementaryText");
+	if (questionsObjArray[questionNumber - 1].data.supplementaryTextId == "none") {
+		supplementaryTextDiv.innerText = "Esta questão não possui texto complementar";
+	}
+	else { 
+		for (var i = 0; i < supplementaryTextArray.length; i++) {
+			if (supplementaryTextArray[i].id == questionsObjArray[questionNumber - 1].data.supplementaryTextId) {
+				supplementaryTextDiv.innerText = supplementaryTextArray[i].data.content;
+			}
+		}
+	}
+}
 
 
 // general function. print program status
-function programStatus(message) {
-	console.log(message);
-}
+function programStatus(message) { console.log(message); }

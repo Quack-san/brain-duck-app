@@ -241,8 +241,8 @@ input {
 */
 
 .selected {
-	background-color: skyblue;
-	border-color: skyblue;
+	background-color: blue;
+	border-color: blue;
 }
 .notSelected {
 	background-color: white;
@@ -259,6 +259,9 @@ input {
 .rightAnswer {
 	background-color: yellowgreen;
 	border-color: yellowgreen;
+}
+.activeQuestion {
+	border: skyblue 5px solid;
 }
 
 #divColorsSubtitle {
