@@ -42,114 +42,138 @@
 /* 
 	Test page with the questions
 */
-
-.count-down {
-	position: fixed;
-	left: 0;
-	top: 20%;
-	padding: 10px;
-	border-top-right-radius: 10px;
-	border-bottom-right-radius: 10px;
-}
-
 .test-ground {
 	display: none;
     margin: 20px;
-    grid-template-columns: 1fr 3fr 1fr;
     gap: 20px;
 }
-
-.left-nav {
-    justify-content: end;
+.left-popup {
+	position: fixed;
+	left: 0;
+	top: 20%;
+	display: grid;
+	gap: 5px;
 }
-
-.right-nav {
-    justify-content: start;
+.right-popup {
+	position: fixed;
+	right: 0;
+	top: 20%;
 }
-
-.test-nav {
-    padding: 5px;
+.count-down {
+	padding: 10px;
+	border-top-right-radius: 15px;
+	border-bottom-right-radius: 5px;
+	text-align: center;
 }
-
-.test-body {
-	border: 2px solid #ba5624;
-	border-radius: 30px;
-	border-bottom-left-radius: 0px;
-	border-bottom-right-radius: 0px;
-}
-
-.test-header {
-	grid-auto-flow: column;
-	justify-content: space-between;
-}
-
-.supplementary {
-	grid-column-start: 2;
-	border: 2px solid #ba5624;
-	border-top-width: 0;
-	border-right-width: 0;
-	border-radius: 0;
-	border-top-right-radius: 29px;
+.guide {
+	padding: 20px;
+	-webkit-padding-start: 10px;
+	        padding-inline-start: 10px;
+	border-top-left-radius: 15px;
 	border-bottom-left-radius: 15px;
-	height: 60px;
-	width: 80px;	
+	font-size: medium;
 }
-
-.supplementary:hover {
-	background-color: #ebe0cb;
-}
-
 .test-buttons {
-    padding-top: 3px;
-    padding-bottom: 3px;
-    flex-direction: column;
-    row-gap: 8px;
+	padding: 20px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 15px;
+	font-size: medium;
 }
+.questions-list{
+	width: -moz-fit-content;
+	width: fit-content;
+	height: -moz-fit-content;
+	height: fit-content;
+	margin-inline: auto;
+	background-color: #ebe0cb;
+	border-radius: 20px;
+	outline: #e9ddc9 solid 2px;
 
-.question-list {
-    width: 50px;
+	display: grid;
+	grid-auto-flow: column;
+	place-items: center;
 }
-
-.statement {
-	background-color: white;
-	border-radius: 10px;
-	padding-left: 10px;
-	padding-right: 10px;
-	margin: 20px;
+.questions-list label {
+	padding-inline: 30px;
+	font-size: 1em;
 }
-
-.questions {
-	margin: 20px;
-	margin-top: 50px;
+.questions-list label:hover {
+	cursor: pointer;
+	color: #ff9900;
+	font-size: 2em;
+}
+.display-question {
 	display: flex;
 	flex-direction: column;
-	row-gap: 20px;
 }
-
-.selector {
-	display: flex;
-	justify-content: space-between;
-}
-
-.selector button {
-	width: 49%;
-}
-
-button {
-	background-color: white;
+.supplementary {
+	width: -moz-fit-content;
+	width: fit-content;
+	height: -moz-fit-content;
+	height: fit-content;
+	padding: 20px;
+	padding-block: 3px;
+	outline: 1px solid #ba5624;
 	border: none;
 	border-radius: 15px;
-	padding-left: 8px;
-	padding-right: 8px;
+	margin-inline: auto;
+	font-size: 0.8em;
+	font-weight: bold;
+	color: #ba5624;
+	background-color: #ebe0cb;
 }
-
-button:hover {
-	background-color: #ff9900;
+.statement {
+	width: 60%;
+	min-width: 500px;
+	margin-inline: auto;
+	margin-block: 20px;
+	padding: 10px;
+	padding-inline: 40px;
+	border-radius: 15px;
+	background-color: #ebe0cb;
 }
-
+.questions {
+	display: grid;
+	grid-template-columns: repeat(3,1fr);
+	-moz-column-gap: 10px;
+	     column-gap: 10px;
+	row-gap: 30px;
+}
+.questions div {
+	display: flex;
+	flex-direction: column;
+	place-items: center;
+	row-gap: 40px;
+}
+.questions span {
+	--gray: #ebe0cb;
+	background-color: var(--gray);
+	border: 10px var(--gray) solid ;
+	border-radius: 50%;
+	padding-inline: 4px;
+}
+#endTest {
+	position: relative;
+	border: none;
+	background-color: #eb6161;
+	font-size: 1em;
+	font-weight: bold;
+}
 #endTest:hover {
-	background-color: green !important;
+	background-color: red;
 	color: white;
+}
+#endTest ion-icon {
+	position: absolute;
+	color: white;
+	font-size: 80px;
+	top: -10px;
+	left: 50%;
+	transform: translateX(-50%);
+	opacity: 30%;
+}
+#endTest span {
+	z-index: 1;
 }
 
 /* 
@@ -177,7 +201,9 @@ button:hover {
 .test-time-handler {
 	display: none;
 	position: fixed;
+	width: -moz-fit-content;
 	width: fit-content;
+	height: -moz-fit-content;
 	height: fit-content;
 	padding: 40px;
 	left: 50%;
@@ -233,6 +259,7 @@ button:hover {
 }
 
 input {
+	width: -moz-fit-content;
 	width: fit-content;
 }
 
@@ -274,5 +301,6 @@ input {
 	flex-direction: column;
 	align-items: center;
 	row-gap: 10px;
+	height: -moz-fit-content;
 	height: fit-content;
 }

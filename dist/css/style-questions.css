@@ -45,7 +45,9 @@ button {
 .mode-slider:before {
     position: absolute;
     content: "livre";
+    height: -moz-fit-content;
     height: fit-content;
+    width: -moz-fit-content;
     width: fit-content;
     padding-left: 8px;
     padding-right: 8px;
@@ -71,10 +73,12 @@ input:checked + .mode-slider:before {
 
 .search-grid {
     grid-template-columns: repeat(4, 1fr);
+    height: -moz-fit-content;
     height: fit-content;
 }
 
 .filter-menu {
+    height: -moz-fit-content;
     height: fit-content;
     flex-direction: column;
 }

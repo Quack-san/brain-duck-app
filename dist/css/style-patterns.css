@@ -21,13 +21,17 @@
 }
 
 .fit-w {
+    width: -moz-fit-content;
     width: fit-content;
 }
 .fit-h {
+    height: -moz-fit-content;
     height: fit-content;
 }
 .fit-wh {
+    width: -moz-fit-content;
     width: fit-content;
+    height: -moz-fit-content;
     height: fit-content;
 }
 

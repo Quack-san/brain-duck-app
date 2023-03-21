@@ -7,12 +7,14 @@
 
 .welcome-title {
     margin: 10px;
+    height: -moz-fit-content;
     height: fit-content;
 }
 
 .explanation {
     margin-top: 40px;
     padding: 80px;
+    height: -moz-fit-content;
     height: fit-content;
     gap: 100px;
 }

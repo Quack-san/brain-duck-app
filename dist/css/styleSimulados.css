@@ -8,10 +8,12 @@
 
 .testBox {
     width: 100%;
+    height: -moz-fit-content;
     height: fit-content;
 }
 
 .testListDiv {
+    height: -moz-fit-content;
     height: fit-content;
 }
 
