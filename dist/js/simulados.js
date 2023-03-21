@@ -78,20 +78,15 @@ function setInstitutions(institutions) {
         // This five first lines creates a container with the name of the institution inside.
         var btnInstitutionContainer = document.createElement("button");
         btnInstitutionContainer.classList.add(
-            "testBox",
-            "text-center",
-            "rounded",
-            "btn",
-            "shadow",
+            "inst-btn",
         );
         setAttributes(btnInstitutionContainer, {
-            "style": "background-color: #ff9900",
             "institutionId": institution.id 
         })
 
-        var institutionLabel = document.createElement("span");
+        var institutionLabel = document.createElement("label");
         institutionLabel.classList.add(
-            "testLabel"
+            "inst-label"
         );
 
         var labelTestText = document.createTextNode(institution.name);
@@ -104,8 +99,7 @@ function setInstitutions(institutions) {
 
         var divboxAllTests = document.createElement("div");
         divboxAllTests.classList.add(
-            "testListDiv",
-            "row"
+            "inst-exam-list"
         )
         divboxAllTests.setAttribute("id", institution.id);
         divboxAllTests.style.display = "none";
@@ -132,8 +126,7 @@ function setTests(tests) {
         singleTest.appendChild(singleTestLabel);
         singleTest.classList.add(
             test.institutionId,
-            "test",
-            "btn"
+            "exam"
         );
         setAttributes(singleTest, {
             "test": test.institutionId,
@@ -151,7 +144,7 @@ function showHideTests() {
     var divWithAllTest = document.getElementById(this.getAttribute("institutionId"));
 
         if (divWithAllTest.style.display == "none") {
-            divWithAllTest.style.display = "block";
+            divWithAllTest.style.display = "grid";
         } else {
             divWithAllTest.style.display = "none";
         }
