@@ -50,6 +50,7 @@
 	top: 15%;
 	display: grid;
 	gap: 5px;
+	z-index: 1;
 }
 .guide {
 	display: grid;
