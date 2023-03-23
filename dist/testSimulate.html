@@ -107,86 +107,89 @@
 					</div>
 					
 					<button class="test-buttons duckwood" id="endTest">
-						<ion-icon name="close-outline"></ion-icon>
+						<ion-icon name="stop-circle-outline"></ion-icon>
 						<span>Encerrar prova</span>
 					</button>
+
+					<input type="checkbox" id="ex">
+					<label class="guide" for="ex">
+						<label class="close-guide" for="ex">
+							<ion-icon name="chevron-down-outline"></ion-icon>
+						</label>
+
+						<div class="text-inside">
+							<div class="status">
+								<p class="statusStyle notSelected"></p>
+								<span>
+									Alternativa não selecionada
+								</span>
+							</div>
+							<div class="status">
+								<p class="statusStyle selected"></p>
+								<span>
+									Alternativa selecionada
+								</span>
+							</div>
+							<hr>
+							<div class="status">
+								<p class="statusStyle correct"></p>
+								<span>
+									Respondido corretamente
+								</span>
+							</div>
+							<div class="status">
+								<p class="statusStyle rightAnswer"></p>
+								<span>
+									Alternativa correta
+								</span>
+							</div>
+							<div class="status">
+								<p class="statusStyle wrong"></p>
+								<span>
+									Resposta incorreta
+								</span>
+							</div>
+						</div>
+					</label>
 				</div>
-				
-				<div class="right-popup">
-					<div class="guide duckwood">
-						<div class="status">
-							<p class="statusStyle notSelected"></p>
-							<span>
-								Alternativa não selecionada
-							</span>
-						</div>
-						<div class="status">
-							<p class="statusStyle selected"></p>
-							<span>
-								Alternativa selecionada
-							</span>
-						</div>
-						<hr>
-						<div class="status">
-							<p class="statusStyle correct"></p>
-							<span>
-								Respondido corretamente
-							</span>
-						</div>
-						<div class="status">
-							<p class="statusStyle rightAnswer"></p>
-							<span>
-								Alternativa correta
-							</span>
-						</div>
-						<div class="status">
-							<p class="statusStyle wrong"></p>
-							<span>
-								Resposta incorreta
-							</span>
-						</div>
-					</div>
-				</div>
-				
+
 				<div class="questions-list">
 					<label><ion-icon name="caret-back-outline" role="button"></ion-icon></label>
-					<label id="questionNumber">1</label>
-					<label id="questionNumber">2</label>
-					<label id="questionNumber">3</label>
-					<label id="questionNumber">4</label>
-					<label id="questionNumber">5</label>
-					<label id="questionNumber">6</label>
-					<label id="questionNumber">7</label>
+					<div>
+						<label id="questionNumber">1</label>
+						<label id="questionNumber">2</label>
+						<label id="questionNumber">3</label>
+						<label id="questionNumber">4</label>
+						<label id="questionNumber">5</label>
+						<label id="questionNumber">6</label>
+						<label id="questionNumber">7</label>
+					</div>
 					<label><ion-icon name="caret-forward-outline" role="button"></ion-icon></label>
 				</div>
 				
 				<div class="display-question">
 					<button class="supplementary" id="supplementaryTextButton">
-						Esta questão possui texto complementar, clique aqui para vê-lo.
+						Esta questão possui texto complementar, clique aqui para ver.
 					</button>
 					<div class="statement">
 						<label id="questionContent">
-							Lorem ipsum dolor sit amet consectetur, adipisicing 
-							elit. Recusandae adipisci tempore perferendis quas aspernatur sequi, quae 
-							tempora saepe? Iure voluptatum, doloremque laborum totam minima eveniet quis 
-							iste non facilis asperiores.
 						</label>
 					</div>
 					<div class="questions">
 						<div><span>A</span>
-							<label class="alternative" indexAlternative="1">kljflkdfg</label>
+							<label class="alternative" indexAlternative="1"></label>
 						</div>
 						<div><span>B</span>
-							<label class="alternative" indexAlternative="2">kljflkdfg</label>
+							<label class="alternative" indexAlternative="2"></label>
 						</div>
 						<div><span>C</span>
-							<label class="alternative" indexAlternative="3">kljflkdfg</label>
+							<label class="alternative" indexAlternative="3"></label>
 						</div>
 						<div><span>D</span>
-							<label class="alternative" indexAlternative="4">kljflkdfg</label>
+							<label class="alternative" indexAlternative="4"></label>
 						</div>
 						<div><span>E</span>
-							<label class="alternative" indexAlternative="5">kljflkdfg</label>
+							<label class="alternative" indexAlternative="5"></label>
 						</div>
 					</div>
 				</div>

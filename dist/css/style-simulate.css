@@ -3,11 +3,12 @@
     margin-inline: auto;
     margin-block: 30px;
     display: flex;
-    column-gap: 5px;
+    -moz-column-gap: 5px;
+         column-gap: 5px;
 }
 ion-icon {
     font-size: 3em;
-    rotate: 15deg;
+    transform: rotate(15deg);
     color: #5c2104;
 }
 .i-icon {
@@ -64,12 +65,14 @@ ion-icon {
         #ba5624,
         #5c2104
     );
-    background-clip: text;
+    -webkit-background-clip: text;
+            background-clip: text;
     color: transparent;
 }
 .inst-exam-list {
-    display: grid;
-    grid-template-columns: repeat(5,1fr);
+    display: flex;
+    justify-content: center;
+    gap: 5px;
 }
 .exam {
     border: none;

@@ -28,5 +28,6 @@
 }
 
 .test.btn {
+    width: -moz-fit-content;
     width: fit-content;
 }

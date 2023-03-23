@@ -5,23 +5,19 @@
 ion-icon {
     pointer-events: none;
 }
-
 body {
     font-family: Arial, Helvetica, sans-serif, Times, serif;
     font-weight: bold;
     font-size: large;
     text-align: justify;
 }
-
 button {
     cursor: pointer;
 }
-
 a {
     text-align: center;
     text-decoration: none;
 }
-
 a:hover {
     text-decoration: none;
 }
@@ -41,22 +37,24 @@ a:hover {
     border-bottom-left-radius: 80px;
     border-bottom-right-radius: 80px;
 }
-
 .img-title {
     width: 250px;
     height: 32px;
+    border-bottom: transparent 2px solid;
+    border-radius: 8px;
+    transition: 0.5s;
 }
-
+.img-title:hover {
+    border-color: #ff9900;
+}
 .header-content {
     margin: auto;
     grid-auto-flow: column;
 }
-
 .title {
     grid-column-start: 3;
     margin: 10px;
 }
-
 .header-item {
     min-width: 150px;
     display: flex;
@@ -65,8 +63,8 @@ a:hover {
     color: white;
     border-top-right-radius: 8px;
     border-bottom-left-radius: 8px;
+    transition: 0.3s;
 }
-
 .header-item:hover {
     color: #ba5624;
     background-color: white;

@@ -8,10 +8,6 @@
     width: 55%;
 	min-width: 500px;
 	min-height: 450px;
-	border: 2px solid #ba5624;
-	border-radius: 30px;
-	border-bottom-left-radius: 0px;
-	border-bottom-right-radius: 0px;
 }
 
 .test-informations {
@@ -22,23 +18,24 @@
 .institution-name {
 	flex-direction: column;
 	gap: 15px;
+	font-size: 1.5em;
 }
 
 #btnStartTest {
-	background-color: darkgreen;
-	color: white;
-	width: 180px;
-	height: 60px;
-	border-bottom-right-radius: 2px;
-	font-size: x-large;
-	font-weight: 900;
-}
-
-#btnStartTest:hover {
 	background-color: limegreen;
 	color: black;
+	width: 180px;
+	height: 60px;
+	border: none;
+	border-radius: 15px;
+	font-size: x-large;
+	font-weight: 900;
+	transition: 0.4s;
 }
-
+#btnStartTest:hover {
+	background-color: darkgreen;
+	color: white;
+}
 /* 
 	Test page with the questions
 */
@@ -50,28 +47,52 @@
 .left-popup {
 	position: fixed;
 	left: 0;
-	top: 20%;
+	top: 15%;
 	display: grid;
 	gap: 5px;
 }
-.right-popup {
-	position: fixed;
-	right: 0;
-	top: 20%;
+.guide {
+	display: grid;
+	grid-template-rows: auto;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 15px;
+	overflow: hidden;
+}
+.text-inside {
+	width: 1fr;
+	height: 0;
+	background-color: #e9ddc9;
+	transition: 0.8s;
+}
+.close-guide {
+	display: grid;
+	place-items: center;
+	width: 1fr;
+	height: -moz-fit-content;
+	height: fit-content;
+	background-color: #ebe0cb;
+	grid-row-start: 2;
+	z-index: 1;
+}
+.close-guide ion-icon {
+	font-size: 2rem;
+	transition: .4s;
+}
+#ex {
+	position: absolute;
+	display: none;
+}
+#ex:checked + label > .text-inside {
+	height: 150px;
+}
+#ex:checked + label > .close-guide ion-icon {
+	transform: rotate(-180deg);
 }
 .count-down {
 	padding: 10px;
 	border-top-right-radius: 15px;
 	border-bottom-right-radius: 5px;
 	text-align: center;
-}
-.guide {
-	padding: 20px;
-	-webkit-padding-start: 10px;
-	        padding-inline-start: 10px;
-	border-top-left-radius: 15px;
-	border-bottom-left-radius: 15px;
-	font-size: medium;
 }
 .test-buttons {
 	padding: 20px;
@@ -81,7 +102,7 @@
 }
 .questions-list{
 	width: -moz-fit-content;
-	width: fit-content;
+	width: 800px;
 	height: -moz-fit-content;
 	height: fit-content;
 	margin-inline: auto;
@@ -90,12 +111,20 @@
 	outline: #e9ddc9 solid 2px;
 
 	display: grid;
-	grid-auto-flow: column;
+	grid-template-columns: 1fr 6fr 1fr;
 	place-items: center;
+	overflow: hidden;
+}
+.questions-list div {
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+	gap: 15px;
 }
 .questions-list label {
-	padding-inline: 30px;
+	padding-inline: 32px;
 	font-size: 1em;
+	transition: 0.4s;
 }
 .questions-list label:hover {
 	cursor: pointer;
@@ -113,14 +142,21 @@
 	height: fit-content;
 	padding: 20px;
 	padding-block: 3px;
-	outline: 1px solid #ba5624;
 	border: none;
 	border-radius: 15px;
 	margin-inline: auto;
 	font-size: 0.8em;
 	font-weight: bold;
-	color: #ba5624;
-	background-color: #ebe0cb;
+	color: white;
+	background-color: #ba5624;
+	transition: 2s;
+}
+.supplementary:hover {
+	background-image: repeating-linear-gradient(
+		#ba5624,
+		#923c11,
+		#4b1900
+	);
 }
 .statement {
 	width: 60%;
@@ -135,15 +171,25 @@
 .questions {
 	display: grid;
 	grid-template-columns: repeat(3,1fr);
-	-moz-column-gap: 10px;
-	     column-gap: 10px;
+	-moz-column-gap: 40px;
+	     column-gap: 40px;
 	row-gap: 30px;
+	margin-block: 20px;
 }
 .questions div {
+	position: relative;
+	background-color: #ebe0cb;
+	border-radius: 15px;
+	padding: 10px;
+	padding-top: 40px;
 	display: flex;
 	flex-direction: column;
 	place-items: center;
 	row-gap: 40px;
+	transition: .3s;
+}
+.questions div:hover {
+	background-color: #ff9900;
 }
 .questions span {
 	--gray: #ebe0cb;
@@ -151,29 +197,36 @@
 	border: 10px var(--gray) solid ;
 	border-radius: 50%;
 	padding-inline: 4px;
+	position: absolute;
+	top: -20px;
 }
 #endTest {
 	position: relative;
+	display: grid;
 	border: none;
 	background-color: #eb6161;
-	font-size: 1em;
 	font-weight: bold;
+	font-size: 1.5rem;
+	transition: 0.4s;
+	padding: 0;
+	place-items: center;
 }
 #endTest:hover {
 	background-color: red;
 	color: white;
 }
 #endTest ion-icon {
-	position: absolute;
 	color: white;
-	font-size: 80px;
-	top: -10px;
-	left: 50%;
-	transform: translateX(-50%);
 	opacity: 30%;
+	font-size: 4rem;
 }
 #endTest span {
-	z-index: 1;
+	position: absolute;
+	width: -moz-max-content;
+	width: max-content;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
 }
 
 /* 
