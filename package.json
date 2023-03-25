@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "get:prefix": "npx postcss dist/css/*.css --replace dist/css/"
+    "build": "webpack"
   },
   "keywords": [],
   "author": "",
@@ -16,9 +15,7 @@
     "webpack-cli": "^5.0.1"
   },
   "dependencies": {
-    "autoprefixer": "^10.4.14",
     "firebase": "^9.17.1",
-    "postcss": "^8.4.21",
-    "postcss-cli": "^10.1.0"
+    "postcss": "^8.4.21"
   }
 }

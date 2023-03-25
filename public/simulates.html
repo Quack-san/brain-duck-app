@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <!-- CSS only -->
+	<link rel="stylesheet" href="../dist/css/style-main.css">
+	<link rel="stylesheet" href="../dist/css/style-patterns.css">
+	<link rel="stylesheet" href="../dist/css/style-simulate.css">
+
+	<title>Projeto BrainDUCK - TCC</title>
+</head>
+<body>
+    <header class="main-header flex-container">
+		<div class="header-content grid-container">
+			<div class="title">
+				<a href="index.html"><img src="../dist/img/brainduck-title.png" class="img-title"></a>
+			</div>
+
+			<a href="simulates.html" class="header-item">INSTITUIÇÕES</a>
+			<a href="questions.html" class="header-item">QUESTÕES</a>
+			<a href="#" class="header-item">PERFIL</a>
+			<a href="#" class="header-item">SOBRE NÓS</a>
+		</div>
+	</header>
+
+	<article class="content">
+		<section class="introduction">
+			<span class="i-icon"><ion-icon name="alert-outline"></ion-icon></span>
+			<span class="resume">
+				Você pode encontrar inúmeras provas de diversas instituições a partir da lista abaixo.
+				Selecione o nome de uma instituição listada que suas provas aparecerão.
+			</span>
+		</section>
+
+		<section class="list-w-info">
+			<div>
+				<input class="search" type="text" placeholder="Procurar na lista">
+				<div class="inst-list" id="examContainer"></div>
+			</div>
+
+			<div class="inst-info">
+				<span>
+					ipsum dolor, sit amet consectetur adipisicing elit. Enim odit nihil officia, veritatis vel 
+					perspiciatis quisquam temporibus. Culpa rem aspernatur optio doloremque possimus 
+					laudantium dolor? Minima nobis adipisci hic quia! Lorem ipsum dolor sit amet consectetur 
+					adipisicing elit. Aperiam porro labore repellat perspiciatis tempora, dolorem sint quasi 
+					numquam culpa, deserunt, necessitatibus sed voluptate consequatur rerum vero voluptas 
+					reprehenderit magnam reiciendis.
+				</span>
+			</div>
+		</section>
+
+		<div class="container mt-auto footer navbar-fixed-bottom">
+			<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+			<div class="col-md-4 d-flex align-items-center">
+				<a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+				<svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+				</a>
+				<span class="text-muted">© 2023 Quack, Inc</span>
+			</div>
+		
+			<ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+				<li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#"></use></svg></a></li>
+			</ul>
+			</footer>
+		</div>
+	</article>
+ 
+	<script src="../dist/js/simulatesBundle.js"></script>
+</body>
+</html>
