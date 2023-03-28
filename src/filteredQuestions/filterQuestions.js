@@ -22,8 +22,7 @@ async function getFilteredQuestions(queries) {
     var promises = [];
     queries.forEach((querie) => {
         promises.push(filterDocsPromise(querie));
-    })
-    var returnQuestions;
+    }) 
     return await Promise.all(promises).then((questions) => {
         questions.forEach((question) => {
             if (question == undefined) { return undefined; }

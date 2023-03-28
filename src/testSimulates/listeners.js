@@ -1,5 +1,5 @@
 import { setQuestion, selectAlternative, setAlternativesClasses, 
-    setAlternativesContent, setSupplementaryText } from './DOM.js' 
+    setAlternativesContent, setSupplementaryText, getDivStatus } from './DOM.js' 
 import { questionsObjArray, questionNumber, numberOfQuestions, isFinished, 
     setNumber, questionAnswers, correctionStatus, alternativesObjArray, supplementaryTextArray,
     setQuestionAnswer } from './testSimulate.js'
@@ -15,11 +15,11 @@ function setListeners () {
     });
 
     // div questions
-    document.querySelectorAll(".divQuestionStatus").forEach((divQuestion) => {
+    document.querySelectorAll(".questionNumber").forEach((divQuestion) => {
         divQuestion.addEventListener('click', (event) => {
-            // getDivStatus(questionNumber).classList.remove("activeQuestion");
+            getDivStatus(questionNumber).classList.remove("activeQuestion");
             setNumber(parseInt(event.target.innerText));
-            // getDivStatus(questionNumber).classList.add("activeQuestion");
+            getDivStatus(questionNumber).classList.add("activeQuestion");
             setQuestion(questionsObjArray[questionNumber - 1].data);
             setAlternativesClasses(isFinished, questionAnswers[questionNumber-1], isFinished?correctionStatus[questionNumber - 1].correctAnswer:undefined);
             setAlternativesContent(alternativesObjArray[questionNumber - 1]);
@@ -30,9 +30,9 @@ function setListeners () {
     // button to go to next question
     document.getElementById("nextQuestion").addEventListener('click', (event) => {
         if (questionNumber >= numberOfQuestions) { return; }
-        // getDivStatus(questionNumber).classList.remove("activeQuestion");
+        getDivStatus(questionNumber).classList.remove("activeQuestion");
         setNumber(questionNumber+1);
-        // getDivStatus(questionNumber).classList.add("activeQuestion");
+        getDivStatus(questionNumber).classList.add("activeQuestion");
         setQuestion(questionsObjArray[questionNumber - 1].data);
         setSupplementaryText(questionsObjArray[questionNumber - 1].data.supplementaryTextId, supplementaryTextArray);
         setAlternativesClasses(isFinished, questionAnswers[questionNumber-1], isFinished?correctionStatus[questionNumber - 1].correctAnswer:undefined);
@@ -41,10 +41,10 @@ function setListeners () {
 
     // button to go to previous question
     document.getElementById("previousQuestion").addEventListener('click', (event) => {
-        if (questionNumber <= 0) { return; }
-        // getDivStatus(questionNumber).classList.remove("activeQuestion");
+        if (questionNumber <= 1) { return; }
+        getDivStatus(questionNumber).classList.remove("activeQuestion");
         setNumber(questionNumber-1);
-        // getDivStatus(questionNumber).classList.add("activeQuestion");
+        getDivStatus(questionNumber).classList.add("activeQuestion");
         setQuestion(questionsObjArray[questionNumber - 1].data);
         setSupplementaryText(questionsObjArray[questionNumber - 1].data.supplementaryTextId, supplementaryTextArray);
         setAlternativesClasses(isFinished, questionAnswers[questionNumber-1], isFinished?correctionStatus[questionNumber - 1].correctAnswer:undefined);

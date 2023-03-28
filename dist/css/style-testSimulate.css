@@ -1,7 +1,6 @@
 /* 
-	Test cover styles
+	Test cover
 */
-
 .test-cover {
     margin: 20px;
     padding: 20px;
@@ -9,18 +8,15 @@
 	min-width: 500px;
 	min-height: 450px;
 }
-
 .test-informations {
 	justify-content: space-between;
 	padding: 20px;
 }
-
 .institution-name {
 	flex-direction: column;
 	gap: 15px;
 	font-size: 1.5em;
 }
-
 #btnStartTest {
 	background-color: limegreen;
 	color: black;
@@ -28,6 +24,7 @@
 	height: 60px;
 	border: none;
 	border-radius: 15px;
+	margin-block: 20px;
 	font-size: x-large;
 	font-weight: 900;
 	transition: 0.4s;
@@ -35,6 +32,24 @@
 #btnStartTest:hover {
 	background-color: darkgreen;
 	color: white;
+}
+.times {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 20px;
+}
+.times label {
+	width: 150px;
+	height: 50px;
+	font-size: 1em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #ebe0cb;
+	border-radius: 15px;
+}
+.custom-time {
+	cursor: pointer;
 }
 /* 
 	Test page with the questions
@@ -244,14 +259,6 @@
 	font-size: 30px;
 	margin-bottom: 10px;
 }
-
-#testTime {
-	font-size: 60px;
-	padding: 10px;
-	border-bottom-right-radius: 0;	
-	cursor: pointer;
-}
-
 .test-time-handler {
 	display: none;
 	position: fixed;
@@ -322,27 +329,23 @@ input {
 */
 
 .selected {
-	background-color: blue;
+	color: blue;
 	border-color: blue;
 }
 .notSelected {
-	background-color: white;
-	border-color: white;
+	color: black;
 }
 .correct {
-	background-color: green;
-	border-color: green;
+	color: green;
 }
 .wrong {
-	background-color: orangered;
-	border-color: orangered;
+	color: orangered;
 }
 .rightAnswer {
-	background-color: yellowgreen;
-	border-color: yellowgreen;
+	color: yellowgreen;
 }
 .activeQuestion {
-	border: skyblue 5px solid;
+	color: skyblue;
 }
 
 #divColorsSubtitle {

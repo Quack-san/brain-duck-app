@@ -18,13 +18,13 @@
 	<header class="main-header flex-container">
 		<div class="header-content grid-container">
 			<div class="title">
-				<a href="index.html"><img src="../dist/img/brainduck-title.png" class="img-title"></a>
+				<a href="../public/index.html"><img src="../dist/img/brainduck-title.png" class="img-title"></a>
 			</div>
 			
-			<a href="simulates.html" class="header-item">INSTITUIÇÕES</a>
-			<a href="questions.html" class="header-item">QUESTÕES</a>
-			<a href="#" class="header-item">PERFIL</a>
-			<a href="#" class="header-item">SOBRE NÓS</a>
+			<a href="../public/simulates.html" class="header-item"><p>INSTITUIÇÕES</p><div></div></a>
+			<a href="../public/questions.html" class="header-item"><p>QUESTÕES</p><div></div></a>
+			<a href="/" class="header-item"><p>PERFIL</p><div></div></a>
+			<a href="/" class="header-item"><p>SOBRE NÓS</p><div></div></a>
 		</div>
 	</header>
 	
@@ -43,22 +43,26 @@
 			
 			<!-- Cover of the test, with his name, year and time to complete -->
 			<div class="flex-container centralize">
-				
 				<div class="test-cover b-round grid-container">
-					
 					<div class="test-informations flex-container duckwood b-round">
-						
 						<div class="institution-name flex-container">
 							<h2 class="fit-wh" id="test-name">...</h2>
 							<h4 class="fit-wh" id="test-year">...</h4>
 						</div>
 						<img id="institution-logo" src="" alt="place logo">
-						
+					</div>
+
+					<!-- Begin test -->
+					<div class="flex-container centralize" id="startDiv">
+						<button id="btnStartTest">Iniciar</button>
 					</div>
 					
 					<div class="test-timer flex-container">
 						<span>TEMPO</span>
-						<label id="testTime" class="duckwood b-round" role="button">...</label>
+						<div class="times">
+							<label id="testTime" role="button">...</label>
+							<label class="custom-time" role="button">Custom time</label>
+						</div>
 					</div>
 					
 					<!-- Alert to manually adjust the timer -->
@@ -87,13 +91,6 @@
 							<button id="saveTime">salvar</button>
 						</div>
 					</div>
-					
-					<!-- Begin test -->
-					
-					<div class="flex-container centralize" id="startDiv">
-						<button id="btnStartTest">Iniciar</button>
-					</div>
-					
 				</div>
 				
 			</div>
@@ -154,17 +151,10 @@
 				</div>
 
 				<div class="questions-list">
-					<label><ion-icon name="caret-back-outline" role="button"></ion-icon></label>
-					<div>
-						<label id="questionNumber">1</label>
-						<label id="questionNumber">2</label>
-						<label id="questionNumber">3</label>
-						<label id="questionNumber">4</label>
-						<label id="questionNumber">5</label>
-						<label id="questionNumber">6</label>
-						<label id="questionNumber">7</label>
+					<label id="previousQuestion" role="button"><ion-icon name="caret-back-outline"></ion-icon></label>
+					<div id="divQuestionNumber">
 					</div>
-					<label><ion-icon name="caret-forward-outline" role="button"></ion-icon></label>
+					<label id="nextQuestion" role="button"><ion-icon name="caret-forward-outline"></ion-icon></label>
 				</div>
 				
 				<div class="display-question">
@@ -197,26 +187,17 @@
 		</div>
 								<!-- ------------------------------------------------------ -->
 		<div id="supplementaryText" style="display: none; position: absolute; top: 50%; left: 50%; background-color: brown;"></div>
-								
-		<div class="container mt-auto footer navbar-fixed-bottom">
-			<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-				<div class="col-md-4 d-flex align-items-center">
-					<a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
-						<svg class="bi" width="30" height="24">
-							<use xlink:href="#bootstrap"></use>
-						</svg>
-					</a>
-					<span class="text-muted">© 2023 Quack, Inc</span>
-				</div>
-										
-				<ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-					<li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
-						<use xlink:href="#"></use>
-					</svg></a></li>
-				</ul>
-			</footer>
-		</div>
 	</article>
 
+	<div class="footer-div">
+		<footer>
+			<a href="/">
+				
+			</a>
+			<span>© 2023 Quack, Inc</span>
+		</footer>
+	</div>
+
 	<script src="../dist/js/testSimulateBundle.js"></script>
+	<script src="../dist/js/customTimer.js"></script>
 </body>

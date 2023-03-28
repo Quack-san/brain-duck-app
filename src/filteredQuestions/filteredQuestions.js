@@ -8,8 +8,6 @@ import { setQuestion, setSupplementaryText, setAlternativesClasses, setAlternati
 var questionsIdArray;
 window.addEventListener("load", async () => {
 	questionsIdArray = await getFilteredQuestions(getQueries());
-	console.log(questionsIdArray)
-
 	const questionObj = await getSingleDocumentById(db, "questions", questionsIdArray[0][0]);
 	const alternativesObjArray = await getFilteredDocsArray("questionId", questionObj.id, collection(db, 'alternatives'));
 	var supplementaryText = await getSingleDocumentById(db, "supplementaryTexts", questionObj.data.supplementaryTextId);

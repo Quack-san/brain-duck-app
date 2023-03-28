@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Alkatra:wght@500&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -6,10 +7,11 @@ ion-icon {
     pointer-events: none;
 }
 body {
-    font-family: Arial, Helvetica, sans-serif, Times, serif;
-    font-weight: bold;
-    font-size: large;
-    text-align: justify;
+    font-family: 'Alkatra', Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+body:hover {
+    cursor: default;
 }
 button {
     cursor: pointer;
@@ -25,49 +27,71 @@ a:hover {
 /* 
     header CSS styles
 */
-
 .main-header {
     min-width: -moz-max-content;
     min-width: max-content;
-    padding-left: 60px;
-    padding-right: 60px;
+    padding-inline: 60px;
     align-items: center;
     background-color: #2c0703;
-    border-bottom: 5px solid black;
-    border-bottom-left-radius: 80px;
-    border-bottom-right-radius: 80px;
+    outline: solid #2c0703;
+    border-bottom: solid white;
+}
+.title {
+    grid-column-start: 3;
+    padding-inline: 5px;
+    padding-top: 10px;
+    border-inline: solid transparent;
+    /* border-left: solid transparent;
+    border-right: solid transparent; */
+    outline: solid transparent;
+    transition: .5s;
+}
+.title:hover {
+    background-color: white;
+    border-inline: solid #2c0703;
+    outline: solid white;
 }
 .img-title {
     width: 250px;
     height: 32px;
-    border-bottom: transparent 2px solid;
-    border-radius: 8px;
-    transition: 0.5s;
-}
-.img-title:hover {
-    border-color: #ff9900;
 }
 .header-content {
     margin: auto;
     grid-auto-flow: column;
-}
-.title {
-    grid-column-start: 3;
-    margin: 10px;
+    gap: 5px;
 }
 .header-item {
+    position: relative;
     min-width: 150px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: end;
     color: white;
-    border-top-right-radius: 8px;
-    border-bottom-left-radius: 8px;
-    transition: 0.3s;
 }
-.header-item:hover {
-    color: #ba5624;
+.header-item p {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: .4s;
+}
+.header-item div {
+    width: 100%;
+    height: 0;
     background-color: white;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    transition: .3s;
+}
+.header-item:hover > div{
+    height: 100%;
+}
+.header-item:hover > p{
+    color: #f09000;
+}
+.footer-div {
+    width: 84%;
+    padding-inline: 8%;
+    margin-top: 50px;
 }
 
 /* 
@@ -78,34 +102,8 @@ a:hover {
     width: 80%;
     max-width: 1600px;
     position: relative;
-    min-height: 90vh;
     margin: auto;
 }
-
-.side-menu {
-    display: none;
-    position: fixed;
-    top: 0;
-    width: -moz-fit-content;
-    width: fit-content;
-    height: 100%;
-    z-index: 1;
-}
-
-ul {
-    padding-left: 0;
-}
-
-ul li {
-    list-style-type: none;
-    padding-top: 4px;
-}
-
-ul ul li {
-    padding: 50px;
-    padding-top: 60px;
-}
-
 .dark-veil {
     display: none;
 	position: fixed;
@@ -114,7 +112,33 @@ ul ul li {
 	width: 100vw;
 	height: 100vh;
 	background-color: black;
-	opacity: 80%;
+	opacity: .5;
+    z-index: 2;
+}
+#sLoad { /* This is a button only for testing */
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100px;
+    height: 40px;
+    z-index: 4;
+}
+#load {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: none;
+    z-index: 3;
+}
+.loading {
+    animation: rotating 1s infinite linear;
+    font-size: 6em;
+    opacity: .6;
+}
+@keyframes rotating {
+    from { transform: rotate(0);}
+    to { transform: rotate(360deg);}
 }
 
 /* 

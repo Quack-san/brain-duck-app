@@ -1,5 +1,5 @@
 // arrays whith tags to filter
-var institutions = ["ETEC", "ENEM"];
+var institutions = ["ETEC", "ENEM", "UNESP", "Objetivo", "HAVARD"];
 var subjects = ["Ingreis", "Math"];
 
 // request the creation the selection of filter items

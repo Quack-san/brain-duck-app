@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "firebase": "^9.17.1",
-    "postcss": "^8.4.21"
+    "postcss": "^8.4.21",
+    "serve": "^14.2.0"
   }
 }

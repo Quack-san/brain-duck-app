@@ -4,15 +4,11 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<link rel="stylesheet" href="../dist/css/styleMain.css">
-	<link rel="stylesheet" href="../dist/css/styleHeaderFooter.css">
-	<link rel="stylesheet" href="../dist/css/styleSideMenu.css">
-
+	
 	<link rel="stylesheet" href="../dist/css/style-main.css">
 	<link rel="stylesheet" href="../dist/css/style-patterns.css">
 	<link rel="stylesheet" href="../dist/css/style-index.css">
-
+	
 	<title>Projeto TCC</title>
 </head>
 
@@ -20,74 +16,56 @@
 	<header class="main-header flex-container">
 		<div class="header-content grid-container">
 			<div class="title">
-				<a href="index.html"><img src="../dist/img/brainduck-title.png" class="img-title"></a>
+				<a href="../public/index.html"><img src="../dist/img/brainduck-title.png" class="img-title"></a>
 			</div>
-
-			<a href="simulates.html" class="header-item">INSTITUIÇÕES</a>
-			<a href="questions.html" class="header-item">QUESTÕES</a>
-			<a href="#" class="header-item">PERFIL</a>
-			<a href="#" class="header-item">SOBRE NÓS</a>
+			
+			<a href="../public/simulates.html" class="header-item"><p>INSTITUIÇÕES</p><div></div></a>
+			<a href="../public/questions.html" class="header-item"><p>QUESTÕES</p><div></div></a>
+			<a href="/" class="header-item"><p>PERFIL</p><div></div></a>
+			<a href="/" class="header-item"><p>SOBRE NÓS</p><div></div></a>
 		</div>
 	</header>
-	
-	<div class="content">
 
-		<div class="main-board grid-container">
+	<article class="content">
+		<section class="main">
+			<div>
+				<h1>Bem Vindo ao BRAINDUCK</h1>
+				<h4>Nossa plataforma oferece à você exames de instituições educacionais da região de 
+					Rio Claro como um método de estudo e/ou prática individual, totalmente sem 
+					custos.</h4>
+			</div>
+			<div>
 
-			<div class="welcome-title flex-container margin-t">
-				<p class="fs-large margin padding">
-					BRAINDUCK é uma ferramenta em que todo estudante pode colocar em prática
-					o conhecimento que possui em testes de várias instituições catálogadas em
-					nosso sistema
-				</p>
+			</div>
+			<div>
+
+			</div>
+		</section>
+		<!-- <section>
+			<div class="welcome-text">
+				<h1>Bem vindo ao BRAINDUCK</h1>
+				<p>Nossa plataforma oferece a você provas de uma vasta gama de universidades cadastradas em nosso site de forma totalmente gratuita.</p>
 			</div>
 
-			<div class="explanation grid-container fs-middle">
-				<div class="inst-ex flex-container">
-					<p id="inst" class="ex duckwood">
-						Para encontrar um teste para realizar, clique no link ao lado para
-						ser redirecionado à página contendo a lista de instituições.
-					</p>
-					<div class="link margin"><a href="simulates.html">instituições</a></div>
-				</div>
+			<div class="inst-ref">
+				<h2>Por onde começar?</h2>
+				<p>Recomendamos que visite primeiro a página de <a href="simulates.html">INSTITUIÇÕES</a>, onde pode encontrar os simulados listados de forma fácil e organizada.</p>
+			</div>
 
-				<div class="quest-ex flex-container">
-					<div class="link margin"><a href="questions.html">questões</a></div>
-					<p id="quest" class="ex duckwood">
-						Se quiser realizar um processo mais rápido, você pode realizar apenas
-						as perguntas que oferecemos no próxima página. 
-					</p>
-				</div>
+			<div class="quest-ref">
+				<h2>Que tal algo mais direto?</h2>
+				<p>Você tambem pode buscar por resolver apenas <a href="questions.html">QUESTÕES</a> filtradas de acordo com seu próprio gosto	</p>
+			</div>
+		</section> -->
+	</article>
+
+	<div class="footer-div">
+		<footer>
+			<a href="/">
 				
-				<div class="stat-ex flex-container">
-					<p id="stat" class="ex duckwood">
-						É possivel acompanhar o seu desempenho na sua página de usuário, onde é
-						mantido todas as suas estatisticas.
-					</p>
-					<div class="link margin"><a href="">perfil</a></div>
-				</div>
-			</div>
-
-			<div class="about-project"></div>
-
-			<div class="about-us"></div>
-
-		</div>			
-
-		<div class="container mt-auto footer navbar-fixed-bottom">
-			<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-			<div class="col-md-4 d-flex align-items-center">
-				<a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
-				<svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
-				</a>
-				<span class="text-muted">© 2023 Quack, Inc</span>
-			</div>
-		
-			<ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-				<li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#"></use></svg></a></li>
-			</ul>
-			</footer>
-		</div>
+			</a>
+			<span>© 2023 Quack, Inc</span>
+		</footer>
 	</div>
 </body>
 

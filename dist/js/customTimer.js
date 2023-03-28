@@ -3,7 +3,7 @@ const inputHour = document.getElementById('hour');
 const inputMinute = document.getElementById('minute');
 
 document.getElementById('testTime').addEventListener('click', () => { 
-    document.querySelector(".test-time-handler").timeBoxHadler.style.display = "flex"; 
+    document.querySelector(".test-time-handler").style.display = "flex"; 
     setVeilDisplay("block");
 });
 
@@ -17,17 +17,6 @@ document.getElementById('saveTime').addEventListener('click', () => { saveTime(t
 var timer;
 var hour;
 var minute;
-
-document.getElementById("btnStartTest").addEventListener('click', () => {
-    var actualTest = document.querySelector('.test-ground');
-    if (actualTest.style.display == "grid") {
-        actualTest.style.display = "none";
-        return;
-    }
-    actualTest.style.display = "grid";
-
-    document.querySelector('.test-cover').style.display = 'none';
-});
 
 // Code to manually select the timer
 

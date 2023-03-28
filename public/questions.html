@@ -4,94 +4,78 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+	
 	<!-- CSS only -->
-	<link rel="stylesheet" href="./bootstrap-5.1.3-dist/css/bootstrap.min.css">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
-	<!-- JavaScript Bundle with Popper -->
-	<script src="./bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
-	<link rel="stylesheet" href="../dist/css/styleMain.css">
-	<link rel="stylesheet" href="../dist/css/styleHeaderFooter.css">
-	<link rel="stylesheet" href="../dist/css/styleSideMenu.css">
-
 	<link rel="stylesheet" href="../dist/css/style-main.css">
 	<link rel="stylesheet" href="../dist/css/style-patterns.css">
 	<link rel="stylesheet" href="../dist/css/style-questions.css">
-
+	
 	<title>Projeto TCC</title>
-
+	
 </head>
 
 <body>
 	<header class="main-header flex-container">
 		<div class="header-content grid-container">
 			<div class="title">
-				<a href="index.html"><img src="../dist/img/brainduck-title.png" class="img-title"></a>
+				<a href="../public/index.html"><img src="../dist/img/brainduck-title.png" class="img-title"></a>
 			</div>
-
-			<a href="simulates.html" class="header-item">INSTITUIÇÕES</a>
-			<a href="questions.html" class="header-item">QUESTÕES</a>
-			<a href="#" class="header-item">PERFIL</a>
-			<a href="#" class="header-item">SOBRE NÓS</a>
+			
+			<a href="../public/simulates.html" class="header-item"><p>INSTITUIÇÕES</p><div></div></a>
+			<a href="../public/questions.html" class="header-item"><p>QUESTÕES</p><div></div></a>
+			<a href="/" class="header-item"><p>PERFIL</p><div></div></a>
+			<a href="/" class="header-item"><p>SOBRE NÓS</p><div></div></a>
 		</div>
 	</header>
 
-	<div id="lista" class="side-menu quack">
-		<ul>
-			<li><img src="img/optionIcon.png" class="img-logo"></li>
-			<ul>
-				<li><a href="./simulates.html">Simulados</a></li>
-				<li><a href="./questions.html">Questões</a></li>
-				<li><a href="#">Estatisticas</a></li>
-			</ul>
-		</ul>
-	</div>
-
-	<div class="content">
+	<article class="dark-veil"></article>
+	<div id="load"><ion-icon name="sync-circle-outline" class="loading"></ion-icon></div>
+	<button id="sLoad">SHOW LOADING</button>
+	<script src="../dist/js/loadTest.js"></script>
+	
+	<article class="content">
 		<div class="grid-container grid-row">
-
-			<div class="flex-container">
-
-				<p class="introduction-text padding margin b-round duckwood">
+			
+			<div class="introduction-text duckwood">
+				<p>
 					Aqui você pode realizar questões separadas, filtrando-as em uma ou mais categorias que desejar. 
 					Clique nas categorias, depois escolha os filtros e então realize a busca.
 				</p>
-
 			</div>
-
-			<div class="fs-box grid-container">
-
-				<div class="filter-menu flex-container margin padding duckwood b-round">
-
-					<button id="searchQuestions"><img src="img/searchIcon.png" class="search-icon"> MINHA BUSCA</button>
+			
+			<div class="fs-box">
+				<div class="filter-menu">
+					<button id="searchQuestions">
+						BUSCAR
+						<ion-icon name="search-outline"></ion-icon>
+					</button>
+					
 					<div id="institution" class="search-div">
 						<button class="search-item" id="searchInstitution">INSTITUIÇÃO</button>
 					</div>
 					
 					<div id="subject" class="search-div">
-						<button class="search-item" id="searchSubject">MATÉRIA</button>
+						<button class="search-item" id="searchSubject">ASSUNTO</button>
 					</div>
 					
-
 					<div id="subSubject" class="search-div">
-						<button class="search-item" id="searchSubSubject">SUB-MATÉRIA</button>
+						<button class="search-item" id="searchSubSubject">SUB-TEMA</button>
 					</div>
-					
-					<label class="config-item quackburnt" id="searchMode">MODO</label>
-
-					<label class="switch">
-						<input id="one" type="checkbox" checked="">
-						<span class="mode-slider b-round"></span>
-					</label>
-
 				</div>
-
-				<div class="search-grid grid-container margin"></div>
+				
+				<div class="search-grid"></div>
 			</div>
-
 		</div>
+	</article>
+	
+	<div class="footer-div">
+		<footer>
+			<span>© 2023 Quack, Inc</span>
+		</footer>
 	</div>
-
+	
 	<!-- <script src="./js/showAndHideMenu.js"></script> -->
 	<script src="../dist/js/questionScript.js"></script>
 </body>

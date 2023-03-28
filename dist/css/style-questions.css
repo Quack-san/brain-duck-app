@@ -1,117 +1,97 @@
-
-button {
-    border: none;
-    background-color: white;
-    border-bottom: 1px solid;
+.introduction-text {
+    margin-top: 30px;
+    padding-inline: 20px;
     border-radius: 15px;
-    border-bottom-right-radius: 0;
-    padding: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
-
-.config-item {
-    width: 92%;
-    margin: 10px;
-    border-bottom: 1px solid;
-    border-radius: 15px;
-    border-top-left-radius: 0;
-    padding: 5px;
-    text-align: center;
-}
-
-.switch {
-    margin: 10px;
-    position: relative;
-    height: 34px;
-}
-
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.mode-slider {
-    position: absolute;
-    cursor: pointer;
-    width: inherit;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ba5624;
-    transition: .4s;
-}
-
-.mode-slider:before {
-    position: absolute;
-    content: "livre";
-    height: -moz-fit-content;
-    height: fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
-    padding-left: 8px;
-    padding-right: 8px;
-    left: 4px;
-    right: auto;
-    bottom: 4px;
-    background-color: #ebe0cb;
-    border-radius: 12px;
-}
-
-input:checked + .mode-slider {
-    background-color: #2c0703;
-}
-
-input:checked + .mode-slider:before {
-    content: "desafio";
-}
-
 .fs-box {
+    display: grid;
     grid-auto-flow: column;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr 99fr;
 }
-
-.search-grid {
-    grid-template-columns: repeat(4, 1fr);
-    height: -moz-fit-content;
-    height: fit-content;
-}
-
 .filter-menu {
-    height: -moz-fit-content;
-    height: fit-content;
+    position: relative;
+    display: flex;
     flex-direction: column;
-}
-
-.subject-item {
-    margin: 10px;
-    min-height: 50px;
+    place-items: center;
+    width: 200px;
     border-radius: 15px;
-    background-color: orange;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
-
-div.filter-menu button {
-    margin: 10px;
+.filter-menu button {
+    border: none;
+    font-size: 1em;
 }
-
-.search-div, .tag {
+#searchQuestions {
+    position: relative;
+    width: 100%;
+    margin-block: 15px;
+    background-color: #ebe0cb;
+    border-radius: 5px;
+    font-weight: 100;
+    font-size: 1.4em;
+    box-shadow: 1px 1px grey;
+}
+#searchQuestions:hover {
+    width: 100%;
+}
+#searchQuestions ion-icon {
+    position: absolute;
+    left: 0;
+    font-size: 1.2em;
+    opacity: .3;
+    color: #2c0703;
+}
+.search-div {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    gap: 5px;
 }
 .search-item {
-    width: 95%;
+    width: 100%;
+    padding: 5px;
+    margin-block: 5px;
+    background-color: #ebe0cb;
+    border-radius: 5px;
+    box-shadow: 1px 1px grey;
+    transition: .5s;
 }
-
-.search-icon {
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    left: 5px;
+.search-item:focus {
+    background-color: #f1b546;
 }
-
-#searchQuestions {
+.search-item:hover {
+    background-color: #ff9900;
+}
+.tag {
+    background-color: orange;
+    border-radius: 5px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    padding: 2px;
+    gap: 5px;
+}
+.tag-value {
+    padding: 2px;
+}
+.tag button {
+    padding-inline: 5px;
+    background-color: transparent;
+}
+.search-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding-inline: 20px;
+}
+.subject-item {
+    margin: 10px;
+    height: 100px;
+    border-radius: 15px;
+    background-color: #f90;
+    transition: .5s;
+}
+.subject-item:hover {
+    background-color: #f1b546;
 }

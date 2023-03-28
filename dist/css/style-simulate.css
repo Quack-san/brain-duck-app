@@ -1,10 +1,15 @@
-.introduction {
+.introduction-text {
     min-width: 500px;
     margin-inline: auto;
     margin-block: 30px;
     display: flex;
     -moz-column-gap: 5px;
          column-gap: 5px;
+    animation: apearFromThinAir 3s;
+}
+@keyframes apearFromThinAir {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 ion-icon {
     font-size: 3em;
@@ -59,15 +64,17 @@ ion-icon {
     background-color: #ebe0cb;
     border-radius: 5px;
 }
+.inst-btn:focus {
+    background-color: #f1b546;
+}
+.inst-btn:hover {
+    background-color: #f90;
+    text-shadow: 0 0 5px #fff;
+}
 .inst-label {
-    background-image: linear-gradient(
-        to right,
-        #ba5624,
-        #5c2104
-    );
-    -webkit-background-clip: text;
-            background-clip: text;
-    color: transparent;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: #5c2104;
 }
 .inst-exam-list {
     display: flex;

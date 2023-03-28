@@ -1,5 +1,4 @@
-import { setIsFinished, questionAnswers, alternativesObjArray, 
-	correctionStatus, questionNumber, testTimeInterval, setCorrectionStatus } from './testSimulate.js'
+import { setIsFinished, questionAnswers, alternativesObjArray, questionNumber, testTimeInterval, setCorrectionStatus, correctionStatus } from './testSimulate.js'
 import { setAlternativesClasses, setDivStatusCorrection } from './DOM.js'
 
 function correctTest() {
@@ -20,7 +19,7 @@ function correctTest() {
 		index++;
 	})
 	setAlternativesClasses(true, questionAnswers[questionNumber-1], correctionStatus[questionNumber - 1].correctAnswer);
-	//setDivStatusCorrection(correctionStatus);
+	setDivStatusCorrection(correctionStatus);
 	clearInterval(testTimeInterval);
 }
 

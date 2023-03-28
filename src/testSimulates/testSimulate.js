@@ -1,6 +1,7 @@
 // imports
 import { db } from '../firebaseConfigs.js'
-import { setQuestion, setAlternativesContent, setSupplementaryText 
+import { collection } from 'firebase/firestore'
+import { setQuestion, setAlternativesContent, setSupplementaryText, changeTestDisplay, setDivTestStatus, getDivStatus, 
 } from './DOM.js'
 import { getFilteredDocsArray, getSingleDocumentById } from '../general/dataBase.js' 
 import { setUndefinedArray, sortArray } from '../general/generalScripts.js'
@@ -48,17 +49,19 @@ document.querySelector("#btnStartTest").addEventListener('click', async () => {
 	setQuestion(questionsObjArray[questionNumber - 1].data);
 	setSupplementaryText(undefined, questionsObjArray[questionNumber - 1].data.supplementaryTextId, supplementaryTextArray);
 	setAlternativesContent(alternativesObjArray[questionNumber - 1]);
-	//setDivTestStatus(numberOfQuestions);
-	//getDivStatus(questionNumber).classList.add("activeQuestion");
+	setDivTestStatus(numberOfQuestions);
+	getDivStatus(questionNumber).classList.add("activeQuestion");
 
 	setListeners ();
 
 	pointerTime = new Date().getSeconds();
-	testTimeInterval = setInterval(() => { setTestTime(isFinished, testTime, pointerTime) }, 1000);
 	if (document.querySelector("#timerDiv").getAttribute("setted") == "true") {
 		testTime = parseInt(document.querySelector("#hour").value) * 60 * 60 +
 			parseInt(document.querySelector("#minute").value) * 60;
 	}
+	testTimeInterval = setInterval(() => { setTestTime(isFinished, testTime, pointerTime) }, 1000);
+
+	changeTestDisplay();
 });
 
 // setter functions

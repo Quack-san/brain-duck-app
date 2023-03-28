@@ -5,7 +5,7 @@ module.exports = {
 	entry: '/src/testSimulates/testSimulate.js',
 	output: {
 		path: path.resolve(__dirname, 'dist/js'),
-		filename: 'testSimulatesBundle.js'
+		filename: 'testSimulateBundle.js'
 	},
 	watch: true
 }
