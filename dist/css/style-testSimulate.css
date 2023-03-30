@@ -33,23 +33,50 @@
 	background-color: darkgreen;
 	color: white;
 }
+.test-timer {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: start;
+}
+.bg-icon {
+	position: absolute;
+	font-size: 6em;
+	color: #ebe0cb;
+	opacity: .8;
+	top: 60%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}	
+.test-timer span {
+	font-size: 30px;
+	margin-bottom: 10px;
+	z-index: 1;
+}
 .times {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	gap: 20px;
 }
-.times label {
+.times button {
 	width: 150px;
 	height: 50px;
-	font-size: 1em;
+	font-size: 1.2em;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: #ebe0cb;
+	background-color: rgb(235, 224, 203, .8);
+	border: none;
 	border-radius: 15px;
+	box-shadow: 1px 1px black;
+	z-index: 1;
 }
-.custom-time {
-	cursor: pointer;
+.times button:hover {
+	background-color: rgb(235, 224, 203, 1);
+}
+.t-active {
+	background-color: #ba5624;
 }
 /* 
 	Test page with the questions
@@ -248,17 +275,6 @@
 /* 
 	Timer changer popup
 */
-
-.test-timer {
-	flex-direction: column;
-	align-items: center;
-	justify-content: end;
-}
-
-.test-timer span {
-	font-size: 30px;
-	margin-bottom: 10px;
-}
 .test-time-handler {
 	display: none;
 	position: fixed;
@@ -276,31 +292,26 @@
 	justify-content: space-evenly;
 	border-radius: 10px;
 }
-
 .test-time-handler span {
 	margin: auto;
 	height: 20px;
 }
-
 .timer {
 	margin: 10px;
 	grid-auto-flow: column;
 	gap: 1px;
 	font-size: 30px;
 }
-
 .time-changer {
 	align-items: center;
 	flex-direction: column;
 }
-
 .handler {
 	width: 50px;
 	height: 20px;
 	background-color: black;
 	border-radius: 0;
 }
-
 .time-changer input {
 	margin: 2px;
 	width: 50px;
@@ -308,7 +319,6 @@
 	border: none;
 	font-size: 30px;
 }
-
 #cancelTime:hover {
 	background-color: red;
 	color: white;

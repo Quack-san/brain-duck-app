@@ -5,7 +5,7 @@
     display: flex;
     -moz-column-gap: 5px;
          column-gap: 5px;
-    animation: apearFromThinAir 3s;
+    animation: apearFromThinAir 1s ease-in;
 }
 @keyframes apearFromThinAir {
     from { opacity: 0; }
@@ -65,16 +65,28 @@ ion-icon {
     border-radius: 5px;
 }
 .inst-btn:focus {
-    background-color: #f1b546;
+    box-shadow: 0 0 5px #000;
 }
 .inst-btn:hover {
-    background-color: #f90;
-    text-shadow: 0 0 5px #fff;
+    background-image: linear-gradient(
+    to top right,
+    #e65705,
+    #55260b
+    );
+}
+.inst-btn:hover > .inst-label {
+    color: white;
 }
 .inst-label {
     font-weight: bold;
     font-size: 1.5em;
-    color: #5c2104;
+    background-image: linear-gradient(
+        to top right,
+        #e65705,
+        #55260b
+    );
+    background-clip: text;
+    color: transparent;
 }
 .inst-exam-list {
     display: flex;

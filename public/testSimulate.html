@@ -23,8 +23,8 @@
 			
 			<a href="../public/simulates.html" class="header-item"><p>INSTITUIÇÕES</p><div></div></a>
 			<a href="../public/questions.html" class="header-item"><p>QUESTÕES</p><div></div></a>
-			<a href="/" class="header-item"><p>PERFIL</p><div></div></a>
-			<a href="/" class="header-item"><p>SOBRE NÓS</p><div></div></a>
+			<a href="" class="header-item"><p>PERFIL</p><div></div></a>
+			<a href="" class="header-item"><p>SOBRE NÓS</p><div></div></a>
 		</div>
 	</header>
 	
@@ -57,39 +57,13 @@
 						<button id="btnStartTest">Iniciar</button>
 					</div>
 					
-					<div class="test-timer flex-container">
-						<span>TEMPO</span>
+					<div class="test-timer">
+						<span>CRONOMETRO</span>
 						<div class="times">
-							<label id="testTime" role="button">...</label>
-							<label class="custom-time" role="button">Custom time</label>
+							<button id="testTime" role="button">...</button>
+							<button class="custom-time" role="button">Sem tempo</button>
 						</div>
-					</div>
-					
-					<!-- Alert to manually adjust the timer -->
-					
-					<div class="test-time-handler flex-container">
-						<label>Selecione seu tempo</label>
-						
-						<div class="timer grid-container" id="timerDiv" setted="false">
-							<div class="time-changer flex-container">
-								<button class="increase handler hour"></button>
-								<input type="text" id="hour" value="00" readonly>
-								<button class="decrease handler hour"></button>
-							</div>
-							
-							<p style="height: fit-content; margin: auto;">:</p>
-							
-							<div class="time-changer flex-container">
-								<button class="increase handler minute"></button>
-								<input type="text" id="minute" value="00" readonly>
-								<button class="decrease handler minute"></button>
-							</div>
-						</div>
-						
-						<div>
-							<button id="cancelTime">cancelar</button>
-							<button id="saveTime">salvar</button>
-						</div>
+						<div class="bg-icon"><ion-icon name="timer-outline"></ion-icon></div>
 					</div>
 				</div>
 				

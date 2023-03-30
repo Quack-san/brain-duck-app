@@ -1,37 +1,69 @@
-.main {
-    margin-block: 20px;
+section {
     display: grid;
-    grid-template-rows: 2fr 1fr 1fr;
-    row-gap: 10px;
-    min-height: 400px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding-block: 20px;
+    font-size: 1em;
 }
-.main div {
-    padding: 10px;
+.welcome-text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 h1 {
-    width: 400px;
-    margin-inline: auto;
+    margin-block: 20px;
     font-size: 2em;
     font-weight: bolder;
 }
 h4 {
-    max-width: max-content;
-    margin: auto;
-    padding-inline: 15px;
-    background-color: #ebe0cb;
+    height: 100%;
+    display: flex;
+    align-items: center;
     border-radius: 5px;
+    animation: appearFromThinAir 1s ease-in;
 }
-/* section {
-    margin-top: 50px;
-    display: grid;
-    gap: 10px;
-}
-section div{
+.card-group {
     display: flex;
     flex-direction: column;
-    place-items: center;
-    gap: 20px;
-    animation: slideFromBottom 2s;
+    gap: 10px;
+    width: 100%;
+}
+.card {
+    position: relative;
+    width: inherit;
+    color: black;
+    box-shadow: 1px 1px black;
+    border-radius: 5px;
+}
+.card-img {
+    width: inherit;
+    height: inherit;
+    border-radius: 5px;
+    overflow: hidden;
+    display: grid;
+    place-content: center;
+    transition: .5s;
+}
+.card-img img {
+    min-width: 300px;
+    width: inherit;
+    min-height: 150px;
+}
+.inside-card-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: justify;
+    text-indent: 15px;
+    font-size: 1.2em;
+    opacity: 0;
+    transition: 1s;
+}
+.card:hover > .card-img {
+    opacity: .5;
+}.card:hover > .inside-card-text {
+    opacity: 1;
 }
 @keyframes appearFromThinAir {
     0% {
@@ -41,27 +73,3 @@ section div{
         opacity: 1;
     }
 }
-@keyframes slideFromBottom {
-    0% {
-        transform: translateY(500%);
-        opacity: 0;
-    }
-    20% {
-        transform: translateY(500%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-.welcome-text {
-    padding: 0;
-    animation: none;
-}
-.welcome-text h1 {
-    font-size: 2em;
-    padding: 30px;
-    align-self: flex-start;
-    animation: appearFromThinAir 1s;
-} */

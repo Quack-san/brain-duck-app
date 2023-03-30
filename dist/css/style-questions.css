@@ -8,20 +8,21 @@
 .fs-box {
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: 1fr 99fr;
+    grid-template-columns: 1fr 3fr;
 }
 .filter-menu {
     position: relative;
     display: flex;
     flex-direction: column;
     place-items: center;
-    width: 200px;
+    width: auto;
     border-radius: 15px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
 .filter-menu button {
     border: none;
+    padding-inline: 10px;
     font-size: 1em;
 }
 #searchQuestions {
@@ -62,6 +63,7 @@
 }
 .search-item:focus {
     background-color: #f1b546;
+    box-shadow: 2px 2px 5px black;
 }
 .search-item:hover {
     background-color: #ff9900;
@@ -78,7 +80,13 @@
 }
 .tag button {
     padding-inline: 5px;
+    border-radius: 5px;
     background-color: transparent;
+    transition: .2s;
+}
+.tag button:hover {
+    padding-inline: 5px;
+    background-color: red;
 }
 .search-grid {
     display: grid;

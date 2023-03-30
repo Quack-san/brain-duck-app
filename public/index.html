@@ -4,7 +4,9 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
+	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
 	<link rel="stylesheet" href="../dist/css/style-main.css">
 	<link rel="stylesheet" href="../dist/css/style-patterns.css">
 	<link rel="stylesheet" href="../dist/css/style-index.css">
@@ -21,43 +23,43 @@
 			
 			<a href="../public/simulates.html" class="header-item"><p>INSTITUIÇÕES</p><div></div></a>
 			<a href="../public/questions.html" class="header-item"><p>QUESTÕES</p><div></div></a>
-			<a href="/" class="header-item"><p>PERFIL</p><div></div></a>
-			<a href="/" class="header-item"><p>SOBRE NÓS</p><div></div></a>
+			<a href="" class="header-item"><p>PERFIL</p><div></div></a>
+			<a href="" class="header-item"><p>SOBRE NÓS</p><div></div></a>
 		</div>
 	</header>
 
-	<article class="content">
+	<main class="content">
 		<section class="main">
-			<div>
+			<div class="welcome-text">
 				<h1>Bem Vindo ao BRAINDUCK</h1>
 				<h4>Nossa plataforma oferece à você exames de instituições educacionais da região de 
 					Rio Claro como um método de estudo e/ou prática individual, totalmente sem 
 					custos.</h4>
 			</div>
-			<div>
+			
+			<div class="card-group">
+				<a class="card" href="../public/simulates.html">
+					<div class="card-img">
+						<img src="../dist/img/inst.jpg">
+					</div>
+					<div class="inside-card-text">
+						<p>Visite a página de INSTITUIÇÕES
+						para encontrar a lista de provas disponiveis na nossa plataforma.</p>
+					</div>
+				</a>
 
-			</div>
-			<div>
-
+				<a class="card" href="../public/questions.html">
+					<div class="card-img">
+						<img src="../dist/img/inst.jpg">
+					</div>
+					<div class="inside-card-text">
+						<p>Ou acesse QUESTÕES
+						para receber perguntas aleatórias filtradas de acordo com suas necessidades!</p>
+					</div>
+				</a>
 			</div>
 		</section>
-		<!-- <section>
-			<div class="welcome-text">
-				<h1>Bem vindo ao BRAINDUCK</h1>
-				<p>Nossa plataforma oferece a você provas de uma vasta gama de universidades cadastradas em nosso site de forma totalmente gratuita.</p>
-			</div>
-
-			<div class="inst-ref">
-				<h2>Por onde começar?</h2>
-				<p>Recomendamos que visite primeiro a página de <a href="simulates.html">INSTITUIÇÕES</a>, onde pode encontrar os simulados listados de forma fácil e organizada.</p>
-			</div>
-
-			<div class="quest-ref">
-				<h2>Que tal algo mais direto?</h2>
-				<p>Você tambem pode buscar por resolver apenas <a href="questions.html">QUESTÕES</a> filtradas de acordo com seu próprio gosto	</p>
-			</div>
-		</section> -->
-	</article>
+	</main>
 
 	<div class="footer-div">
 		<footer>
