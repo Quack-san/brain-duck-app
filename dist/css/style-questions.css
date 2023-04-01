@@ -90,8 +90,13 @@
 }
 .search-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
     padding-inline: 20px;
+}
+.sg-tcolumn-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+.sg-tcolumn-2 {
+    grid-template-columns: repeat(2, 1fr);
 }
 .subject-item {
     margin: 10px;
@@ -102,4 +107,23 @@
 }
 .subject-item:hover {
     background-color: #f1b546;
+}
+.subsubject-item {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin: 10px;
+    height: 250px;
+    border-radius: 15px;
+    background-color: #f1b546;
+    transition: .5s;
+}
+.subsubject-item p {
+    display: flex;
+    place-content: center;
+    height: -moz-fit-content;
+    height: fit-content;
+    padding-block: 20px;
+    font-weight: bold;
+    background-color: #f90;
 }

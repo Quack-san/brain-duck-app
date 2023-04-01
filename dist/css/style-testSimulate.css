@@ -237,7 +237,8 @@
 .questions span {
 	--gray: #ebe0cb;
 	background-color: var(--gray);
-	border: 10px var(--gray) solid ;
+	border: 10px var(--gray) solid;
+	outline: 2px white solid;
 	border-radius: 50%;
 	padding-inline: 4px;
 	position: absolute;

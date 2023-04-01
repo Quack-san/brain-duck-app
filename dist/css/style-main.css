@@ -101,6 +101,11 @@ a:hover {
     max-width: 1600px;
     position: relative;
     margin: auto;
+    animation: getUP 1s;
+}
+@keyframes getUP {
+    from {transform: translateY(100%); opacity: 0;}
+    to {transform: translateY(0); opacity: 1;}
 }
 .dark-veil {
     display: none;

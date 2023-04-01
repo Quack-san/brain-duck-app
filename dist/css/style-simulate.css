@@ -5,11 +5,6 @@
     display: flex;
     -moz-column-gap: 5px;
          column-gap: 5px;
-    animation: apearFromThinAir 1s ease-in;
-}
-@keyframes apearFromThinAir {
-    from { opacity: 0; }
-    to { opacity: 1; }
 }
 ion-icon {
     font-size: 3em;
@@ -85,7 +80,8 @@ ion-icon {
         #e65705,
         #55260b
     );
-    background-clip: text;
+    -webkit-background-clip: text;
+            background-clip: text;
     color: transparent;
 }
 .inst-exam-list {

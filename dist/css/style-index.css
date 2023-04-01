@@ -1,75 +1,65 @@
-section {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    padding-block: 20px;
-    font-size: 1em;
+.content {
+    margin-block: 10px;
 }
-.welcome-text {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.div-h1 {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr auto 5fr;
+    align-items: center;
+    margin-top: 5%;
+    animation: slideSoftlyLeft 1s ease-in;
 }
 h1 {
-    margin-block: 20px;
-    font-size: 2em;
-    font-weight: bolder;
+    background-color: white;
+    color: #f90;
+    text-shadow: 1px 1px 1px black;
+    font-size: 1.8em;
+    width: -moz-fit-content;
+    width: fit-content;
+    min-width: 320px;
+    padding-inline: 10px;
 }
-h4 {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    border-radius: 5px;
-    animation: appearFromThinAir 1s ease-in;
-}
-.card-group {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.div-h1 hr {
+    height: 5px;
     width: 100%;
-}
-.card {
-    position: relative;
-    width: inherit;
-    color: black;
-    box-shadow: 1px 1px black;
+    background-color: #2c0703;
+    border: none;
     border-radius: 5px;
 }
-.card-img {
-    width: inherit;
-    height: inherit;
-    border-radius: 5px;
-    overflow: hidden;
+.p-h1 {
+    text-indent: 30px;
+    text-align: justify;
+    -moz-text-align-last: center;
+         text-align-last: center;
+    margin: 20px;
+    margin-bottom: 5%;
+}
+.card-grid {
     display: grid;
-    place-content: center;
+    grid-template-columns: repeat(3, 1fr);
+
+}
+.cg-item {
+    display: flex;
+    border-left: 2px #2c0703 solid;
+    border-top-left-radius: 10px;
+}
+.cg-item p {
+    margin: 20px;
+    padding-inline: 10px;
+    background-color: #ebe0cb;
+    border-radius: 5px;
+    text-align: justify;
+}
+.cg-item a {
+    -webkit-padding-start: 40px;
+            padding-inline-start: 40px;
+    color: #f90;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-shadow: 1px 1px black;
     transition: .5s;
 }
-.card-img img {
-    min-width: 300px;
-    width: inherit;
-    min-height: 150px;
-}
-.inside-card-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    text-align: justify;
-    text-indent: 15px;
-    font-size: 1.2em;
-    opacity: 0;
-    transition: 1s;
-}
-.card:hover > .card-img {
-    opacity: .5;
-}.card:hover > .inside-card-text {
-    opacity: 1;
-}
-@keyframes appearFromThinAir {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+.cg-item a:hover {
+    text-shadow: 1px 2px 2px black;
 }
