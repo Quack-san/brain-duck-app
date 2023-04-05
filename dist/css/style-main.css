@@ -1,3 +1,5 @@
+@import "./header.css";
+
 * {
     margin: 0;
     padding: 0;
@@ -23,68 +25,6 @@ a:hover {
     text-decoration: none;
 }
 
-/* 
-    header CSS styles
-*/
-.main-header {
-    min-width: -moz-max-content;
-    min-width: max-content;
-    padding-inline: 60px;
-    align-items: center;
-    background-color: #2c0703;
-    outline: solid #2c0703;
-    border-bottom: solid white;
-}
-.title {
-    grid-column-start: 3;
-    padding-inline: 5px;
-    padding-top: 10px;
-    border-inline: solid transparent;
-    outline: solid transparent;
-    transition: .5s;
-}
-.title:hover {
-    background-color: white;
-    border-inline: solid #2c0703;
-    outline: solid white;
-}
-.img-title {
-    width: 250px;
-    height: 32px;
-}
-.header-content {
-    margin: auto;
-    grid-auto-flow: column;
-    gap: 5px;
-}
-.header-item {
-    position: relative;
-    min-width: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: end;
-    color: white;
-}
-.header-item p {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: .4s;
-}
-.header-item div {
-    width: 100%;
-    height: 0;
-    background-color: white;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    transition: .3s;
-}
-.header-item:hover > div{
-    height: 100%;
-}
-.header-item:hover > p{
-    color: #f09000;
-}
 .footer-div {
     width: 84%;
     padding-inline: 8%;
@@ -142,52 +82,4 @@ a:hover {
 @keyframes rotating {
     from { transform: rotate(0);}
     to { transform: rotate(360deg);}
-}
-
-/* 
-    Alert CSS styles
-*/
-
-.error-alert {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: -moz-fit-content;
-    width: fit-content;
-    height: -moz-fit-content;
-    height: fit-content;
-    min-width: 5%;
-    min-height: 5%;
-    border: solid 2px white;
-    text-align: center;
-    color: white;
-    padding: 15px;
-    flex-direction: column;
-    align-items: end;
-    gap: 5px;
-    font-size: x-large;
-}
-
-.alert-ok {
-    bottom: 10px;
-    right: 10px;
-    width: -moz-fit-content;
-    width: fit-content;
-    padding-left: 10px;
-    padding-right: 10px;
-    text-align: center;
-    cursor: pointer;
-    color: red;
-    border: 2px solid #c90d00;
-    font-size: large;
-    font-weight: bold;
-}
-
-.alert-ok:hover {
-    background-color: #c90d00;
-    color: white;
-    border-color: white;
 }

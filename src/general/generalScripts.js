@@ -4,19 +4,17 @@ function setUndefinedArray(elementsNumber) {
 	return undefinedArray;
 }
 
-function sortArray(questions) {
-    var arrayCopy = [];
-    for (var i = 0; i < questions.length; i++) { arrayCopy[i] = questions[i] }
-
-    for (var i = 0; i < questions.length; i++) {
-       for (var j = i; j < questions.length; j++) {
-           if (questions[j].data.number < questions[i].data.number) {
-                arrayCopy[j] = questions[i]; 
-                arrayCopy[i] = questions[j];
-           }
-       }
-       return arrayCopy;
+function sortArray(array) {
+    for (var i = 0; i < array.length; i++) {
+        for (var j = 0; j < (array.length - i - 1); j++) {
+            if(array[j].data.number > array[j+1].data.number) {
+                var temporary = array[j]; 
+                array[j] = array[j+1]; 
+                array[j+1] = temporary; 
+            }
+        }        
     }
+    return array;
 }
 
 export { setUndefinedArray, sortArray };

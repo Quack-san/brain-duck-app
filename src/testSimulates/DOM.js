@@ -34,12 +34,12 @@ function setAlternativesClasses(testIsFinished, questionAnswers, correctAnswer) 
 			changeClasses(alternative, "remove", "rightAnswer");
 		}
 		// add classes
-		if (questionAnswers == alternative.getAttribute("indexAlternative")) {
+		if (questionAnswers == alternative.getAttribute("alternative")) {
 			if (!testIsFinished) { changeClasses(alternative, "add", "selected"); }
-            else if (correctAnswer == parseInt(alternative.getAttribute("indexAlternative"))) 
+            else if (correctAnswer == alternative.getAttribute("alternative")) 
             	{ changeClasses(alternative, "add", "correct"); } 
             else { changeClasses(alternative, "add", "wrong"); }
-		} else if (testIsFinished && correctAnswer == parseInt(alternative.getAttribute("indexAlternative"))) {
+		} else if (testIsFinished && correctAnswer == alternative.getAttribute("alternative")) {
 			changeClasses(alternative, "add", "rightAnswer");
 		}
 	});
@@ -80,8 +80,7 @@ function selectAlternative(event, testIsFinished, questionNumber) {
     changeClasses(selected, "add", "selected");
     changeClasses(divStatus, "add", "selected");
     changeClasses(divStatus, "remove", "notSelected");
-
-	return parseInt(selected.getAttribute("indexAlternative"));
+	return selected.getAttribute("alternative");
 }
 
 // get div status according to the current question number;
@@ -93,14 +92,12 @@ function getDivStatus(questionNumber) {
 	return divReturn;
 }
 
-function setSupplementaryText(supplementaryText, supplementaryTextId, supplementaryTextArray) {
+function setSupplementaryText(supplementaryTextId, supplementaryTextArray) {
 	var supplementaryTextDiv = document.querySelector("#supplementaryText");
-	if (supplementaryTextId == "none" || supplementaryText == undefined) {
+	if (supplementaryTextId == "none") {
 		supplementaryTextDiv.innerText = "Esta questão não possui texto complementar";
 	}
-	else if (supplementaryText != undefined){
-		 supplementaryTextDiv.innerText = supplementaryText;
-	} else {
+	else {
 		for (var i = 0; i < supplementaryTextArray.length; i++) {
 			if (supplementaryTextArray[i].id == supplementaryTextId) {
 				supplementaryTextDiv.innerText = supplementaryTextArray[i].data.content;

@@ -41,13 +41,18 @@ document.querySelector("#btnStartTest").addEventListener('click', async () => {
 	for (var i = 0; i < numberOfQuestions; i++) {
 		alternativesObjArray[i] = await getFilteredDocsArray("questionId", questionsObjArray[i].id, collection(db, 'alternatives'));
 	}
+	var supplementaryTextIdArray = [];
 	for (var i = 0; i < questionsObjArray.length; i++) {
-		if (supplementaryTextArray.includes(questionsObjArray[i].data.supplementaryTextId)) { continue; }
+		if (supplementaryTextIdArray.includes(questionsObjArray[i].data.supplementaryTextId)) { continue; }
 		if (questionsObjArray[i].data.supplementaryTextId == "none") { continue; }
-		supplementaryTextArray.push(await getSingleDocumentById(db, "supplementaryTexts", questionsObjArray[i].data.supplementaryTextId));
+		supplementaryTextIdArray.push(questionsObjArray[i].data.supplementaryTextId);
 	}
+	for (var i = 0; i < supplementaryTextIdArray.length; i++) {
+		supplementaryTextArray[i] = await getSingleDocumentById(db, "supplementaryTexts", supplementaryTextIdArray[i]);
+	}
+	
 	setQuestion(questionsObjArray[questionNumber - 1].data);
-	setSupplementaryText(undefined, questionsObjArray[questionNumber - 1].data.supplementaryTextId, supplementaryTextArray);
+	setSupplementaryText(questionsObjArray[questionNumber - 1].data.supplementaryTextId, supplementaryTextArray);
 	setAlternativesContent(alternativesObjArray[questionNumber - 1]);
 	setDivTestStatus(numberOfQuestions);
 	getDivStatus(questionNumber).classList.add("activeQuestion");
@@ -69,8 +74,8 @@ function setNumber(number) { questionNumber = number; }
 function setTestTimeValue(newValue) { testTime = newValue; }
 function setPoiterTime(newValue) { pointerTime = newValue; }
 function setIsFinished(newValue) { isFinished = newValue; }
-function setQuestionAnswer(index, newValue) {questionAnswers[index] = newValue; }
-function setCorrectionStatus(index, newValue) {correctionStatus[index] = newValue; }
+function setQuestionAnswer(index, newValue) { questionAnswers[index] = newValue; }
+function setCorrectionStatus(index, newValue) { correctionStatus[index] = newValue; }
 
 export { questionsObjArray, questionNumber, numberOfQuestions, isFinished, setCorrectionStatus,
     setNumber, questionAnswers, correctionStatus, alternativesObjArray, setQuestionAnswer,

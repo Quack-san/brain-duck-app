@@ -1,34 +1,29 @@
-import { setIsFinished, questionAnswers, alternativesObjArray, questionNumber, testTimeInterval, setCorrectionStatus, correctionStatus } from './testSimulate.js'
+import { setIsFinished, questionAnswers, questionNumber, testTimeInterval, setCorrectionStatus, correctionStatus, questionsObjArray, isFinished } from './testSimulate.js'
 import { setAlternativesClasses, setDivStatusCorrection } from './DOM.js'
 
 function correctTest() {
+	if (isFinished) { return; }
 	setIsFinished(true);
-	var index = 0;
-	alternativesObjArray.forEach((alternativeArray) => {
-		if (questionAnswers[index] != undefined) {
-			if (alternativeArray[questionAnswers[index]].data.isCorrect) {
-				setCorrectionStatus(index, { "isCorrect": true, "correctAnswer": getCorrectAlternative(index) });
+	for (var i = 0; i < questionsObjArray.length; i++) {
+		if (questionAnswers[i] != undefined) {
+			if (questionAnswers[i] == questionsObjArray[i].data.correctAlternative) {
+				setCorrectionStatus(i, { "isCorrect": true, "correctAnswer": getCorrectAlternative(i) });
 			}
 			else {
-				setCorrectionStatus(index, { "isCorrect": false, "correctAnswer": getCorrectAlternative(index) });
+				setCorrectionStatus(i, { "isCorrect": false, "correctAnswer": getCorrectAlternative(i) });
 			}
 		}
 		else {
-			setCorrectionStatus(index, { "isCorrect": false, "correctAnswer": getCorrectAlternative(index) });
+			setCorrectionStatus(i, { "isCorrect": false, "correctAnswer": getCorrectAlternative(i) });
 		}
-		index++;
-	})
+	}
 	setAlternativesClasses(true, questionAnswers[questionNumber-1], correctionStatus[questionNumber - 1].correctAnswer);
 	setDivStatusCorrection(correctionStatus);
 	clearInterval(testTimeInterval);
 }
 
 function getCorrectAlternative(index) {
-	for (var i = 0; i < alternativesObjArray[index].length; i++) {
-		if (alternativesObjArray[index][i].data.isCorrect) {
-			return i;
-		}
-	}
+	return questionsObjArray[index].data.correctAlternative;
 }
 
 export { correctTest }

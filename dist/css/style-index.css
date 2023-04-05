@@ -37,19 +37,22 @@ h1 {
 .card-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-
+    gap: 2%;
 }
 .cg-item {
     display: flex;
     border-left: 2px #2c0703 solid;
     border-top-left-radius: 10px;
 }
+.cg-item div {
+    width: 60%;
+}
 .cg-item p {
     margin: 20px;
-    padding-inline: 10px;
+    padding: 20px;
+    min-width: fit-content;
     background-color: #ebe0cb;
     border-radius: 5px;
-    text-align: justify;
 }
 .cg-item a {
     -webkit-padding-start: 40px;

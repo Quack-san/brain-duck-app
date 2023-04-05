@@ -17,18 +17,26 @@
 </head>
 
 <body>
-	<header class="main-header flex-container">
-		<div class="header-content grid-container">
-			<div class="title">
-				<a href="../public/index.html"><img src="../dist/img/brainduck-title.png" class="img-title"></a>
-			</div>
-			
-			<a href="../public/simulates.html" class="header-item"><p>INSTITUIÇÕES</p><div></div></a>
-			<a href="../public/questions.html" class="header-item"><p>QUESTÕES</p><div></div></a>
-			<a href="" class="header-item"><p>PERFIL</p><div></div></a>
-			<a href="" class="header-item"><p>SOBRE NÓS</p><div></div></a>
+	<header>
+		<ul>
+			<li class="nav-link"><a href="../public/simulates.html">INSTITUIÇÕES</a></li>
+			<li class="nav-link"><a href="../public/questions.html">QUESTÕES</a></li>
+			<li class="title-link">
+				<a href="../public/"><img src="../dist/img/brainduck-title.png" draggable="false"></a>
+			</li>
+			<li class="nav-link"><a href="../public/">PERFIL</a></li>
+			<li class="nav-link"><a href="../public/">SOBRE NÓS</a></li>
+		</ul>
+		<div class="toggle" role="button">
+			<ion-icon name="menu" id="menu"></ion-icon>
 		</div>
 	</header>
+	<ul class="dropdown">
+		<li class="link-drop-item"><a href="../public/simulates.html">INSTITUIÇÕES</a></li>
+		<li class="link-drop-item"><a href="../public/questions.html">QUESTÕES</a></li>
+		<li class="link-drop-item"><a href="../public/">PERFIL</a></li>
+		<li class="link-drop-item"><a href="../public/">SOBRE NÓS</a></li>
+	</ul>
 
 	<article class="dark-veil"></article>
 	<div id="load"><ion-icon name="sync-circle-outline" class="loading"></ion-icon></div>
@@ -83,6 +91,6 @@
 		</footer>
 	</div>
 	
-	<!-- <script src="./js/showAndHideMenu.js"></script> -->
+	<script src="../dist/js/headerDropdown.js"></script>
 	<script src="../dist/js/questionScript.js"></script>
 </body>
