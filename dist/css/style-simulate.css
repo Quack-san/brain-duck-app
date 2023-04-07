@@ -6,7 +6,7 @@
     -moz-column-gap: 5px;
          column-gap: 5px;
 }
-ion-icon {
+.introduction-text ion-icon {
     font-size: 3em;
     transform: rotate(15deg);
     color: #5c2104;

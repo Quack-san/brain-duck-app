@@ -14,9 +14,8 @@ h1 {
     color: #f90;
     text-shadow: 1px 1px 1px black;
     font-size: 1.8em;
-    width: -moz-fit-content;
-    width: fit-content;
-    min-width: 320px;
+    width: -moz-max-content;
+    width: max-content;
     padding-inline: 10px;
 }
 .div-h1 hr {
@@ -35,34 +34,38 @@ h1 {
     margin-bottom: 5%;
 }
 .card-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
 }
 .cg-item {
     display: flex;
-    border-left: 2px #2c0703 solid;
-    border-top-left-radius: 10px;
+    flex-direction: column;
+    background-color: #ebe0cb;
+    border-radius: 15px;
+    max-width: 300px;
+    min-width: 150px;
+    overflow: hidden;
 }
-.cg-item div {
-    width: 60%;
+.cg-item a {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background-color: rgba(255, 153, 0, .4);
+    color: #2c0703;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: .5s;
+}
+.cg-item a:hover {
+    background-color: #f90;
 }
 .cg-item p {
-    margin: 20px;
-    padding: 20px;
+    padding: 30px;
     min-width: fit-content;
     background-color: #ebe0cb;
     border-radius: 5px;
 }
-.cg-item a {
-    -webkit-padding-start: 40px;
-            padding-inline-start: 40px;
-    color: #f90;
-    font-size: 1.2em;
-    font-weight: bold;
-    text-shadow: 1px 1px black;
-    transition: .5s;
-}
-.cg-item a:hover {
-    text-shadow: 1px 2px 2px black;
+@media only screen and (max-width: 800px) {
 }

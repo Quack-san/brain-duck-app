@@ -4,61 +4,68 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    
     <link rel="stylesheet" href="../dist/css/style-main.css">
     <link rel="stylesheet" href="../dist/css/style-patterns.css">
-
+    <link rel="stylesheet" href="../dist/css/style-filtered.css">
+    
     <title>Document</title>
 </head>
 <body>
-	<header>
-		<ul>
-			<li class="nav-link"><a href="../public/simulates.html">INSTITUIÇÕES</a></li>
-			<li class="nav-link"><a href="../public/questions.html">QUESTÕES</a></li>
-			<li class="title-link">
-				<a href="../public/"><img src="../dist/img/brainduck-title.png" draggable="false"></a>
-			</li>
-			<li class="nav-link"><a href="../public/">PERFIL</a></li>
-			<li class="nav-link"><a href="../public/">SOBRE NÓS</a></li>
-		</ul>
-		<div class="toggle" role="button">
-			<ion-icon name="menu" id="menu"></ion-icon>
-		</div>
-	</header>
-	<ul class="dropdown">
-		<li class="link-drop-item"><a href="../public/simulates.html">INSTITUIÇÕES</a></li>
-		<li class="link-drop-item"><a href="../public/questions.html">QUESTÕES</a></li>
-		<li class="link-drop-item"><a href="../public/">PERFIL</a></li>
-		<li class="link-drop-item"><a href="../public/">SOBRE NÓS</a></li>
-	</ul>
-
-    <div class="display-question">
-        <button class="supplementary" id="supplementaryTextButton">
-            Esta questão possui texto complementar, clique aqui para ver.
-        </button>
-        <div class="statement">
-            <label id="questionContent"></label>
+    <header>
+        <ul class="header-list">
+            <li class="nav-link"><a href="../public/simulates.html">INSTITUIÇÕES</a></li>
+            <li class="nav-link"><a href="../public/questions.html">QUESTÕES</a></li>
+            <li class="title-link">
+                <a href="../public/"><img src="../dist/img/brainduck-title.png" draggable="false"></a>
+            </li>
+            <li class="nav-link"><a href="../public/">PERFIL</a></li>
+            <li class="nav-link"><a href="../public/">SOBRE NÓS</a></li>
+        </ul>
+        <div class="toggle" role="button">
+            <ion-icon name="menu" id="menu"></ion-icon>
         </div>
-        <div class="questions">
-            <div><span>A</span>
-                <label class="alternative" indexAlternative="1"></label>
-            </div>
-            <div><span>B</span>
-                <label class="alternative" indexAlternative="2"></label>
-            </div>
-            <div><span>C</span>
-                <label class="alternative" indexAlternative="3"></label>
-            </div>
-            <div><span>D</span>
-                <label class="alternative" indexAlternative="4"></label>
-            </div>
-            <div><span>E</span>
-                <label class="alternative" indexAlternative="5"></label>
-            </div>
-        </div>
-    </div>
+    </header>
+    <ul class="dropdown" style="display: none;">
+        <li class="link-drop-item"><a href="../public/simulates.html">INSTITUIÇÕES</a></li>
+        <li class="link-drop-item"><a href="../public/questions.html">QUESTÕES</a></li>
+        <li class="link-drop-item"><a href="../public/">PERFIL</a></li>
+        <li class="link-drop-item"><a href="../public/">SOBRE NÓS</a></li>
+    </ul>
     
-	<script src="../dist/js/headerDropdown.js"></script>
+    <main class="content">
+        <div class="question-board">
+            <button class="supplementary" id="supplementaryTextButton">
+                Esta questão possui texto complementar, clique aqui para ver.
+            </button>
+
+            <div class="statement">
+                <label id="questionContent"></label>
+            </div>
+
+            <div class="questions">
+                <div><span>A</span>
+                    <label class="alternative" indexAlternative="1"></label>
+                </div>
+                <div><span>B</span>
+                    <label class="alternative" indexAlternative="2"></label>
+                </div>
+                <div><span>C</span>
+                    <label class="alternative" indexAlternative="3"></label>
+                </div>
+                <div><span>D</span>
+                    <label class="alternative" indexAlternative="4"></label>
+                </div>
+                <div><span>E</span>
+                    <label class="alternative" indexAlternative="5"></label>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script src="../dist/js/headerDropdown.js"></script>
     <script src="../dist/js/filteredQuestionsBundle.js"></script>
 </body>
 </html>

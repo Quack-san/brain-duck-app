@@ -16,9 +16,6 @@
     flex-direction: column;
     place-items: center;
     width: auto;
-    border-radius: 15px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
 }
 .filter-menu button {
     border: none;
@@ -28,15 +25,13 @@
 #searchQuestions {
     position: relative;
     width: 100%;
+    padding-block: 15px;
     margin-block: 15px;
     background-color: #ebe0cb;
     border-radius: 5px;
     font-weight: 100;
     font-size: 1.4em;
     box-shadow: 1px 1px grey;
-}
-#searchQuestions:hover {
-    width: 100%;
 }
 #searchQuestions ion-icon {
     position: absolute;
@@ -54,7 +49,7 @@
 }
 .search-item {
     width: 100%;
-    padding: 5px;
+    padding-block: 15px;
     margin-block: 5px;
     background-color: #ebe0cb;
     border-radius: 5px;

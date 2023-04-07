@@ -10,6 +10,7 @@ header {
 .header-list {
     list-style-type: none;
     width: 100%;
+    max-width: 1500px;
     display: flex;
     justify-content: center;
     gap: 20px;
@@ -20,7 +21,7 @@ header {
     min-width: fit-content;
     text-align: center;
     line-height: 10vh;
-    color: white;
+    color: gray;
     font-weight: bold;
     font-size: 1em;
 }
@@ -38,14 +39,13 @@ header {
     margin-inline: 5%;
     place-items: center;
 }
-ion-icon {
+#menu {
     color: white;
     font-size: 2.8em;
 }
 .dropdown {
     position: fixed;
     margin: 0;
-    display: none;
     grid-auto-flow: row;
     width: max-content;
     right: 0;
@@ -71,7 +71,7 @@ a {
 }
 
 @media only screen and (max-width: 1000px) {
-    ul {
+    .header-list {
         justify-content: space-between;
     }
     .nav-link {
@@ -88,7 +88,7 @@ a {
     .title-link img {
         width: 200px;
     }
-    ion-icon {
+    #menu {
         font-size: 1.8em;
     }
     .dropdown {
