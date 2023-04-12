@@ -1,5 +1,6 @@
 .introduction-text {
     margin-top: 30px;
+    padding: 10px;
     padding-inline: 20px;
     border-radius: 15px;
     border-bottom-left-radius: 5px;
@@ -7,7 +8,6 @@
 }
 .fs-box {
     display: grid;
-    grid-auto-flow: column;
     grid-template-columns: 1fr 3fr;
 }
 .filter-menu {
@@ -121,4 +121,22 @@
     padding-block: 20px;
     font-weight: bold;
     background-color: #f90;
+}
+@media only screen and (max-width: 500px) {
+    .fs-box {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+    .filter-menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+    #searchQuestions {
+        width: 100%;
+    }
+    .search-div {
+        width: 30%;
+        min-width: fit-content;
+    }
 }
