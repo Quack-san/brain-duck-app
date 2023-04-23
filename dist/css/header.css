@@ -104,6 +104,12 @@ a {
 }
 
 @media only screen and (max-width: 1000px) {
+    nav {
+        height: fit-content;
+    }
+    .title-link {
+        margin-top: 5px;
+    }
     .nav-list {
         justify-content: space-between;
     }
@@ -115,9 +121,6 @@ a {
     }
 }
 @media only screen and (max-width: 500px) {
-    nav {
-        height: 5vh;
-    }
     .title-link img {
         width: 200px;
     }
