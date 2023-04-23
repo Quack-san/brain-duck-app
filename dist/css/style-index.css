@@ -36,7 +36,7 @@ h1 {
 .card-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
     gap: 40px;
 }
 .cg-item {
