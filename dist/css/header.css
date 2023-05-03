@@ -6,7 +6,7 @@ nav {
     background-color: #2c0703;
     border-bottom: 4px solid white;
     outline: 4px solid #2c0703;
-    overflow: hidden;
+   /*  overflow: hidden; */
 }
 .nav-list {
     list-style-type: none;
@@ -56,51 +56,38 @@ nav {
     place-content: center;
     border-left: solid 4px #2c0703;
     border-right: solid 4px #2c0703;
-    outline: solid 4px #2c0703;
+    border-bottom: solid 4px white;
     transition: .6s;
 }
 .title-link:hover {
     background-color: white;
-    outline: solid 4px white;
 }
 .title-link img {
     width: 350px;
 }
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
 .toggle {
     display: none;
     height: 100%;
-    margin-inline: 5%;
     place-items: center;
-}
-#menu {
     color: white;
-    font-size: 2.8em;
+    font-size: 2em;
+    padding-inline: 15px;
 }
-.dropdown {
-    position: fixed;
-    margin: 0;
-    grid-auto-flow: row;
-    width: max-content;
+.link-list {
+    position: absolute;
     right: 0;
-    top: calc(10vh + 7px);
     background-color: #2c0703;
-    border-bottom: 4px solid white;
-    border-left: 4px solid white;
-    outline: 4px solid #2c0703;
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
-    z-index: 2;
+    z-index: 1;
+    gap: 5px;
 }
-.dropdown li {
-    margin: 40px;
-    text-align: center;
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-}
-a {
-    text-decoration: none;
-    color: white;
+.link-drop-item {
+    padding-inline: 20px;
+    padding-block: 15px;
+    border-top: 4px solid white;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -108,7 +95,7 @@ a {
         height: fit-content;
     }
     .title-link {
-        margin-top: 5px;
+        padding-top: 5px;
     }
     .nav-list {
         justify-content: space-between;
@@ -121,19 +108,15 @@ a {
     }
 }
 @media only screen and (max-width: 500px) {
+    .title-link {
+        border-left: solid 2px #2c0703;
+        border-right: solid 2px #2c0703;
+        border-bottom: solid 2px white;
+    }
     .title-link img {
         width: 200px;
     }
-    #menu {
+    .toggle {
         font-size: 1.8em;
-    }
-    .dropdown {
-        top: calc(5vh + 7px);
-
-    }
-    .dropdown li {
-        margin: 10px;
-        font-size: .8em;
-        font-weight: normal;
     }
 }
