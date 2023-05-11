@@ -131,7 +131,6 @@ function setTests(tests) {
         setAttributes(singleTest, {
             "test": test.institutionId,
             "id": test.id,
-            "style": "font-size: large"
         });
         singleTest.addEventListener('click', selectTest);
         document.getElementById(test.institutionId).appendChild(singleTest);
@@ -144,7 +143,7 @@ function showHideTests() {
     var divWithAllTest = document.getElementById(this.getAttribute("institutionId"));
 
         if (divWithAllTest.style.display == "none") {
-            divWithAllTest.style.display = "grid";
+            divWithAllTest.style.display = "flex";
         } else {
             divWithAllTest.style.display = "none";
         }

@@ -27,15 +27,11 @@
     border-bottom-left-radius: 5px;
 }
 .list-w-info {
-    min-width: 500px;
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: 1fr 2fr;
-    gap: 20px;
+    display: flex;
 }
 .list-w-info div {
     display: grid;
-    grid-template-rows: min-content;
+    width: 100%;
     gap: 5px;
 }
 .search {
@@ -89,7 +85,7 @@
     gap: 5px;
 }
 .exam {
-    border: none;
+    font-size: 2em;
     padding: 5px;
     background-image: linear-gradient(
         to top right,
@@ -98,4 +94,14 @@
     );
     color: white;
     border-radius: 5px;
+}
+@media only screen and (max-width: 1400px) {
+    .exam {
+        font-size: 1.5em;
+    }
+}
+@media only screen and (max-width: 900px) {
+    .exam {
+        width: 40%;
+    }
 }

@@ -19,32 +19,29 @@
 <body>
 	<nav>
 		<ul class="nav-list">
-			<li class="nav-link"><a href="../public/simulates.html">INSTITUIÇÕES</a><div></div></li>
-			<li class="nav-link"><a href="../public/questions.html">QUESTÕES</a><div></div></li>
+			<li class="nav-link"><a href="../docs/simulates.html">INSTITUIÇÕES</a><div></div></li>
+			<li class="nav-link"><a href="../docs/questions.html">QUESTÕES</a><div></div></li>
 			<li class="title-link">
-				<a href="../public/"><img src="../dist/img/brainduck-title.png" draggable="false"></a>
+				<a href="../docs/"><img src="../dist/img/brainduck-title.png" draggable="false"></a>
 				<div></div>
 			</li>
-			<li class="nav-link"><a href="../public/">PERFIL</a><div></div></li>
-			<li class="nav-link"><a href="../public/">SOBRE NÓS</a><div></div></li>
+			<li class="nav-link"><a href="../docs/">PERFIL</a><div></div></li>
+			<li class="nav-link"><a href="../docs/">SOBRE NÓS</a><div></div></li>
 		</ul>
 		<div class="dropdown">
 			<button class="toggle">
 				<ion-icon name="menu" id="menu"></ion-icon>
 			</button>
 			<div class="link-list" style="display: none;">
-				<div class="link-drop-item"><a href="../public/simulates.html">INSTITUIÇÕES</a><div></div></div>
-				<div class="link-drop-item"><a href="../public/questions.html">QUESTÕES</a></div>
-				<div class="link-drop-item"><a href="../public/">PERFIL</a></div>
-				<div class="link-drop-item"><a href="../public/">SOBRE NÓS</a></div>
+				<div class="link-drop-item"><a href="../docs/simulates.html">INSTITUIÇÕES</a><div></div></div>
+				<div class="link-drop-item"><a href="../docs/questions.html">QUESTÕES</a></div>
+				<div class="link-drop-item"><a href="../docs/">PERFIL</a></div>
+				<div class="link-drop-item"><a href="../docs/">SOBRE NÓS</a></div>
 			</div>
 		</div>
 	</nav>
 
 	<article class="dark-veil"></article>
-	<div id="load"><ion-icon name="sync-circle-outline" class="loading"></ion-icon></div>
-	<button id="sLoad">SHOW LOADING</button>
-	<script src="../dist/js/loadTest.js"></script>
 	
 	<article class="content">
 		<div class="grid-container grid-row">
@@ -58,11 +55,6 @@
 			
 			<div class="fs-box">
 				<div class="filter-menu">
-					<button id="searchQuestions">
-						BUSCAR
-						<ion-icon name="search-outline"></ion-icon>
-					</button>
-					
 					<div id="institution" class="search-div">
 						<button class="search-item" id="searchInstitution">INSTITUIÇÃO</button>
 					</div>
@@ -74,16 +66,11 @@
 					<div id="subSubject" class="search-div">
 						<button class="search-item" id="searchSubSubject">SUB-TEMA</button>
 					</div>
+
+					<button id="searchQuestions"><p>BUSCAR</p></button>
 				</div>
 				
-				<div class="search-grid sg-tcolumn-4">
-
-<!-- 					DIV TEMPLATE FOR SUB-SUBJECT
-					<div class="subsubject-item">
-						<p>matematicaaaaa</p>
-						<div class="subject-item"></div>
-					</div> -->
-				</div>
+				<div class="search-grid sg-tcolumn-4"></div>
 			</div>
 		</div>
 	</article>

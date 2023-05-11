@@ -7,11 +7,11 @@
     border-bottom-right-radius: 5px;
 }
 .fs-box {
+    margin-top: 15px;
     display: grid;
     grid-template-columns: 1fr 3fr;
 }
 .filter-menu {
-    position: relative;
     display: flex;
     flex-direction: column;
     place-items: center;
@@ -23,22 +23,18 @@
     font-size: 1em;
 }
 #searchQuestions {
-    position: relative;
     width: 100%;
     padding-block: 15px;
     margin-block: 15px;
-    background-color: #ebe0cb;
     border-radius: 5px;
-    font-weight: 100;
-    font-size: 1.4em;
-    box-shadow: 1px 1px grey;
+    background-color: #f90;
+    font-size: 1.3em;
+    box-shadow: 0px 2px gray;
+    transition: .3s
 }
-#searchQuestions ion-icon {
-    position: absolute;
-    left: 0;
-    font-size: 1.2em;
-    opacity: .3;
-    color: #2c0703;
+#searchQuestions:hover, #searchQuestions:focus-within {
+    background-color: #e80;
+    color: black;
 }
 .search-div {
     width: 100%;

@@ -274,68 +274,6 @@
 }
 
 /* 
-	Timer changer popup
-*/
-.test-time-handler {
-	display: none;
-	position: fixed;
-	width: -moz-fit-content;
-	width: fit-content;
-	height: -moz-fit-content;
-	height: fit-content;
-	padding: 40px;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-	background-color: white;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-evenly;
-	border-radius: 10px;
-}
-.test-time-handler span {
-	margin: auto;
-	height: 20px;
-}
-.timer {
-	margin: 10px;
-	grid-auto-flow: column;
-	gap: 1px;
-	font-size: 30px;
-}
-.time-changer {
-	align-items: center;
-	flex-direction: column;
-}
-.handler {
-	width: 50px;
-	height: 20px;
-	background-color: black;
-	border-radius: 0;
-}
-.time-changer input {
-	margin: 2px;
-	width: 50px;
-	text-align: center;
-	border: none;
-	font-size: 30px;
-}
-#cancelTime:hover {
-	background-color: red;
-	color: white;
-}
-
-#saveTime:hover {
-	background-color: green;
-	color: white;
-}
-
-input {
-	width: -moz-fit-content;
-	width: fit-content;
-}
-
-/* 
     JAVASCRIPT classes
 */
 
