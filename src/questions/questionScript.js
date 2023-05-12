@@ -19,18 +19,20 @@ document.querySelectorAll(".search-item").forEach((searchItem) => {
         var targetID = event.target.getAttribute("id");
         var parentID = event.target.parentElement.getAttribute("id");
 
-        if (targetID == "searchInstitution") { requestItems(institutions, parentID); }
-        else if (targetID == "searchSubject") { requestItems(subjects, parentID); }
-        else if (targetID == "searchSubSubject") { requestItems(subSubjects, parentID, true); }
+        if (targetID == "searchInstitution") { requestItems(institutions, parentID, "institutions"); }
+        else if (targetID == "searchSubject") { requestItems(subjects, parentID, "subjects"); }
+        else if (targetID == "searchSubSubject") { requestItems(subSubjects, parentID, "subSubjects"); }
     })
 })
 
 // create the filter items
-function requestItems(itemsArray, parentID, isSubSubject) {
+function requestItems(itemsArray, parentID, tagType) {
     clearList();
     var idNum = 0;
 
-    if (isSubSubject) { setSubSubjectsDiv(parentID); setItemsListener(); return; }
+    if (tagType == "subSubjects") { setSubSubjectsDiv(parentID); setItemsListener(); return; }
+    document.querySelector(".search-grid").classList.remove("sg-tcolumn-2");
+    document.querySelector(".search-grid").classList.add("sg-tcolumn-4");
 
     itemsArray.forEach((item) => {
         document.querySelector('.search-grid').appendChild(
@@ -45,60 +47,64 @@ function requestItems(itemsArray, parentID, isSubSubject) {
         thisItem.setAttribute("role", "button");
         thisItem.setAttribute("referenceDivID", parentID);
         thisItem.setAttribute("filterId", item.id);
+        thisItem.setAttribute("tagtype", tagType);
         idNum++;
     })
     setItemsListener();
 }
 
 function setSubSubjectsDiv (parentID) {
-    // var array = [];
-    // if (document.querySelector("#subject").querySelectorAll(".tag").length == 0) { return; } 
-    
-   var a = document.getElementById("subject");
-   var b = a.getElementsByClassName("tag");
-    
+    document.querySelector(".search-grid").classList.add("sg-tcolumn-2");
+    document.querySelector(".search-grid").classList.remove("sg-tcolumn-4");
+    var arrayTags = document.getElementsByClassName("tag");
     var subjectTags = [];
-    if (b.length == 1) { subSubjects = tag.getElementsByClassName("tag-value")}
-    else {b.forEach((tag) => { subjectTags.push(tag.getElementsByClassName("tag-value")) }) };
-    console.log(subjectTags)
-    // if (subjectTags.length == 0) { return; }
+    var subSubjectsArray = [];
 
-    // for (var i = 0; i < subjectTags.length; i++) {
-    //     var firstMatch = false;
-    //     for (var j = 0; j < subSubjects.length; j++) {
-    //         console.log(subjectTags[i])
-    //         if (subjectTags[i].getAttribute("id") == subSubjects[i].content.subjectId) {
-    //             if (!firstMatch) {
-    //                 array[array.length] = { "subjectId": subjectTags[i].getAttribute("id"), "subSubjects": [] };
-    //                 firstMatch = true;
-    //             }
-    //             array[array.length-1].subSubjects.push({"subject": subjectTags[j].innerText, "content": subSubjects.data.content, "id": subSubjects.id });
-    //         }
-    //     }
-    // }
+    for (var i = 0; i < arrayTags.length; i++) {
+        if (arrayTags[i].getAttribute("tagtype") == "subjects") { subjectTags.push(arrayTags[i]); }
+    }
+    if (subjectTags.length == 0) { alert("Você deve selecionar um assunto antes."); return; }
+    for (var i = 0; i < subjectTags.length; i++) {
+        var firstMatch = false;
+        for (var j = 0; j < subSubjects.length; j++) {
+            if (subjectTags[i].firstChild.getAttribute("id") == subSubjects[j].data.subjectId) {
+                if (!firstMatch) {
+                    subSubjectsArray[subSubjectsArray.length] = 
+                    { "subjectId": subjectTags[i].firstChild.getAttribute("id"), "subject": subjectTags[i].firstChild.innerText, "subSubjects": [] };
+                    firstMatch = true;
+                }
+                subSubjectsArray[subSubjectsArray.length-1].subSubjects.push({"content": subSubjects[j].data.content, "id": subSubjects[j].id });
+            }
+        }
+    }
 
-    // array.forEach((tag) => {
-    //     var divSubSubject = document.createElement("div");
-    //     var subjectp = document.createElement("p");
-    //     subjectp.appendChild(document.createTextNode(tag.subject));
-    //     divSubSubject.appendChild(subjectp);
+    subSubjectsArray.forEach((tag) => {
+        var divSubject = document.createElement("div");
+        divSubject.classList.add("subsubject-item");
+        var subjectp = document.createElement("p");
+        subjectp.appendChild(document.createTextNode(tag.subject));
+        divSubject.appendChild(subjectp);
 
-    //     tag.subSubjects.forEach((subSubject) => {
-    //         var subSubjectDiv = document.createElement('div');
-    //         subSubjectDiv.setAttribute("role", "button");
-    //         subSubjectDiv.setAttribute("id", "item" + idNum);
-    //         subSubjectDiv.setAttribute("filterId", subSubject.id);
-    //         thisItem.setAttribute("referenceDivID", parentID);
-    //         subSubjectDiv.appendChild(document.createTextNode(subSubject.content));
-    //         subSubjectDiv.classList.add("subject-item");
-    //         divSubSubject.appendChild(subSubjectDiv);
-    //     });
-    //     document.querySelector('.search-grid').appendChild(divSubSubject);
-    // });
+        tag.subSubjects.forEach((subSubject) => {
+            var subSubjectDiv = document.createElement('div');
+            subSubjectDiv.setAttribute("role", "button");
+            subSubjectDiv.setAttribute("filterId", subSubject.id);
+            subSubjectDiv.setAttribute("referenceDivID", parentID);
+            subSubjectDiv.setAttribute("subjectId", tag.subjectId);
+            subSubjectDiv.setAttribute("tagType", "subSubjects");
+            subSubjectDiv.appendChild(document.createTextNode(subSubject.content));
+            subSubjectDiv.classList.add("subject-item");
+            divSubject.appendChild(subSubjectDiv);
+        });
+        document.querySelector('.search-grid').appendChild(divSubject);
+    });
 
 }
 // clear the filter items
-function clearList() { document.querySelectorAll(".subject-item").forEach((el) => { el.remove(); }); }
+function clearList() { 
+    document.querySelectorAll(".subject-item").forEach((el) => { el.remove(); }); 
+    document.querySelectorAll(".subsubject-item").forEach((el) => { el.remove(); });
+}
 
 function setItemsListener() {
     document.querySelectorAll(".subject-item").forEach((item) => {
@@ -120,8 +126,10 @@ function setTag(item) {
     closeTag.appendChild(document.createTextNode("X"));
 
     div.classList.add("tag");
+    div.setAttribute("tagType", item.getAttribute("tagType"));
     tagValue.classList.add("tag-value");
-    tagValue.setAttribute("id", item.getAttribute("filterId"))
+    tagValue.setAttribute("id", item.getAttribute("filterId"));
+    if (item.getAttribute("subjectId") != undefined) { tagValue.setAttribute("subjectId", item.getAttribute("subjectId")); }
     closeTag.addEventListener('click', (event) => { deleteTag(event.target); })
 
     div.appendChild(tagValue);
@@ -144,21 +152,39 @@ function deleteTag(tagEl) { tagEl.parentElement.remove(); }
 document.querySelector("#searchQuestions").addEventListener("click", () => {
     var inst = document.querySelector("#institution");
     var subj = document.querySelector("#subject");
+    var subSubj = document.querySelector("#subSubject");
     var tagValue;
     var query = "";
 
-    if (inst.querySelector(".tag")) {
+    if (inst.querySelectorAll(".tag")) {
         for (var i = 0; i < inst.querySelectorAll(".tag").length; i++) {
             tagValue = inst.querySelectorAll(".tag")[i].querySelector(".tag-value");
             query = query == "" ? query + "institution" + "=" + tagValue.getAttribute("id") : query + "&" + "institution" + "=" + tagValue.getAttribute("id");
         }
     }
-    if (subj.querySelector(".tag")) {
-        for (var i = 0; i < subj.querySelectorAll(".tag").length; i++) {
-            tagValue = subj.querySelectorAll(".tag")[i].querySelector(".tag-value");
-            query = query == "" ? query + "subject" + "=" + tagValue.getAttribute("id") : query + "&" + "subject" + "=" + tagValue.getAttribute("id");
+    if (subSubj.querySelector(".tag")) {
+        for (var i = 0; i < subSubj.querySelectorAll(".tag").length; i++) {
+            console.log(subSubj.querySelectorAll(".tag")[i].querySelector(".tag-value"))
+            tagValue = subSubj.querySelectorAll(".tag")[i].querySelector(".tag-value");
+            query = query == "" ? query + "subSubject" + "=" + tagValue.getAttribute("id") : query + "&" + "subSubject" + "=" + tagValue.getAttribute("id");
         }
     }
+
+    if (subj.querySelectorAll(".tag")) {
+        for (var i = 0; i < subj.querySelectorAll(".tag").length; i++) {
+            var skipValue = false;
+            subSubj.querySelectorAll(".tag").forEach((subSubjTag) => {
+                if (subSubjTag.querySelector(".tag-value").getAttribute("subjectid") == subj.querySelectorAll(".tag")[i].querySelector(".tag-value").getAttribute("id")) {
+                    skipValue = true;
+                }
+            })
+            if (!skipValue) {
+                tagValue = subj.querySelectorAll(".tag")[i].querySelector(".tag-value");
+                query = query == "" ? query + "subject" + "=" + tagValue.getAttribute("id") : query + "&" + "subject" + "=" + tagValue.getAttribute("id");
+            }
+        }
+    }
+
     if (query == "") {
         window.alert("Você deve selecionar ao menos um filtro");
         return;

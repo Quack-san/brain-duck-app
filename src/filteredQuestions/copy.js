@@ -1,12 +1,12 @@
 import { collection } from 'firebase/firestore'
-import { getFilteredDocsArray, getSingleDocumentById } from '../general/dataBase.js'
+import { getFilteredDocsArray } from '../general/dataBase.js'
 import { db } from './filteredQuestions.js'
 
 function getQueries() {
     var queries = [];
     const urlParams = new URLSearchParams(window.location.search);
 
-    const possibleTags = ["institution", "subject", "subSubject"];
+    const possibleTags = ["institution", "subject"];
 
     possibleTags.forEach((tag) => {
         if (urlParams.getAll(tag)) {
@@ -23,33 +23,22 @@ async function getFilteredQuestions(queries) {
     queries.forEach((querie) => {
         promises.push(filterDocsPromise(querie));
     }) 
-    var returnArray = [];
+    returnArray;
     await Promise.all(promises).then((questions) => {
         questions.forEach((question) => {
-            if (question == undefined) { return; }
-            returnArray.push(question);
+            if (question == undefined) { return undefined; }
         })
+        if (queries.length == 1) { return questions; }
+        returnArray = compareQuestionsFilter(questions);
     })
-    var arrayCopy = [];
-
-    // matrix to vector without duplicated values
-    for (let i = 0; i < returnArray.length; i++) {
-        for (let j = 0; j < returnArray[i].length; j++) {
-            if (!arrayCopy.includes(returnArray[i][j])) { arrayCopy.push(returnArray[i][j]); }
-        }
-    }
-    returnArray = arrayCopy;
-
-    if (returnArray.length == 0) { return undefined; }
     return returnArray;
 }
-
 function filterDocsPromise(querie) {
     return new Promise(async (resolve, reject) => {
         if (querie.parameter == "institution") {
-            var institutionId = await getSingleDocumentById(db, 'institutions', querie.value);
+            var institutionId = await getFilteredDocsArray("name", querie.value, collection(db, 'institutions'), false);
             if (institutionId != undefined) {
-                var testsId = await getFilteredDocsArray("institutionId", institutionId.id, collection(db, "tests"), false);
+                var testsId = await getFilteredDocsArray("institutionId", institutionId[0], collection(db, "tests"), false);
             }
             if (testsId != undefined && institutionId != undefined) {
                 var questionsId = await getFilteredQuestionsArray(testsId);
@@ -60,13 +49,7 @@ function filterDocsPromise(querie) {
         }
 
         if (querie.parameter == "subject") {
-            var questionsId = await getFilteredDocsArray("subject", querie.value, collection(db, "questions"), false);
-            if (questionsId != undefined) {
-                resolve(questionsId);
-            }
-        }
-        if (querie.parameter == "subSubject") {
-            var questionsId = await getFilteredDocsArray("subSubject", querie.value, collection(db, "questions"), false);
+            var questionsId = getFilteredDocsArray("subject", querie.value.toLowerCase(), collection(db, "questions"), false);
             if (questionsId != undefined) {
                 resolve(questionsId);
             }
@@ -91,6 +74,31 @@ async function getFilteredQuestionsArray(testsId) {
         })
         return returnArray;
     })
+}
+
+function compareQuestionsFilter(questions) {
+    var copyArray = [];
+    for (var i = 0; i < questions.length; i++) {
+        for (var j = 0; j < questions[i].length; j++) {
+            if (copyArray.includes(questions[i][j])) { continue; }
+            if (!compareElementsInArray(i, j, questions)) { continue; }
+            copyArray[copyArray.length] = questions[i][j]
+        }
+    }
+    if (copyArray.length == 0) { return undefined; }
+    return copyArray;
+}
+function compareElementsInArray(indexArray, indexItem, array) {
+    var matchings = 0;
+    for (var i = 0; i < array.length; i++) {
+        if (i == indexArray) { continue; }
+         for (var j = 0; j < array[i].length; j++) {
+            if (array[indexArray][indexItem] != array[i][j]) { continue; }
+            matchings++;
+        }
+    }
+    if (matchings == array.length - 1) { return true; }
+    return false;
 }
 
 export { getQueries, getFilteredQuestions };

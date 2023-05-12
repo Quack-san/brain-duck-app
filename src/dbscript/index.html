@@ -8,53 +8,60 @@
 </head>
 
 <body>
-	<input type="text" name="testId" id="testId" placeholder="id prova">
-	<input type="text" name="questionContent" id="questionContent" placeholder="enunciado questao">
-	<input type="text" name="questionNumber" id="questionNumber" placeholder="numero questao">
-	<input type="text" name="alternativeContent" id="alternativeContent" placeholder="enunciado alternativas">
-	<input type="text" name="supplementaryText" id="supplementaryText" placeholder="texto complementar" value="">
-
-	<p>Alternativa correta</p>
-	<button class="btnAlternative" alternative="A">A</button>
-	<button class="btnAlternative" alternative="B">B</button>
-	<button class="btnAlternative" alternative="C">C</button>
-	<button class="btnAlternative" alternative="D">D</button>
-	<button class="btnAlternative" alternative="E">E</button>
-
+	<div id="passwordDiv">
+		<input type="text" id="password">
+		<button id="checkPassword">checar senha ultra secreta</button>
+	</div>
 	
+	<div id="form" style="display: block;">
+		<input type="text" name="testId" id="testId" placeholder="id prova">
+		<input type="text" name="questionContent" id="questionContent" placeholder="enunciado questao">
+		<input type="text" name="questionNumber" id="questionNumber" placeholder="numero questao">
+		<input type="text" name="alternativeContent" id="alternativeContent" placeholder="enunciado alternativas">
+		<input type="text" name="supplementaryText" id="supplementaryText" placeholder="texto complementar" value="">
+		<br>
+		<input type="file" id="image" /></br>
 
-	<div>
-		<label for="subjects">Matérias</label>
-		<select id="subjects">
-			<option id="none">none</option>
-		</select>
-		<input type="text" placeholder="nova matéria" id="newSubjectInput" value="">
-		<button id="newSubjectButton">Criar</button>
+		<p>Alternativa correta</p>
+		<button class="btnAlternative" alternative="A">A</button>
+		<button class="btnAlternative" alternative="B">B</button>
+		<button class="btnAlternative" alternative="C">C</button>
+		<button class="btnAlternative" alternative="D">D</button>
+		<button class="btnAlternative" alternative="E">E</button>
+
+		
+
+		<div>
+			<label for="subjects">Matérias</label>
+			<select id="subjects">
+				<option id="none">none</option>
+			</select>
+			<input type="text" placeholder="nova matéria" id="newSubjectInput" value="">
+			<button id="newSubjectButton">Criar</button>
+		</div>
+
+		<div>
+			<label for="subSubjects">Sub Matérias</label>
+			<select id="subSubjects">
+				<option id="none">none</option>
+			</select>
+			<input type="text" placeholder="nova sub matéria" id="newSubSubjectInput">
+			<button id="newSubSubjectButton">Criar</button>
+		</div>
+
+		<div>
+			<p>delete all documents</p>
+			<select id="deleteOp">
+				<option value="questions">question</option>
+				<option value="alternatives">alternativas</option>
+				<option value="subjects">materias</option>
+				<option value="subSubjects">sub materias</option>
+			</select>
+			<button id="delete">deletar</button>
+		</div>
+	
+		<button id="registerBtn">cadastrar</button>
 	</div>
-
-	<div>
-		<label for="subSubjects">Sub Matérias</label>
-		<select id="subSubjects">
-			<option id="none">none</option>
-		</select>
-		<input type="text" placeholder="nova sub matéria" id="newSubSubjectInput">
-		<button id="newSubSubjectButton">Criar</button>
-	</div>
-
-	<div>
-		<p>delete all documents</p>
-		<select id="deleteOp">
-			<option value="questions">question</option>
-			<option value="alternatives">alternativas</option>
-			<option value="subjects">materias</option>
-			<option value="subSubjects">sub materias</option>
-		</select>
-		<button id="delete">deletar</button>
-	</div>
-
-
-
-	<button id="registerBtn">cadastrar</button>
 
 	<script src="bundle.js"></script>
 </body>

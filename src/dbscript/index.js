@@ -1,10 +1,19 @@
 import {
 	collection, addDoc, doc, updateDoc, deleteField
 } from 'firebase/firestore'
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
 import { getFilteredDocsArray, getDocsArray, getSingleDocumentById, deleteDocs } from '../general/dataBase.js'
 import { db } from '../firebaseConfigs.js'
 
-
+const PASSWORD = "s1e2n3h4a5";
+document.querySelector("#checkPassword").addEventListener("click", () => {
+	if (document.querySelector("#password").value == PASSWORD) {
+		document.querySelector("#form").style.display = "block";
+		document.querySelector("#passwordDiv").style.display = "none";
+	} else {
+		alert("!!!! ALERTA ALERTA ALERTAA  !!!!")
+	}
+})
 var correctAlternative;
 
 window.addEventListener("load", async () => {
@@ -23,7 +32,8 @@ document.querySelectorAll(".btnAlternative").forEach((btn) => {
 document.getElementById("registerBtn").addEventListener('click', async () => {
 	var supplementaryTextId = await setSupplementaryText();
 
-	await addQuestion(collection(db, 'questions'), supplementaryTextId);
+	const imageURL = await setImage();
+	await addQuestion(collection(db, 'questions'), supplementaryTextId, imageURL);
 
 	var questionId = await getDocId("questions");
 	var alternatives = getAlternatives();
@@ -33,6 +43,24 @@ document.getElementById("registerBtn").addEventListener('click', async () => {
 	programStatus("finished");
 	programStatus("--------------------------------");
 });
+
+async function setImage() {
+	const storage = getStorage();
+	const file = document.querySelector("#image").files[0];
+	if (file == undefined) { return "none"; }
+
+    const reference = ref(storage, "images/" +  document.querySelector("#testId").value+document.querySelector("#questionNumber").value+"image.png");
+    const metadata = { contentType: file.type  };
+
+	return new Promise((resolve) => {
+		const task = uploadBytesResumable(reference, file, metadata);
+		task.on("state-changed", async () => {
+			await getDownloadURL(task.snapshot.ref).then((downloadURL) => {
+				resolve(downloadURL);
+			})
+		})
+	})
+}
 
 async function setSupplementaryText() {
 	var supplementaryTextValue = document.querySelector("#supplementaryText").value;
@@ -48,7 +76,7 @@ async function setSupplementaryText() {
 
 }
 
-async function addQuestion(collectionRef, supplementaryTextId) {
+async function addQuestion(collectionRef, supplementaryTextId, imageURL) {
 	var subjectIndex = document.querySelector("#subjects").selectedIndex;
 	var subjectValue = document.querySelector("#subjects").querySelectorAll("option")[subjectIndex].getAttribute("id");;
 	var subSubjectIndex = document.querySelector("#subSubjects").selectedIndex;
@@ -59,9 +87,10 @@ async function addQuestion(collectionRef, supplementaryTextId) {
 		content: document.getElementById("questionContent").value,
 		number: document.getElementById("questionNumber").value,
 		correctAlternative: correctAlternative,
-		suject: subjectValue,
+		subject: subjectValue,
 		subSubject: subSubjectValue,
 		supplementaryTextId: supplementaryTextId,
+		imageURL: imageURL,
 		lastAdded: true
 	})
 }

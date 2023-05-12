@@ -60,10 +60,10 @@ document.querySelector("#btnStartTest").addEventListener('click', async () => {
 	setListeners ();
 
 	pointerTime = new Date().getSeconds();
-	if (document.querySelector("#timerDiv").getAttribute("setted") == "true") {
-		testTime = parseInt(document.querySelector("#hour").value) * 60 * 60 +
-			parseInt(document.querySelector("#minute").value) * 60;
-	}
+	// if (document.querySelector("#timerDiv").getAttribute("setted") == "true") {
+	// 	testTime = parseInt(document.querySelector("#hour").value) * 60 * 60 +
+	// 		parseInt(document.querySelector("#minute").value) * 60;
+	// }
 	testTimeInterval = setInterval(() => { setTestTime(isFinished, testTime, pointerTime) }, 1000);
 
 	changeTestDisplay();
