@@ -16,26 +16,29 @@
 </head>
 
 <body>
-	<header>
-		<ul class="header-list">
-			<li class="nav-link"><a href="../public/simulates.html">INSTITUIÇÕES</a></li>
-			<li class="nav-link"><a href="../public/questions.html">QUESTÕES</a></li>
+	<nav>
+		<ul class="nav-list">
+			<li class="nav-link"><a href="../public/simulates.html">INSTITUIÇÕES</a><div></div></li>
+			<li class="nav-link"><a href="../public/questions.html">QUESTÕES</a><div></div></li>
 			<li class="title-link">
 				<a href="../public/"><img src="../dist/img/brainduck-title.png" draggable="false"></a>
+				<div></div>
 			</li>
-			<li class="nav-link"><a href="../public/">PERFIL</a></li>
-			<li class="nav-link"><a href="../public/">SOBRE NÓS</a></li>
+			<li class="nav-link"><a href="../public/">PERFIL</a><div></div></li>
+			<li class="nav-link"><a href="../public/">SOBRE NÓS</a><div></div></li>
 		</ul>
-		<div class="toggle" role="button">
-			<ion-icon name="menu" id="menu"></ion-icon>
+		<div class="dropdown">
+			<button class="toggle">
+				<ion-icon name="menu" id="menu"></ion-icon>
+			</button>
+			<div class="link-list" style="display: none;">
+				<div class="link-drop-item"><a href="../docs/simulates.html">INSTITUIÇÕES</a><div></div></div>
+				<div class="link-drop-item"><a href="../docs/questions.html">QUESTÕES</a></div>
+				<div class="link-drop-item"><a href="../docs/">PERFIL</a></div>
+				<div class="link-drop-item"><a href="../docs/">SOBRE NÓS</a></div>
+			</div>
 		</div>
-	</header>
-	<ul class="dropdown" style="display: none;">
-		<li class="link-drop-item"><a href="../public/simulates.html">INSTITUIÇÕES</a></li>
-		<li class="link-drop-item"><a href="../public/questions.html">QUESTÕES</a></li>
-		<li class="link-drop-item"><a href="../public/">PERFIL</a></li>
-		<li class="link-drop-item"><a href="../public/">SOBRE NÓS</a></li>
-	</ul>
+	</nav>
 	
 	<article class="dark-veil"></article>
 	
