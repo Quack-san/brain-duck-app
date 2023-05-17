@@ -1,11 +1,11 @@
-/* 
-	Test cover
-*/
+@import "./main.css";
+
+/* TEST COVER */
 .test-cover {
+	display: grid;
+	border-radius: 15px;
     margin: 20px;
     padding: 20px;
-    width: 55%;
-	min-width: 500px;
 	min-height: 450px;
 }
 .test-informations {
@@ -71,71 +71,20 @@
 	border-radius: 15px;
 	box-shadow: 1px 1px black;
 	z-index: 1;
+	transition: .3s;
 }
 .times button:hover {
-	background-color: rgb(235, 224, 203, 1);
+	background-color: #f90;
 }
 .t-active {
 	background-color: #ba5624;
 }
-/* 
-	Test page with the questions
-*/
+
+/* ACTUAL TEST */
 .test-ground {
 	display: none;
     margin: 20px;
     gap: 20px;
-}
-.left-popup {
-	position: fixed;
-	left: 0;
-	top: 15%;
-	display: grid;
-	gap: 5px;
-	z-index: 1;
-}
-.guide {
-	display: grid;
-	grid-template-rows: auto;
-	border-top-right-radius: 5px;
-	border-bottom-right-radius: 15px;
-	overflow: hidden;
-}
-.text-inside {
-	width: 1fr;
-	height: 0;
-	background-color: #e9ddc9;
-	transition: 0.8s;
-}
-.close-guide {
-	display: grid;
-	place-items: center;
-	width: 1fr;
-	height: -moz-fit-content;
-	height: fit-content;
-	background-color: #ebe0cb;
-	grid-row-start: 2;
-	z-index: 1;
-}
-.close-guide ion-icon {
-	font-size: 2rem;
-	transition: .4s;
-}
-#ex {
-	position: absolute;
-	display: none;
-}
-#ex:checked + label > .text-inside {
-	height: 150px;
-}
-#ex:checked + label > .close-guide ion-icon {
-	transform: rotate(-180deg);
-}
-.count-down {
-	padding: 10px;
-	border-top-right-radius: 15px;
-	border-bottom-right-radius: 5px;
-	text-align: center;
 }
 .test-buttons {
 	padding: 20px;
@@ -183,11 +132,11 @@
 	width: fit-content;
 	height: -moz-fit-content;
 	height: fit-content;
-	padding: 20px;
+	padding: 10px;
 	padding-block: 3px;
 	border: none;
-	border-radius: 15px;
-	margin-inline: auto;
+	border-radius: 5px;
+	margin-inline: 5px;
 	font-size: 0.8em;
 	font-weight: bold;
 	color: white;
@@ -203,11 +152,9 @@
 }
 .statement {
 	width: 60%;
-	min-width: 500px;
 	margin-inline: auto;
 	margin-block: 20px;
 	padding: 10px;
-	padding-inline: 40px;
 	border-radius: 15px;
 	background-color: #ebe0cb;
 }
@@ -244,27 +191,106 @@
 	position: absolute;
 	top: -20px;
 }
-#endTest {
-	position: relative;
+.final-end {
+	display: none;
+	padding: 15px;
+	border-radius: 5px;
+}
+
+/* TEST GUIDE POPUP */
+.left-popup {
+	position: fixed;
+	left: 0;
+	top: 15%;
 	display: grid;
+	gap: 5px;
+	z-index: 1;
+}
+.guide {
+	display: grid;
+	grid-template-rows: auto;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 15px;
+	overflow: hidden;
+}
+.text-inside {
+	width: 1fr;
+	height: 0;
+	background-color: #e9ddc9;
+	transition: 0.8s;
+}
+.statusStyle {
+	height: 20px;
+	line-height: 20px;
+	margin-block: 6px;
+}
+.guide2 {
+	background-color: blue;
+	color: white;
+}
+.guide3 {
+	background-color: green;
+	color: white;
+}
+.guide4 {
+	background-color: yellowgreen;
+}
+.guide5 {
+	background-color: red;
+}
+.close-guide {
+	display: grid;
+	place-items: center;
+	width: 1fr;
+	height: -moz-fit-content;
+	height: fit-content;
+	background-color: #ebe0cb;
+	grid-row-start: 2;
+	z-index: 1;
+}
+.close-guide ion-icon {
+	font-size: 2rem;
+	transition: .4s;
+}
+#ex {
+	position: absolute;
+	display: none;
+}
+#ex:checked + label > .text-inside {
+	height: 150px;
+}
+#ex:checked + label > .close-guide ion-icon {
+	transform: rotate(-180deg);
+}
+.count-down {
+	padding: 10px;
+	border-top-right-radius: 15px;
+	border-bottom-right-radius: 5px;
+	text-align: center;
+}
+#endTest {
 	border: none;
 	background-color: #eb6161;
 	font-weight: bold;
 	font-size: 1.5rem;
-	transition: 0.4s;
-	padding: 0;
 	place-items: center;
 }
-#endTest:hover {
+.pop-end {
+	position: relative;
+	display: grid;
+	transition: 0.4s;
+	padding: 0;
+}
+.pop-end:hover {
 	background-color: red;
 	color: white;
 }
-#endTest ion-icon {
+.pop-end ion-icon {
 	color: white;
 	opacity: 30%;
 	font-size: 4rem;
 }
-#endTest span {
+.pop-end span {
 	position: absolute;
 	width: -moz-max-content;
 	width: max-content;
@@ -273,40 +299,50 @@
 	transform: translate(-50%, -50%);
 }
 
-/* 
-    JAVASCRIPT classes
-*/
-
-.selected {
-	color: blue;
-	border-color: blue;
-}
-.notSelected {
-	color: black;
-}
-.correct {
-	color: green;
-}
-.wrong {
-	color: orangered;
-}
-.rightAnswer {
-	color: yellowgreen;
-}
-.activeQuestion {
-	color: skyblue;
+/* SCREEN 500px */
+@media screen and (max-width: 500px) {
+	.questions {
+		grid-template-columns: 1fr;
+	}
+	#endTest {
+		font-size: 1.2em;
+	}
 }
 
-#divColorsSubtitle {
-	border-top-style: solid;
-	border-width: 1px;
-	border-color: #ff9900;
-	margin-top: 10px;
-	padding-top: 10px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	row-gap: 10px;
-	height: -moz-fit-content;
-	height: fit-content;
+/* SCREEN 1000px */
+@media screen and (max-width: 1000px) {
+	.test-cover div {
+		display: flex;
+	}
+	.test-timer {
+		margin-top: 20px;
+	}
+	.test-timer span {
+		font-size: 1.2em;
+	}
+	#startDiv {
+		order: 2;
+	}
+	.questions {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	.questions-list, .statement {
+		width: 100%;
+	}
+	.pop-end {
+		display: none;
+	}
+	.final-end {
+		display: block;
+	}
+}
+
+/* SCREEN 1300px */
+@media screen and (max-width: 1300px) {
+	.guide {
+		display: none;
+	}
+	.pop-end, .pop-end:hover {
+		color: transparent;
+	}
 }

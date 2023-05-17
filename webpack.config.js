@@ -2,10 +2,10 @@ const path = require('path')
 
 module.exports = {
 	mode: 'development',
-	entry: '/src/dbscript/index.js',
+	entry: '/src/testSimulates/testSimulate.js',
 	output: {
-		path: path.resolve(__dirname, 'src/dbscript'),
-		filename: 'bundle.js'
+		path: path.resolve(__dirname, 'dist/js'),
+		filename: 'testSimulateBundle.js'
 	},
 	watch: true
 }

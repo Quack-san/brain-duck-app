@@ -1,3 +1,5 @@
+@import "./main.css";
+
 .introduction-text {
     margin-inline: auto;
     margin-block: 30px;
@@ -95,13 +97,17 @@
     color: white;
     border-radius: 5px;
 }
-@media only screen and (max-width: 1400px) {
-    .exam {
-        font-size: 1.5em;
-    }
-}
+
+/* SCREEN 800px */
 @media only screen and (max-width: 900px) {
     .exam {
         width: 40%;
+    }
+}
+
+/* SCREEN 1400px */
+@media only screen and (max-width: 1400px) {
+    .exam {
+        font-size: 1.5em;
     }
 }

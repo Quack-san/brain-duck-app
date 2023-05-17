@@ -14,6 +14,13 @@ function setListeners () {
         if (supplementaryTextDiv.style.display == "block") { supplementaryTextDiv.style.display = "none"; }
         else { supplementaryTextDiv.style.display = "block"; }
     });
+    
+    // question images
+    document.querySelector("#questionImageButton").addEventListener("click", (event) => {
+        var questionImage = document.querySelector("#questionImage");
+        if (questionImage.style.display == "block") { questionImage.style.display = "none"; }
+        else { questionImage.style.display = "block"; }
+    });
 }
 
 function selectAlternative(event) {

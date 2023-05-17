@@ -1,0 +1,58 @@
+@import "./main-styles/header.css";
+@import "./main-styles/patterns.css";
+@import "./main-styles/dark-veil.css";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+@media only screen and (max-width: 500px){
+    body {
+        font-size: .9em;
+    }
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2em;
+    display: flex;
+    flex-direction: column;
+}
+body:hover {
+    cursor: default;
+}
+.content {
+    width: 80%;
+    max-width: 1600px;
+    position: relative;
+    margin: auto;
+    animation: getUP 1s;
+}
+@keyframes getUP {
+    from {transform: translateY(100%); opacity: 0;}
+    to {transform: translateY(0); opacity: 1;}
+}
+ion-icon {
+    pointer-events: none;
+}
+button {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+a {
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+a:hover {
+    text-decoration: none;
+}
+ul {
+    list-style: none;
+}
+.footer-div {
+    width: 84%;
+    padding-inline: 8%;
+    margin-top: 50px;
+    font-weight: bolder;
+}

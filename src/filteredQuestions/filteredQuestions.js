@@ -2,7 +2,7 @@ import { db } from '../firebaseConfigs.js'
 import { collection } from 'firebase/firestore'
 import { getQueries, getFilteredQuestions } from './filterQuestions.js'
 import { getFilteredDocsArray, getSingleDocumentById } from '../general/dataBase.js' 
-import { setQuestion, setAlternativesClasses, setAlternativesContent } from '../testSimulates/DOM.js'
+import { setQuestion, setAlternativesClasses, setAlternativesContent, setQuestionImage } from '../testSimulates/DOM.js'
 import { setListeners } from './listeners.js'
 
 // // global variables
@@ -16,7 +16,6 @@ var questionCorrected = false;
 window.addEventListener("load", async () => {
 	allQuestionsIdArray = await getFilteredQuestions(getQueries());
 	if (allQuestionsIdArray.length == 0) { alert("nenhuma questão válida"); return; }
-
 	notAsweredQuestionsIdArray = allQuestionsIdArray;
 	setQuestionsIdArray();
 	questionsArrayObj = await getQuestionObjArray();
@@ -65,6 +64,7 @@ async function setQuestionData() {
  	var supplementaryText = await getSingleDocumentById(db, "supplementaryTexts", questionsArrayObj[0].data.supplementaryTextId);
  	setQuestion(questionsArrayObj[0].data);
  	setSupplementaryText(supplementaryText.data.content);
+	setQuestionImage(questionsArrayObj[0].data.imageURL);
  	setAlternativesContent(alternativesObjArray);
 }
 

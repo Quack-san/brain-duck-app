@@ -6,10 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    
-    <link rel="stylesheet" href="../dist/css/style-main.css">
-    <link rel="stylesheet" href="../dist/css/style-patterns.css">
-    <link rel="stylesheet" href="../dist/css/style-filtered.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../dist/css/filtered.css">
     
     <title>Document</title>
 </head>
@@ -43,6 +41,9 @@
             <button class="supplementary" id="supplementaryTextButton">
                 Esta questão possui texto complementar, clique aqui para ver.
             </button>
+            <button class="supplementary" id="questionImageButton">
+                Imagens
+            </button>
 
             <div class="statement">
                 <label id="questionContent"></label>
@@ -50,22 +51,29 @@
 
             <div class="questions">
                 <div><span>A</span>
-                    <label class="alternative" indexAlternative="1"></label>
+                    <label class="alternative" alternative="A"></label>
                 </div>
                 <div><span>B</span>
-                    <label class="alternative" indexAlternative="2"></label>
+                    <label class="alternative" alternative="B"></label>
                 </div>
                 <div><span>C</span>
-                    <label class="alternative" indexAlternative="3"></label>
+                    <label class="alternative" alternative="C"></label>
                 </div>
                 <div><span>D</span>
-                    <label class="alternative" indexAlternative="4"></label>
+                    <label class="alternative" alternative="D"></label>
                 </div>
                 <div><span>E</span>
-                    <label class="alternative" indexAlternative="5"></label>
+                    <label class="alternative" alternative="E"></label>
                 </div>
             </div>
         </div>
+        <div id="supplementaryText" style="display: none; position: absolute; top: 50%; left: 50%; background-color: brown;"></div>
+        <div id="questionImage" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);">
+			<img src="#" alt="" id="">
+		</div>
+
+        <button id="answerBtn">responder</button>
+        <button id="nextQuestionBtn">próxima</button>
     </main>
     
     <script src="../dist/js/headerDropdown.js"></script>

@@ -1,17 +1,23 @@
 import { setQuestion, selectAlternative, setAlternativesClasses, 
-    setAlternativesContent, setSupplementaryText, getDivStatus } from './DOM.js' 
+    setAlternativesContent, setSupplementaryText, getDivStatus, setQuestionImage } from './DOM.js' 
 import { questionsObjArray, questionNumber, numberOfQuestions, isFinished, 
     setNumber, questionAnswers, correctionStatus, alternativesObjArray, supplementaryTextArray,
     setQuestionAnswer } from './testSimulate.js'
 import { correctTest } from './testCorrection.js'
+var hasTime = true;
 
 function setListeners () {
     // alternatives in html
     document.querySelectorAll(".alternative").forEach((alternative) => {
-        alternative.addEventListener('click', (event) => {
+        alternative.parentElement.addEventListener('click', (event) => {
             setQuestionAnswer(questionNumber-1,
                 selectAlternative(event, isFinished, questionNumber));
         });
+    });
+
+    document.querySelector("#noTime").addEventListener('click', (event) => {
+        //hasTime = false;
+        console.log("hasTime")
     });
 
     // div questions
@@ -23,6 +29,7 @@ function setListeners () {
             setQuestion(questionsObjArray[questionNumber - 1].data);
             setAlternativesClasses(isFinished, questionAnswers[questionNumber-1], isFinished?correctionStatus[questionNumber - 1].correctAnswer:undefined);
             setAlternativesContent(alternativesObjArray[questionNumber - 1]);
+            setQuestionImage(questionsObjArray[questionNumber - 1].data.imageURL);
             setSupplementaryText(questionsObjArray[questionNumber - 1].data.supplementaryTextId, supplementaryTextArray);
         });
     });
@@ -34,6 +41,7 @@ function setListeners () {
         setNumber(questionNumber+1);
         getDivStatus(questionNumber).classList.add("activeQuestion");
         setQuestion(questionsObjArray[questionNumber - 1].data);
+        setQuestionImage(questionsObjArray[questionNumber - 1].data.imageURL);
         setSupplementaryText(questionsObjArray[questionNumber - 1].data.supplementaryTextId, supplementaryTextArray);
         setAlternativesClasses(isFinished, questionAnswers[questionNumber-1], isFinished?correctionStatus[questionNumber - 1].correctAnswer:undefined);
         setAlternativesContent(alternativesObjArray[questionNumber - 1]);
@@ -46,6 +54,7 @@ function setListeners () {
         setNumber(questionNumber-1);
         getDivStatus(questionNumber).classList.add("activeQuestion");
         setQuestion(questionsObjArray[questionNumber - 1].data);
+        setQuestionImage(questionsObjArray[questionNumber - 1].data.imageURL);
         setSupplementaryText(questionsObjArray[questionNumber - 1].data.supplementaryTextId, supplementaryTextArray);
         setAlternativesClasses(isFinished, questionAnswers[questionNumber-1], isFinished?correctionStatus[questionNumber - 1].correctAnswer:undefined);
         setAlternativesContent(alternativesObjArray[questionNumber - 1]);
@@ -68,11 +77,18 @@ function setListeners () {
         else { supplementaryTextDiv.style.display = "block"; }
     });
 
+    // question images
+    document.querySelector("#questionImageButton").addEventListener("click", (event) => {
+        var questionImage = document.querySelector("#questionImage");
+        if (questionImage.style.display == "block") { questionImage.style.display = "none"; }
+        else { questionImage.style.display = "block"; }
+    });
+
     // end test button
     document.getElementById("endTest").addEventListener('click', correctTest);
 }
 
 
 
-export { setListeners };
+export { setListeners, hasTime };
 

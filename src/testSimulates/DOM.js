@@ -1,11 +1,15 @@
-function changeTestDisplay() {
-    var actualTest = document.querySelector('.test-ground');
-    if (actualTest.style.display == "grid") {
-        actualTest.style.display = "none";
-        return;
-    }
-    actualTest.style.display = "grid";
-    document.querySelector('.test-cover').style.display = 'none';
+function changeTestDisplay(state) {
+	if (state == "loading") { document.querySelector(".dark-veil").style.display = "block"; }
+	else {
+		document.querySelector('.test-cover').style.display = 'none'; 
+		document.querySelector(".dark-veil").style.display = "none"; 
+		var actualTest = document.querySelector('.test-ground');
+		if (actualTest.style.display == "grid") {
+			actualTest.style.display = "none";
+			return;
+		}
+		actualTest.style.display = "grid";
+	}
 };
 
 // set question in HTML
@@ -25,22 +29,24 @@ function setAlternativesContent(alternativesArray) {
 // set alternatives classes according to the current state
 function setAlternativesClasses(testIsFinished, questionAnswers, correctAnswer) {
 	const alternativesDOM = document.querySelectorAll(".alternative");
-	alternativesDOM.forEach((alternative) => {
+	var parentsDOM = [];
+	for (var i = 0; i < alternativesDOM.length; i++) { parentsDOM[i] = alternativesDOM[i].parentElement}
+	parentsDOM.forEach((element) => {
 		// remove classes
-		changeClasses(alternative, "remove", "selected");
+		changeClasses(element, "remove", "selected");
 		if (testIsFinished) {
-			changeClasses(alternative, "remove", "correct");
-			changeClasses(alternative, "remove", "wrong");
-			changeClasses(alternative, "remove", "rightAnswer");
+			changeClasses(element, "remove", "correct");
+			changeClasses(element, "remove", "wrong");
+			changeClasses(element, "remove", "rightAnswer");
 		}
 		// add classes
-		if (questionAnswers == alternative.getAttribute("alternative")) {
-			if (!testIsFinished) { changeClasses(alternative, "add", "selected"); }
-            else if (correctAnswer == alternative.getAttribute("alternative")) 
-            	{ changeClasses(alternative, "add", "correct"); } 
-            else { changeClasses(alternative, "add", "wrong"); }
-		} else if (testIsFinished && correctAnswer == alternative.getAttribute("alternative")) {
-			changeClasses(alternative, "add", "rightAnswer");
+		if (questionAnswers == element.lastElementChild.getAttribute("alternative")) {
+			if (!testIsFinished) { changeClasses(element, "add", "selected"); }
+            else if (correctAnswer == element.lastElementChild.getAttribute("alternative")) 
+            	{ changeClasses(element, "add", "correct"); } 
+            else { changeClasses(element, "add", "wrong"); }
+		} else if (testIsFinished && correctAnswer == element.lastElementChild.getAttribute("alternative")) {
+			changeClasses(element, "add", "rightAnswer");
 		}
 	});
 }
@@ -65,22 +71,28 @@ function changeClasses(element, operation, classValue) {
 // event when user click on an alternative
 function selectAlternative(event, testIsFinished, questionNumber) {
 	if (testIsFinished) { return; }
-	var selected = event.target;
+	if (event.target.classList.contains("alternative")) {
+		var alternative = event.target;
+		var parent = event.target.parentElement;
+	} else {
+		var alternative = event.target.lastElementChild;
+		var parent = event.target;
+	}
 	var divStatus = getDivStatus(questionNumber);
 
-	if (selected.classList.contains("selected")) {
-        changeClasses(selected, "remove", "selected");
+	if (parent.classList.contains("selected")) {
+        changeClasses(parent, "remove", "selected");
         changeClasses(divStatus, "remove", "selected");
         changeClasses(divStatus, "add", "notSelected");
 		return undefined;
 	}
 	document.querySelectorAll(".alternative").forEach((alternative) => {
-        changeClasses(alternative, "remove", "selected");
+        changeClasses(alternative.parentElement, "remove", "selected");
 	});
-    changeClasses(selected, "add", "selected");
+    changeClasses(parent, "add", "selected");
     changeClasses(divStatus, "add", "selected");
     changeClasses(divStatus, "remove", "notSelected");
-	return selected.getAttribute("alternative");
+	return alternative.getAttribute("alternative");
 }
 
 // get div status according to the current question number;
@@ -106,6 +118,16 @@ function setSupplementaryText(supplementaryTextId, supplementaryTextArray) {
 	}
 }
 
+function setQuestionImage(imageUrl) {
+	var questionImage = document.querySelector("#questionImage").querySelector("img");
+	if (imageUrl == "none" || imageUrl == undefined) {
+		questionImage.setAttribute("src", "../dist/img/noimg.png");
+	}
+	else {
+		questionImage.setAttribute("src", imageUrl);
+	}
+}
+
 // set all the div status
 function setDivTestStatus(numberOfQuestions) {
 	for (var i = 0; i < numberOfQuestions; i++) {
@@ -119,4 +141,4 @@ function setDivTestStatus(numberOfQuestions) {
 }
 
 export { setQuestion, setAlternativesContent, setAlternativesClasses, setDivTestStatus, getDivStatus, setDivStatusCorrection,
-	changeClasses, selectAlternative, setSupplementaryText, changeTestDisplay };
+	changeClasses, selectAlternative, setSupplementaryText, changeTestDisplay, setQuestionImage };

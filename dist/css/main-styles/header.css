@@ -6,7 +6,6 @@ nav {
     background-color: #2c0703;
     border-bottom: 4px solid white;
     outline: 4px solid #2c0703;
-   /*  overflow: hidden; */
 }
 .nav-list {
     list-style-type: none;

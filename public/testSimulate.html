@@ -4,13 +4,11 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- ICONS SCRIPT -->
 	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-	
-	<link rel="stylesheet" href="../dist/css/style-main.css">
-	<link rel="stylesheet" href="../dist/css/style-patterns.css">
-	<link rel="stylesheet" href="../dist/css/style-testSimulate.css">
-	<link rel="stylesheet" href="../dist/css/style-alternativesStates.css">
+	<!-- CSS -->
+	<link rel="stylesheet" href="../dist/css/test-page.css">
 	
 	<title>Projeto TCC</title>
 </head>
@@ -43,128 +41,117 @@
 	<article class="dark-veil"></article>
 	
 	<article class="content">
-		<div class="grid-container grid-row">
-			
-			<!-- Cover of the test, with his name, year and time to complete -->
-			<div class="flex-container centralize">
-				<div class="test-cover b-round grid-container">
-					<div class="test-informations flex-container duckwood b-round">
-						<div class="institution-name flex-container">
-							<h2 class="fit-wh" id="test-name">...</h2>
-							<h4 class="fit-wh" id="test-year">...</h4>
-						</div>
-						<img id="institution-logo" src="" alt="place logo">
+		<!-- Cover of the test, with his name, year and time to complete -->
+		<div class="flex-container centralize">
+			<div class="test-cover">
+				<div class="test-informations flex-container duckwood b-round">
+					<div class="institution-name flex-container">
+						<h2 class="fit-wh" id="test-name">...</h2>
+						<h4 class="fit-wh" id="test-year">...</h4>
 					</div>
+					<img id="institution-logo" src="" alt="place logo">
+				</div>
 
-					<!-- Begin test -->
-					<div class="flex-container centralize" id="startDiv">
-						<button id="btnStartTest">Iniciar</button>
-					</div>
-					
-					<div class="test-timer">
-						<span>CRONOMETRO</span>
-						<div class="times">
-							<button id="testTime" role="button">...</button>
-							<button class="custom-time" role="button">Sem tempo</button>
-						</div>
-						<div class="bg-icon"><ion-icon name="timer-outline"></ion-icon></div>
-					</div>
+				<!-- Begin test -->
+				<div class="flex-container centralize" id="startDiv">
+					<button id="btnStartTest">Iniciar</button>
 				</div>
 				
+				<div class="test-timer">
+					<span>Realizar a prova com tempo?</span>
+					<div class="times">
+						<button id="testTime" role="button">...</button>
+						<button class="noTime" id="noTime" role="button">Sem tempo</button>
+					</div>
+					<div class="bg-icon"><ion-icon name="timer-outline"></ion-icon></div>
+				</div>
+			</div>
+		</div>
+		<!--  -->
+		<section class="test-ground">
+			<div class="left-popup">
+				<div class="count-down duckwood">
+					<label id="countDown">...</label>
+				</div>
+				
+				<button class="test-buttons pop-end" id="endTest">
+					<ion-icon name="stop-circle-outline"></ion-icon>
+					<span>Encerrar prova</span>
+				</button>
+
+				<input type="checkbox" id="ex">
+				<label class="guide" for="ex">
+					<label class="close-guide" for="ex">
+						<ion-icon name="chevron-down-outline"></ion-icon>
+					</label>
+
+					<div class="text-inside">
+						<div class="status">
+							<p class="statusStyle">Alternativa não selecionada</p>
+						</div>
+						<div class="status">
+							<p class="statusStyle guide2">Alternativa selecionada</p>
+						</div>
+						<hr>
+						<div class="status">
+							<p class="statusStyle guide3">Respondido corretamente</p>
+						</div>
+						<div class="status">
+							<p class="statusStyle guide4">Alternativa correta</p>
+						</div>
+						<div class="status">
+							<p class="statusStyle guide5">Resposta incorreta</p>
+						</div>
+					</div>
+				</label>
+			</div>
+
+			<div class="questions-list">
+				<label id="previousQuestion" role="button"><ion-icon name="caret-back-outline"></ion-icon></label>
+				<div id="divQuestionNumber">
+				</div>
+				<label id="nextQuestion" role="button"><ion-icon name="caret-forward-outline"></ion-icon></label>
 			</div>
 			
-			<!-- Actual test receiver -->
-			<section class="test-ground">
-				
-				<div class="left-popup">
-					<div class="count-down duckwood">
-						<label id="countDown">...</label>
-					</div>
-					
-					<button class="test-buttons duckwood" id="endTest">
-						<ion-icon name="stop-circle-outline"></ion-icon>
-						<span>Encerrar prova</span>
-					</button>
-
-					<input type="checkbox" id="ex">
-					<label class="guide" for="ex">
-						<label class="close-guide" for="ex">
-							<ion-icon name="chevron-down-outline"></ion-icon>
-						</label>
-
-						<div class="text-inside">
-							<div class="status">
-								<p class="statusStyle notSelected"></p>
-								<span>
-									Alternativa não selecionada
-								</span>
-							</div>
-							<div class="status">
-								<p class="statusStyle selected"></p>
-								<span>
-									Alternativa selecionada
-								</span>
-							</div>
-							<hr>
-							<div class="status">
-								<p class="statusStyle correct"></p>
-								<span>
-									Respondido corretamente
-								</span>
-							</div>
-							<div class="status">
-								<p class="statusStyle rightAnswer"></p>
-								<span>
-									Alternativa correta
-								</span>
-							</div>
-							<div class="status">
-								<p class="statusStyle wrong"></p>
-								<span>
-									Resposta incorreta
-								</span>
-							</div>
-						</div>
-					</label>
-				</div>
-
-				<div class="questions-list">
-					<label id="previousQuestion" role="button"><ion-icon name="caret-back-outline"></ion-icon></label>
-					<div id="divQuestionNumber">
-					</div>
-					<label id="nextQuestion" role="button"><ion-icon name="caret-forward-outline"></ion-icon></label>
-				</div>
-				
-				<div class="display-question">
+			<div class="display-question">
+				<div style="display: flex; justify-content: center;">
 					<button class="supplementary" id="supplementaryTextButton">
 						Esta questão possui texto complementar, clique aqui para ver.
 					</button>
-					<div class="statement">
-						<label id="questionContent">
-						</label>
+					<button class="supplementary" id="questionImageButton">
+						Imagens
+					</button>
+				</div>
+
+				<div class="statement">
+					<label id="questionContent">
+					</label>
+				</div>
+				<div class="questions">
+					<div><span>A</span>
+						<label class="alternative" alternative="A"></label>
 					</div>
-					<div class="questions">
-						<div><span>A</span>
-							<label class="alternative" alternative="A"></label>
-						</div>
-						<div><span>B</span>
-							<label class="alternative" alternative="B"></label>
-						</div>
-						<div><span>C</span>
-							<label class="alternative" alternative="C"></label>
-						</div>
-						<div><span>D</span>
-							<label class="alternative" alternative="D"></label>
-						</div>
-						<div><span>E</span>
-							<label class="alternative" alternative="E"></label>
-						</div>
+					<div><span>B</span>
+						<label class="alternative" alternative="B"></label>
+					</div>
+					<div><span>C</span>
+						<label class="alternative" alternative="C"></label>
+					</div>
+					<div><span>D</span>
+						<label class="alternative" alternative="D"></label>
+					</div>
+					<div><span>E</span>
+						<label class="alternative" alternative="E"></label>
 					</div>
 				</div>
-			</section>						
-		</div>
+			</div>
+			<button id="endTest" class="final-end">FINALIZAR</button>
+		</section>
 								<!-- ------------------------------------------------------ -->
 		<div id="supplementaryText" style="display: none; position: absolute; top: 50%; left: 50%; background-color: brown;"></div>
+		<div id="questionImage" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);">
+			<img src="#" alt="" id="">
+		</div>
 	</article>
 
 	<div class="footer-div">
@@ -178,5 +165,4 @@
 
 	<script src="../dist/js/headerDropdown.js"></script>
 	<script src="../dist/js/testSimulateBundle.js"></script>
-	<script src="../dist/js/customTimer.js"></script>
 </body>
